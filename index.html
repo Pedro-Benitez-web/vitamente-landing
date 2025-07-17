@@ -4,8 +4,9 @@
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Adiós Ansiedad Social – VitaMente</title>
+
 <style>
-/* ---------- Variables y estilos base ---------- */
+/* ---------- Variables y reset ---------- */
 :root{
   --primary:#1498e3;
   --whatsapp:#25D366;
@@ -24,46 +25,48 @@ h2{font-size:1.8rem;margin-bottom:.6em;color:#fff}
 p,li{font-size:1.05rem;margin:.4em 0}
 .bullets{list-style:square;margin-left:22px}
 
-/* ---------- Encabezado e imagen ---------- */
+/* ---------- Encabezado + portada ---------- */
 .headline{font-size:2.4rem;text-align:center;margin:50px 0 25px;color:#fff}
 .cover-img{display:block;margin:0 auto 30px;max-width:360px;width:90%;border-radius:8px;
            box-shadow:0 4px 12px rgba(0,0,0,.35);}
-.main-download{display:block;margin:0 auto 35px;width:max-content}
+.main-download{display:inline-block;margin:0 auto 35px;}  /* centrado */
 
-/* ---------- Botones ---------- */
+/* ---------- Botones genéricos ---------- */
 .btn{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;
      padding:14px 28px;border-radius:6px;font-weight:600;font-size:1rem;line-height:1.25;
      transition:.25s;text-align:center}
 .btn:hover{background:#0c6ab2;transform:translateY(-2px)}
 
-/* Planes */
+/* ---------- Planes ---------- */
 .plan-buttons{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:24px}
 .plan-buttons .btn{flex:1 1 240px}
 .plan-simple{background:#1498e3}.plan-simple:hover{background:#0c6ab2}
 .plan-premium{background:#25D366}.plan-premium:hover{background:#1ebe5d}
 .plan-buttons small{display:block;font-size:.85rem;margin-top:4px;color:#f2f2f2}
 
-/* Aviso destacado */
-.notice{background:var(--primary);color:#fff;text-align:center;padding:18px 20px;
-        border-radius:10px;font-size:1.1rem;margin:32px auto;max-width:750px;
-        box-shadow:0 4px 12px rgba(0,0,0,.25);}
+/* ---------- Aviso destacado ---------- */
+.notice{background:var(--primary);color:#fff;text-align:center;padding:18px 20px;border-radius:10px;
+        font-size:1.1rem;margin:32px auto;max-width:750px;box-shadow:0 4px 12px rgba(0,0,0,.25);}
 .notice em{font-style:italic;color:#ffe56b}.notice strong{font-size:1.2rem}
 
-/* Tabla bonos */
+/* ---------- Tabla de bonos ---------- */
 .table{width:100%;border-collapse:collapse;margin-top:20px}
 .table th,.table td{border:1px solid #384060;padding:8px;text-align:left}
 .table th{background:#22263a;color:#fff}
 .highlight{color:var(--danger);font-weight:700}
 
-/* Botón flotante WhatsApp */
-.whatsapp-float{position:fixed;bottom:24px;right:24px;width:62px;height:62px;
-  background:var(--whatsapp);border-radius:50%;display:flex;align-items:center;
-  justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.4);transition:.25s;z-index:999;}
+/* ---------- Botón flotante WhatsApp ---------- */
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:62px;height:62px;background:var(--whatsapp);
+  border-radius:50%;display:flex;align-items:center;justify-content:center;
+  box-shadow:0 4px 10px rgba(0,0,0,.4);transition:.25s;z-index:999;}
 .whatsapp-float:hover{background:var(--whatsapp-hover);transform:scale(1.07)}
 .whatsapp-float svg{width:34px;height:34px;fill:#fff}
 
-/* Responsive */
-@media(max-width:600px){.headline{font-size:1.9rem}h2{font-size:1.5rem}}
+/* ---------- Responsive ---------- */
+@media(max-width:600px){
+  .headline{font-size:1.9rem}
+  h2{font-size:1.5rem}
+}
 </style>
 </head>
 <body>
@@ -73,7 +76,7 @@ p,li{font-size:1.05rem;margin:.4em 0}
 <img src="portada_Ansiedad.png" alt="Portada Ebook Ansiedad Social" class="cover-img">
 <a class="btn main-download" href="#planes">Quiero descargar el Ebook</a>
 
-<!-- ¿Te reconoces...? -->
+<!-- ¿Te reconoces…? -->
 <section>
   <h2>¿Te reconoces en este escenario?</h2>
   <ul class="bullets">
@@ -82,7 +85,8 @@ p,li{font-size:1.05rem;margin:.4em 0}
     <li>Oportunidades laborales que pasan de largo.</li>
   </ul>
   <p class="notice"><strong>¡La buena noticia!</strong><br>
-  Puedes romper ese ciclo aplicando el <em>plan de 5 pasos</em> + herramientas de reprogramación mental incluidas en este paquete.</p>
+    Puedes romper ese ciclo aplicando el <em>plan de 5 pasos</em> + herramientas de reprogramación mental incluidas en este paquete.
+  </p>
 </section>
 
 <!-- Bonos -->
@@ -110,10 +114,9 @@ p,li{font-size:1.05rem;margin:.4em 0}
   </ul>
 </section>
 
-<!-- Inversión + botones -->
+<!-- Inversión y planes -->
 <section id="planes" style="text-align:center">
   <h2>Inversión de lanzamiento</h2>
-
   <div class="plan-buttons">
     <a class="btn plan-simple"
        href="https://wa.me/595976418720?text=He%20escogido%20el%20Plan%20Simple" target="_blank" rel="noopener">
@@ -126,8 +129,9 @@ p,li{font-size:1.05rem;margin:.4em 0}
        <small>Ebook + bonos (Gs. 1.360.000) + grupo WhatsApp</small>
     </a>
   </div>
-
-  <p style="margin-top:26px">Oferta válida hasta <strong>31 de Julio 2025</strong> o primeras 200 descargas.</p>
+  <p style="margin-top:26px">
+    Oferta válida hasta <strong>31 de Julio 2025</strong> o primeras 200 descargas.
+  </p>
 </section>
 
 <!-- Testimonio -->
@@ -150,8 +154,7 @@ p,li{font-size:1.05rem;margin:.4em 0}
 <!-- Soporte -->
 <section style="background:#1c2033;text-align:center">
   <h2>Soporte adicional</h2>
-  <p>Si todo esto fuera poco,
-     <strong>tenemos grupo de ayuda en WhatsApp</strong> para un mejor resultado y responder dudas.</p>
+  <p>Si todo esto fuera poco, <strong>tenemos grupo de ayuda en WhatsApp</strong> para un mejor resultado y responder dudas.</p>
 </section>
 
 <!-- Footer -->
