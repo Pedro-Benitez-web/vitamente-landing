@@ -1,3 +1,4 @@
+html_code = """
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -22,95 +23,44 @@ section:nth-of-type(even){background:var(--section)}
 h2{font-size:1.8rem;margin-bottom:.6em;color:#fff}
 p,li{font-size:1.05rem;margin:.4em 0}
 .bullets{list-style:square;margin-left:22px}
-
-/* ------------ HERO ------------ */
-.hero{
-  position:relative;min-height:420px;
-  display:flex;flex-direction:column;justify-content:center;align-items:center;
-  text-align:center;color:#fff;padding:30px 20px;
-  background:url('portadad_social.png') center/cover no-repeat;
-}
-.hero::after{content:'';position:absolute;inset:0;background:rgba(0,0,0,.45);}
-.hero h1,.hero p,.hero .btn{position:relative;z-index:1}
-.hero h1{font-size:2.4rem;margin-bottom:1rem}
-.hero p{max-width:650px;margin-bottom:1.8rem;color:#ddd}
-
-/* ------------ BOTÓN PRINCIPAL ------------ */
-.btn{
-  display:inline-block;background:var(--primary);color:#fff;text-decoration:none;
-  padding:14px 28px;border-radius:6px;font-weight:600;font-size:1rem;
-  transition:.25s;
-}
+.headline{font-size:2.4rem;text-align:center;margin:50px 0 25px;color:#fff}
+.cover-img{display:block;margin:0 auto 30px;max-width:360px;width:90%;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.35);}
+.btn{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;padding:14px 28px;border-radius:6px;font-weight:600;font-size:1rem;transition:.25s;}
 .btn:hover{background:#0c6ab2;transform:translateY(-2px)}
-
-/* ------------ AVISO DESTACADO ------------ */
-.notice{
-  background:var(--primary);color:#fff;text-align:center;padding:18px 20px;
-  border-radius:10px;font-size:1.1rem;margin:32px auto;max-width:750px;
-  box-shadow:0 4px 12px rgba(0,0,0,.25);
-}
-.notice em{font-style:italic;color:#ffe56b}
-.notice strong{font-size:1.2rem}
-
-/* ------------ TABLA DE BONOS ------------ */
+.main-download{display:block;margin:0 auto 35px;width:max-content}
+.plan-buttons{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:32px}
+.plan-buttons .btn{flex:1 1 240px;text-align:center;line-height:1.25}
+.plan-simple{background:#1498e3}.plan-simple:hover{background:#0c6ab2}
+.plan-premium{background:#25D366}.plan-premium:hover{background:#1ebe5d}
+.plan-buttons small{display:block;font-size:.85rem;font-weight:400;margin-top:4px;color:#f2f2f2}
+.notice{background:var(--primary);color:#fff;text-align:center;padding:18px 20px;border-radius:10px;font-size:1.1rem;margin:32px auto;max-width:750px;box-shadow:0 4px 12px rgba(0,0,0,.25);}
+.notice em{font-style:italic;color:#ffe56b}.notice strong{font-size:1.2rem}
 .table{width:100%;border-collapse:collapse;margin-top:20px}
 .table th,.table td{border:1px solid #384060;padding:8px;text-align:left}
 .table th{background:#22263a;color:#fff}
 .highlight{color:var(--danger);font-weight:700}
-
-/* ------------ IMAGEN PORTADA ------------ */
-.cover-img{
-  display:block;margin:0 auto 40px;max-width:360px;width:90%;
-  border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.35);
-}
-
-/* ------------ BOTÓN WHATSAPP FLOTANTE ------------ */
-.whatsapp-float{
-  position:fixed;bottom:24px;right:24px;width:62px;height:62px;
-  background:var(--whatsapp);border-radius:50%;
-  display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.4);transition:.25s;z-index:999;
-}
+.whatsapp-float{position:fixed;bottom:24px;right:24px;width:62px;height:62px;background:var(--whatsapp);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 4px 10px rgba(0,0,0,.4);transition:.25s;z-index:999;}
 .whatsapp-float:hover{background:var(--whatsapp-hover);transform:scale(1.07)}
 .whatsapp-float svg{width:34px;height:34px;fill:#fff}
-
-/* ------------ RESPONSIVE ------------ */
-@media(max-width:600px){
-  .hero h1{font-size:1.9rem}
-  h2{font-size:1.5rem}
-}
+@media(max-width:600px){.headline{font-size:1.9rem}h2{font-size:1.5rem}}
 </style>
 </head>
 <body>
 
-<!-- HERO -->
-<section class="hero">
-  <h1>Di adiós al miedo a hablar<br>y saluda a tu nueva confianza</h1>
-  <p>¡Supera la ansiedad social en 5 pasos probados y transforma tu vida en 21 días!</p>
-  <a class="btn" href="https://wa.me/595976418720" target="_blank" rel="noopener">
-    Quiero descargar el Ebook
-  </a>
-</section>
+<h1 class="headline">Di adiós al miedo a hablar y saluda a tu nueva confianza</h1>
+<img src="portada_Ansiedad.png" alt="Portada Ebook Ansiedad Social" class="cover-img">
+<a class="btn main-download" href="#planes">Quiero descargar el Ebook</a>
 
-<!-- PAS -->
 <section>
-  <!-- Nueva portada -->
-  <img src="portada_Ansiedad.png" alt="Ebook Adiós Ansiedad Social" class="cover-img">
-
   <h2>¿Te reconoces en este escenario?</h2>
   <ul class="bullets">
     <li>Sudor frío y mente en blanco cuando debes hablar.</li>
     <li>Invitaciones rechazadas por miedo a “quedar mal”.</li>
     <li>Oportunidades laborales que pasan de largo.</li>
   </ul>
-
-  <p class="notice">
-    <strong>¡La buena noticia!</strong><br>
-    Puedes romper ese ciclo aplicando el <em>plan de 5 pasos</em> + herramientas de reprogramación mental incluidas en este paquete.
-  </p>
+  <p class="notice"><strong>¡La buena noticia!</strong><br> Puedes romper ese ciclo aplicando el <em>plan de 5 pasos</em> + herramientas de reprogramación mental incluidas en este paquete.</p>
 </section>
 
-<!-- BONOS -->
 <section>
   <h2>Bonos Premium incluidos <span class="highlight">GRATIS</span></h2>
   <table class="table">
@@ -123,7 +73,6 @@ p,li{font-size:1.05rem;margin:.4em 0}
   <p><em>Total bonos:</em> <strong>Gs.&nbsp;1.360.000</strong> — incluidos <span class="highlight">GRATIS</span> con tu ebook.</p>
 </section>
 
-<!-- BENEFICIOS -->
 <section>
   <h2>¿Qué lograrás en solo 21 días?</h2>
   <ul class="bullets">
@@ -134,48 +83,48 @@ p,li{font-size:1.05rem;margin:.4em 0}
   </ul>
 </section>
 
-<!-- PRECIO -->
 <section style="text-align:center">
   <h2>Inversión de lanzamiento</h2>
   <p style="font-size:1.4rem"><del>Gs.&nbsp;380.000</del> <strong style="color:var(--primary)">HOY: Gs.&nbsp;60.000</strong></p>
   <p>Oferta válida hasta <strong>31 de Julio 2025</strong> o primeras 200 descargas.</p>
-  <a class="btn" href="https://wa.me/595976418720" target="_blank" rel="noopener">
-    Reservar mi copia ahora
-  </a>
 </section>
 
-<!-- TESTIMONIO -->
+<section id="planes">
+  <div class="plan-buttons">
+    <a class="btn plan-simple" href="https://wa.me/595976418720?text=He%20escogido%20el%20Plan%20Simple" target="_blank" rel="noopener">Plan Simple · Gs. 30.000<br><small>Ebook + tabla editable</small></a>
+    <a class="btn plan-premium" href="https://wa.me/595976418720?text=He%20escogido%20el%20Plan%20Premium" target="_blank" rel="noopener">Plan Premium · Gs. 60.000<br><small>Ebook + bonos (Gs. 1.360.000) + grupo WhatsApp</small></a>
+  </div>
+</section>
+
 <section>
   <h2>Historias Reales</h2>
-  <blockquote>
-    “Aplicando el paso 2 y escuchando los audios di mi primera presentación sin temblar. <strong>Valió cada centavo</strong>.” — Sofía R., 28 años
-  </blockquote>
+  <blockquote>“Aplicando el paso 2 y escuchando los audios di mi primera presentación sin temblar. <strong>Valió cada centavo</strong>.” — Sofía R., 28 años</blockquote>
 </section>
 
-<!-- FAQ -->
 <section>
   <h2>Preguntas frecuentes</h2>
   <p><strong>¿Necesito experiencia previa en terapia?</strong><br>No. El Ebook guía paso a paso.</p>
-  <p><strong>¿Cuánto espacio ocupan los bonos?</strong><br>Menos de 200&nbsp;MB, accesibles offline.</p>
+  <p><strong>¿Cuánto espacio ocupan los bonos?</strong><br>Menos de 200 MB, accesibles offline.</p>
   <p><strong>¿Y si mi caso es severo?</strong><br>Recomendamos combinar con apoyo profesional para resultados óptimos.</p>
 </section>
 
-<!-- SOPORTE -->
 <section style="background:#1c2033;text-align:center">
   <h2>Soporte adicional</h2>
   <p>Si todo esto fuera poco, <strong>tenemos grupo de ayuda en WhatsApp</strong> para un mejor resultado y responder dudas.</p>
 </section>
 
-<!-- FOOTER -->
 <section style="padding:30px 0;text-align:center;font-size:.9rem;color:#aaa">
   © 2025 VitaMente · Todos los derechos reservados
 </section>
 
-<!-- BOTÓN FLOTANTE -->
 <a class="whatsapp-float" href="https://wa.me/595976418720" target="_blank" aria-label="Chat WhatsApp">
-  <!-- Ícono burbuja de chat -->
   <svg viewBox="0 0 32 32"><path d="M4 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H12l-6 6v-6H6a2 2 0 0 1-2-2V6z" fill="#fff"/></svg>
 </a>
 
 </body>
 </html>
+"""
+with open("/mnt/data/index_vitamentе.html","w",encoding="utf-8") as f:
+    f.write(html_code)
+
+"/mnt/data/index_vitamentе.html"
