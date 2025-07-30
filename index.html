@@ -118,6 +118,19 @@ header .cover-img{display:block;margin:40px auto 32px;max-width:360px;width:90%;
   header h1{font-size:1.9rem}
   h2{font-size:1.5rem}
 }
+  /* —— Caja de “agitación” en PAS —— */
+.pas-warning{
+  background:#8b0000;              /* rojo oscuro */
+  color:#fff;
+  font-size:1.2rem;                /* letras grandes */
+  font-weight:600;
+  padding:24px 28px;
+  border-radius:8px;
+  max-width:900px;
+  margin:32px auto;                /* separa del resto */
+  box-shadow:0 4px 12px rgba(0,0,0,.35);
+  line-height:1.35;
+}
 </style>
 </head>
 <body>
@@ -161,10 +174,10 @@ header .cover-img{display:block;margin:40px auto 32px;max-width:360px;width:90%;
   </ul>
 
   <!-- Agitación -->
-  <p style="margin-top:20px">
-    Mientras lo pospones, pierdes oportunidades laborales, amistades y… confianza en ti mismo.
-    La ansiedad crece al ritmo de tu silencio.
-  </p>
+ <p class="pas-warning">
+  Mientras lo pospones, pierdes oportunidades laborales, amistades y… confianza en ti mismo.
+  <br>La ansiedad crece al ritmo de tu silencio.
+</p>
 
   <!-- Solución -->
   <p class="notice">
