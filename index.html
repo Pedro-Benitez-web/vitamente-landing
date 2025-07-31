@@ -23,6 +23,31 @@ fbq('track', 'PageView');
        src="https://www.facebook.com/tr?id=775880484931341&ev=PageView&noscript=1"/>
 </noscript>
 <!-- End Meta Pixel Code -->
+  
+  /* === Auto-test “¿Es para mí?” === */
+.test-box{background:#22263a;padding:28px 22px;border-radius:10px;max-width:780px;margin:60px auto;color:#fff}
+.test-box h3{font-size:1.6rem;margin-bottom:18px}
+.test-q{margin:18px 0;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
+.test-q label{cursor:pointer}
+.test-q input{transform:scale(1.3);margin-left:12px}
+.test-result{display:none;margin-top:26px;background:#1498e3;padding:18px;border-radius:8px;font-weight:600;text-align:center}
+
+/* === Barra CTA móvil === */
+@media(max-width:768px){
+  .mobile-cta{
+    position:fixed;bottom:0;left:0;right:0;z-index:1000;
+    background:#141625;display:flex;justify-content:space-between;align-items:center;
+    padding:12px 16px;border-top:2px solid #1498e3;box-shadow:0 -3px 10px rgba(0,0,0,.45)
+  }
+  .mobile-cta span{color:#fff;font-weight:600;font-size:.95rem}
+  .mobile-cta .btn-mobile{
+    background:var(--whatsapp);padding:10px 18px;border-radius:6px;font-size:.9rem;
+    font-weight:700;color:#fff;text-decoration:none
+  }
+  .mobile-cta .btn-mobile:hover{background:var(--whatsapp-hover)}
+  body{padding-bottom:66px;} /* para que el contenido no quede tapado */
+}
+
 
 <style>
 :root{
@@ -215,6 +240,33 @@ header .cover-img{display:block;margin:40px auto 32px;max-width:360px;width:90%;
   </ul>
 </section>
 
+  <!-- === AUTO-TEST “¿Es para mí?” === -->
+<section class="test-box">
+  <h3>“¿Es para mí?” · Auto-test rápido</h3>
+
+  <div class="test-q">
+    <label>¿Evitas reuniones por miedo a quedarte mudo?</label>
+    <input type="checkbox" class="q-check">
+  </div>
+  <div class="test-q">
+    <label>¿Tu corazón late a mil al presentarte?</label>
+    <input type="checkbox" class="q-check">
+  </div>
+  <div class="test-q">
+    <label>¿Ensayas frases en tu cabeza y luego no las dices?</label>
+    <input type="checkbox" class="q-check">
+  </div>
+  <div class="test-q">
+    <label>¿Has perdido al menos una oportunidad por esto?</label>
+    <input type="checkbox" class="q-check">
+  </div>
+
+  <div class="test-result" id="testResult">
+    Ya pagas un costo más alto que este ebook. <br>
+    Empieza hoy mismo por menos de lo que cuesta un café.
+  </div>
+</section>
+  
 <!-- ========= PLANES ========= -->
 <section id="planes" style="text-align:center">
   <h2>Inversión de lanzamiento</h2>
