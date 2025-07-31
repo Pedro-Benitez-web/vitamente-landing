@@ -158,6 +158,23 @@ header .cover-img{display:block;margin:40px auto 32px;max-width:360px;width:90%;
 }
 </style>
 </head>
+  
+  <!-- === CTA móvil persistente === -->
+<div class="mobile-cta">
+  <span>Habla sin miedo – Gs 30 000</span>
+  <a class="btn-mobile" href="#planes">Descargar ahora</a>
+</div>
+
+  <script>
+/* === Lógica auto-test === */
+document.querySelectorAll('.q-check').forEach(cb=>{
+  cb.addEventListener('change', ()=>{
+    const yesCount = [...document.querySelectorAll('.q-check')].filter(c=>c.checked).length;
+    document.getElementById('testResult').style.display = (yesCount >= 2) ? 'block' : 'none';
+  });
+});
+</script>
+  
 <body>
 
 <!-- ========= HEADLINE + HOOK ========= -->
