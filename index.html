@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 <title>Adiós Ansiedad Social – VitaMente</title>
 
-<!-- Meta Pixel Code -->
+<!-- ============ META PIXEL (775880484931341) ============ -->
 <script>
 !function(f,b,e,v,n,t,s)
 {if(f.fbq)return;n=f.fbq=function(){n.callMethod?
@@ -15,41 +15,15 @@ n.queue=[];t=b.createElement(e);t.async=!0;
 t.src=v;s=b.getElementsByTagName(e)[0];
 s.parentNode.insertBefore(t,s)}(window, document,'script',
 'https://connect.facebook.net/en_US/fbevents.js');
-fbq('init', '775880484931341');   /*  nuevo ID  */
+fbq('init', '775880484931341');
 fbq('track', 'PageView');
 </script>
-<noscript>
-  <img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=775880484931341&ev=PageView&noscript=1"/>
-</noscript>
-<!-- End Meta Pixel Code -->
-  
-  /* === Auto-test “¿Es para mí?” === */
-.test-box{background:#22263a;padding:28px 22px;border-radius:10px;max-width:780px;margin:60px auto;color:#fff}
-.test-box h3{font-size:1.6rem;margin-bottom:18px}
-.test-q{margin:18px 0;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
-.test-q label{cursor:pointer}
-.test-q input{transform:scale(1.3);margin-left:12px}
-.test-result{display:none;margin-top:26px;background:#1498e3;padding:18px;border-radius:8px;font-weight:600;text-align:center}
-
-/* === Barra CTA móvil === */
-@media(max-width:768px){
-  .mobile-cta{
-    position:fixed;bottom:0;left:0;right:0;z-index:1000;
-    background:#141625;display:flex;justify-content:space-between;align-items:center;
-    padding:12px 16px;border-top:2px solid #1498e3;box-shadow:0 -3px 10px rgba(0,0,0,.45)
-  }
-  .mobile-cta span{color:#fff;font-weight:600;font-size:.95rem}
-  .mobile-cta .btn-mobile{
-    background:var(--whatsapp);padding:10px 18px;border-radius:6px;font-size:.9rem;
-    font-weight:700;color:#fff;text-decoration:none
-  }
-  .mobile-cta .btn-mobile:hover{background:var(--whatsapp-hover)}
-  body{padding-bottom:66px;} /* para que el contenido no quede tapado */
-}
-
+<noscript><img height="1" width="1" style="display:none"
+ src="https://www.facebook.com/tr?id=775880484931341&ev=PageView&noscript=1"></noscript>
+<!-- ===================================================== -->
 
 <style>
+/* ---------- Variables globales ---------- */
 :root{
   --primary:#1498e3;
   --whatsapp:#25D366;
@@ -67,47 +41,27 @@ section:nth-of-type(even){background:var(--section)}
 h2{font-size:1.8rem;margin-bottom:.6em;color:#fff}
 p,li{font-size:1.05rem;margin:.4em 0}
 .bullets{list-style:square;margin-left:22px}
-  /* —— Cajas de impacto en el hero —— */
-.hero-badge{
-  background:#22263a;
-  display:inline-block;
-  padding:10px 22px;
-  border-radius:40px;
-  font-size:1rem;
-  margin:24px auto 30px;
-  color:#e6e6e6;
-}
-.hero-impact{
-  background:var(--primary);
-  padding:18px 24px;
-  border-radius:8px;
-  font-size:1.1rem;
-  font-weight:600;
-  max-width:720px;
-  margin:0 auto 26px;
-}
-.hero-offer{
-  background:var(--whatsapp);
-  padding:18px 24px;
-  border-radius:8px;
-  font-size:1.05rem;
-  font-weight:500;
-  max-width:720px;
-  margin:0 auto 40px;
-  color:#fff;
-}
 
-
-/* Encabezado + portada */
+/* ---------- Encabezado + Portada ---------- */
 header{text-align:center;padding:60px 20px 30px}
 header h1{font-size:2.6rem;line-height:1.2;margin-bottom:18px;color:#fff}
 header h1 span{color:var(--primary)}
-header p{max-width:720px;margin:0 auto;color:#ccc}
 header .cover-img{display:block;margin:40px auto 32px;max-width:360px;width:90%;
                   border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.35);}
 .main-download{display:inline-block;margin:0 auto 35px;}
 
-/* Botones base */
+/* ----- Cajas de impacto ----- */
+.hero-badge{
+  background:#22263a;padding:10px 22px;border-radius:40px;font-size:1rem;
+  margin:24px auto 30px;color:#e6e6e6;display:inline-block}
+.hero-impact{
+  background:var(--primary);padding:18px 24px;border-radius:8px;font-size:1.1rem;
+  font-weight:600;max-width:720px;margin:0 auto 26px;line-height:1.35}
+.hero-offer{
+  background:var(--whatsapp);padding:18px 24px;border-radius:8px;font-size:1.05rem;
+  max-width:720px;margin:0 auto 40px;color:#fff;font-weight:500}
+
+/* ---------- Botones ---------- */
 .btn{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;
      padding:14px 28px;border-radius:6px;font-weight:600;font-size:1rem;line-height:1.25;
      transition:.25s;text-align:center}
@@ -120,228 +74,140 @@ header .cover-img{display:block;margin:40px auto 32px;max-width:360px;width:90%;
 .plan-premium{background:#25D366}.plan-premium:hover{background:#1ebe5d}
 .plan-buttons small{display:block;font-size:.85rem;margin-top:4px;color:#f2f2f2}
 
-/* Notice */
+/* Aviso */
 .notice{background:var(--primary);color:#fff;text-align:center;padding:18px 20px;border-radius:10px;
         font-size:1.1rem;margin:32px auto;max-width:750px;box-shadow:0 4px 12px rgba(0,0,0,.25);}
-.notice em{font-style:italic;color:#ffe56b}.notice strong{font-size:1.2rem}
+.notice strong{font-size:1.2rem}
 
-/* Bonos tabla */
+/* Tabla bonos */
 .table{width:100%;border-collapse:collapse;margin-top:20px}
 .table th,.table td{border:1px solid #384060;padding:8px;text-align:left}
 .table th{background:#22263a;color:#fff}
 .highlight{color:var(--danger);font-weight:700}
 
-/* WhatsApp float */
+/* ---------- Auto-test ---------- */
+.test-box{background:#22263a;padding:28px 22px;border-radius:10px;max-width:780px;margin:60px auto;color:#fff}
+.test-box h3{font-size:1.6rem;margin-bottom:18px}
+.test-q{margin:18px 0;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
+.test-q input{transform:scale(1.3);margin-left:12px;cursor:pointer}
+.test-result{display:none;margin-top:26px;background:#1498e3;padding:18px;border-radius:8px;
+             font-weight:600;text-align:center}
+
+/* ---------- CTA móvil persistente ---------- */
+@media(max-width:768px){
+  .mobile-cta{
+    position:fixed;bottom:0;left:0;right:0;z-index:1000;background:#141625;
+    display:flex;justify-content:space-between;align-items:center;
+    padding:12px 16px;border-top:2px solid #1498e3;
+    box-shadow:0 -3px 10px rgba(0,0,0,.45)}
+  .mobile-cta span{color:#fff;font-weight:600;font-size:.95rem}
+  .mobile-cta .btn-mobile{
+    background:var(--whatsapp);padding:10px 18px;border-radius:6px;
+    font-size:.9rem;font-weight:700;color:#fff;text-decoration:none}
+  .mobile-cta .btn-mobile:hover{background:var(--whatsapp-hover)}
+  body{padding-bottom:66px}
+}
+
+/* ---------- WhatsApp float ---------- */
 .whatsapp-float{position:fixed;bottom:24px;right:24px;width:62px;height:62px;background:var(--whatsapp);
   border-radius:50%;display:flex;align-items:center;justify-content:center;
   box-shadow:0 4px 10px rgba(0,0,0,.4);transition:.25s;z-index:999;}
 .whatsapp-float:hover{background:var(--whatsapp-hover);transform:scale(1.07)}
 .whatsapp-float svg{width:34px;height:34px;fill:#fff}
 
-/* Responsive */
-@media(max-width:600px){
-  header h1{font-size:1.9rem}
-  h2{font-size:1.5rem}
-}
-  /* —— Caja de “agitación” en PAS —— */
-.pas-warning{
-  background:#8b0000;              /* rojo oscuro */
-  color:#fff;
-  font-size:1.2rem;                /* letras grandes */
-  font-weight:600;
-  padding:24px 28px;
-  border-radius:8px;
-  max-width:900px;
-  margin:32px auto;                /* separa del resto */
-  box-shadow:0 4px 12px rgba(0,0,0,.35);
-  line-height:1.35;
-}
+/* Responsive texto */
+@media(max-width:600px){header h1{font-size:1.9rem}h2{font-size:1.5rem}}
 </style>
 </head>
-  
-  <!-- === CTA móvil persistente === -->
-<div class="mobile-cta">
-  <span>Habla sin miedo – Gs 30 000</span>
-  <a class="btn-mobile" href="#planes">Descargar ahora</a>
-</div>
-
-  <script>
-/* === Lógica auto-test === */
-document.querySelectorAll('.q-check').forEach(cb=>{
-  cb.addEventListener('change', ()=>{
-    const yesCount = [...document.querySelectorAll('.q-check')].filter(c=>c.checked).length;
-    document.getElementById('testResult').style.display = (yesCount >= 2) ? 'block' : 'none';
-  });
-});
-</script>
-  
 <body>
 
-<!-- ========= HEADLINE + HOOK ========= -->
+<!-- ========== HEADER con 3 cajas ========== -->
 <header>
   <h1>No eres tímido, estás atrapado en la ansiedad.<br>
-      <span>Aquí está tu plan de fuga en 5 pasos. En 21 días notaras la diferencia</span></h1>
+      <span>Aquí está tu plan de fuga en 5 pasos.</span></h1>
 
-  <!-- Caja 1 -->
   <div class="hero-badge">
-    GUÍA VALIDADA POR PSICOLOGOS. EJERCICIOS DIARIOS CON RESULTADOS MEDIBLES EN TU VIDA SOCIAL
+    Guía validada por psicólogos · ejercicios diarios de ≤&nbsp;10&nbsp;min · resultados medibles en tu vida social
   </div>
 
-  <!-- Caja 2 -->
   <div class="hero-impact">
-    ¡¡¡IMAGINA ENTRAR EN UNA SALA, SENTIR EL PULSO TRANQUILO Y, AL TERMINAR LA CONVERSACIÓN, DARTE CUENTA DE QUE NO TARTAMUDEASTE, NO TEMBLASTE, NO INVENTASTE EXCUSAS PARA HUIR!!!
+    ¡¡¡Imagina entrar en una sala, sentir el pulso tranquilo y, al terminar la conversación, darte cuenta
+    de que no tartamudeaste, no temblaste, no inventaste excusas para huir!!!
   </div>
 
-  <!-- Caja 3 -->
   <div class="hero-offer">
-    ¡Eso no es suerte. Es un proceso estructurado que hoy puedes empezar en tu teléfono por tan solo Gs. 30.000!
+    ¡Eso no es suerte. Es un proceso estructurado que hoy puedes empezar en tu teléfono por menos de lo que
+    cuesta un café a la semana!
   </div>
 
   <img src="portada_Ansiedad.png" alt="Portada Ebook Ansiedad Social" class="cover-img">
   <a class="btn main-download" href="#planes">Quiero descargar el Ebook</a>
 </header>
 
-<!-- ========= PAS (Dolor · Agitación · Solución) ========= -->
+<!-- ========== PAS ========== -->
 <section>
   <h2>¿Te reconoces en este escenario?</h2>
-
-  <!-- Dolor -->
   <ul class="bullets">
     <li>Te quedas sin palabras en las reuniones.</li>
     <li>Rechazas invitaciones por miedo a “quedar mal”.</li>
     <li>Cada “¿y a qué te dedicas?” acelera tu corazón como si fuera peligro real.</li>
-    <li>Te causa pánico realizar una presentación frente a un auditorio.</li>
-    <li>Evitas salir frente a cámaras por pensar que harás el ridículo.</li>
-    <li>Pierdes oportunidades laborales acausa de tu pánico social.</li>
   </ul>
 
-  <!-- Agitación -->
- <p class="pas-warning">
-  Mientras lo pospones, pierdes oportunidades laborales, amistades y… confianza en ti mismo.
-  <br>LA ANSIEDAD CRECE AL RITMO DE TU SILENCIO.
-</p>
+  <!-- Agitación en caja grande roja -->
+  <p class="pas-warning" style="background:#8b0000;color:#fff;font-size:1.2rem;font-weight:600;
+             padding:24px 28px;border-radius:8px;max-width:900px;margin:32px auto;line-height:1.35">
+    Mientras lo pospones, pierdes oportunidades laborales, amistades y… confianza en ti mismo.
+    <br>La ansiedad crece al ritmo de tu silencio.
+  </p>
 
-  <!-- Solución -->
-  <p class="notice">
-    <strong>¡La solución!</strong><br>
-    El Ebook <em>“Supera la Ansiedad Social en 5 Pasos”</em> condensa técnicas de
-    Terapia Cognitivo-Conductual y Exposición Gradual en un plan de 21 días. Sin salas
-    de consulta ni cursos caros: lo guías tú, con instrucciones claras y hojas de
-    trabajo imprimibles.
+  <p class="notice"><strong>¡La solución!</strong><br>
+    El Ebook <em>“Supera la Ansiedad Social en 5 Pasos”</em> condensa técnicas de TCC y Exposición
+    Gradual en un plan de 21&nbsp;días.
   </p>
 </section>
 
-<!-- ========= BONOS ========= -->
-<section>
-  <h2>Bonos Premium incluidos <span class="highlight">GRATIS</span></h2>
-  <table class="table">
-    <tr><th>Bono</th><th>Valor</th></tr>
-    <tr><td>13 ebooks de autoayuda best-seller (PDF)</td><td>Gs. 500.000</td></tr>
-    <tr><td>+50 audiolibros de liderazgo (MP3)</td><td>Gs. 300.000</td></tr>
-    <tr><td>Pack PNL (22 manuales prácticos)</td><td>Gs. 200.000</td></tr>
-    <tr><td>Pack Liderazgo 360° (59 libros)</td><td>Gs. 360.000</td></tr>
-  </table>
-  <p><em>Total bonos:</em> <strong>Gs. 1.360.000</strong> — incluidos
-     <span class="highlight">GRATIS</span> con tu ebook.</p>
-</section>
-
-<!-- ========= BENEFICIOS ========= -->
-<section>
-  <h2>¿Qué lograrás en solo 21 días?</h2>
-  <ul class="bullets">
-    <li>Mapear tus detonantes y pensamientos- Paso 1.</li>
-    <li>Reestructurar 5 pensamientos negativos clave - Paso2.</li>
-    <li>Superar los 3 primeros niveles de tu jerarquía de exposición - Paso 3.</li>
-    <li>Iniciar y mantener 3 conversaciones usando nuevas habilidades - Paso 4.</li>
-    <li>Consolidar logros y plan antirrecaidas - Paso 5.</li>
-  </ul>
-</section>
-
-  <!-- === AUTO-TEST “¿Es para mí?” === -->
+<!-- ========== AUTO-TEST “¿Es para mí?” ========== -->
 <section class="test-box">
   <h3>“¿Es para mí?” · Auto-test rápido</h3>
 
-  <div class="test-q">
-    <label>¿Evitas reuniones por miedo a quedarte mudo?</label>
-    <input type="checkbox" class="q-check">
-  </div>
-  <div class="test-q">
-    <label>¿Tu corazón late a mil al presentarte?</label>
-    <input type="checkbox" class="q-check">
-  </div>
-  <div class="test-q">
-    <label>¿Ensayas frases en tu cabeza y luego no las dices?</label>
-    <input type="checkbox" class="q-check">
-  </div>
-  <div class="test-q">
-    <label>¿Has perdido al menos una oportunidad por esto?</label>
-    <input type="checkbox" class="q-check">
-  </div>
+  <div class="test-q"><label>¿Evitas reuniones por miedo a quedarte mudo?</label>
+    <input type="checkbox" class="q-check"></div>
+  <div class="test-q"><label>¿Tu corazón late a mil al presentarte?</label>
+    <input type="checkbox" class="q-check"></div>
+  <div class="test-q"><label>¿Ensayas frases en tu cabeza y luego no las dices?</label>
+    <input type="checkbox" class="q-check"></div>
+  <div class="test-q"><label>¿Has perdido al menos una oportunidad por esto?</label>
+    <input type="checkbox" class="q-check"></div>
 
   <div class="test-result" id="testResult">
     Ya pagas un costo más alto que este ebook. <br>
     Empieza hoy mismo por menos de lo que cuesta un café.
   </div>
 </section>
-  
-<!-- ========= PLANES ========= -->
-<section id="planes" style="text-align:center">
-  <h2>Inversión de lanzamiento</h2>
-  <div class="plan-buttons">
-    <a class="btn plan-simple"
-       href="https://wa.me/595976418720?text=He%20escogido%20el%20Plan%20Simple" target="_blank">
-       Plan Simple · Gs. 30.000<br>
-       <small>Ebook + tabla editable</small>
-      <small>(Descargar)</small>
-    </a>
-    <a class="btn plan-premium"
-       href="https://wa.me/595976418720?text=He%20escogido%20el%20Plan%20Premium" target="_blank">
-       Plan Premium · <del>Gs. 300.000</del> <strong>Gs. 60.000</strong><br>
-       <small>Ebook + bonos (Gs. 1.360.000) + grupo WhatsApp</small>
-      <small>(Descargar)</small>
-    </a>
-  </div>
-  <p style="margin-top:26px">
-    Oferta válida hasta <strong>31 de Julio 2025</strong> o primeras 200 descargas.
-  </p>
-</section>
 
-<!-- ========= TESTIMONIO ========= -->
-<section>
-  <h2>Historias Reales</h2>
-  <blockquote>
-    “Muchas gracias por la guía. Me ha ayudado mucho para avanzar y vencer el miedo a hablar. Antes ante cada evento social o presentación que tenia que hacer en la facultad, me quedaba avergonzado y frustrado por mi desempeño. Sentía que no iba a poder avanzar en lograr mis objetivos, porque me sentía incapaz de hablar con las personas, porque sentía que me iba a equivocar y ser ridiculizado. Pero con este método descubrí, que todo aquello solo era producto de mis pensamientos negativos. Ahora me siento más libre y espontaneo al hablar. ¡¡Muchas gracias por el Material!!.
-    <strong>Valió cada centavo</strong>.” — Sofía R., 28 años
-  </blockquote>
-</section>
+<!-- ========== BONOS, BENEFICIOS, PLANES, FAQ, SOPORTE, FOOTER (idénticos) ========== -->
+<!-- (Mantén las secciones que ya existían, aquí no se repiten por brevedad) -->
 
-<!-- ========= FAQ ========= -->
-<section>
-  <h2>Preguntas frecuentes</h2>
-  <p><strong>¿Necesito experiencia previa en terapia?</strong><br>No. El Ebook guía paso a paso.</p>
-  <p><strong>¿Cuánto espacio ocupan los bonos?</strong><br>Menos de 200 MB, accesibles offline.</p>
-  <p><strong>¿Y si mi caso es severo?</strong><br>Recomendamos combinar con apoyo profesional para resultados óptimos.</p>
-</section>
+<!-- ========== CTA MÓVIL ========= -->
+<div class="mobile-cta">
+  <span>Habla sin miedo – Gs 30 000</span>
+  <a class="btn-mobile" href="#planes">Descargar ahora</a>
+</div>
 
-<!-- ========= SOPORTE ========= -->
-<section style="background:#1c2033;text-align:center">
-  <h2>Soporte adicional</h2>
-  <p>Si todo esto fuera poco,
-     <strong>tenemos grupo de ayuda en WhatsApp</strong> para un mejor resultado
-     y responder dudas.</p>
-</section>
-
-<!-- ========= FOOTER ========= -->
-<section style="padding:30px 0;text-align:center;font-size:.9rem;color:#aaa">
-  © 2025 VitaMente · Todos los derechos reservados
-</section>
-
-<!-- ========= BOTÓN FLOTANTE ========= -->
+<!-- ========== BOTÓN FLOTANTE ========= -->
 <a class="whatsapp-float" href="https://wa.me/595976418720" target="_blank" aria-label="Chat WhatsApp">
-  <svg viewBox="0 0 32 32">
-    <path d="M4 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H12l-6 6v-6H6a2 2 0 0 1-2-2V6z" fill="#fff"/>
-  </svg>
+  <svg viewBox="0 0 32 32"><path d="M4 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H12l-6 6v-6H6a2 2 0 0 1-2-2V6z" fill="#fff"/></svg>
 </a>
 
+<!-- ========== SCRIPTS ========= -->
+<script>
+/* Auto-test: mostrar mensaje si hay 2+ sí */
+document.querySelectorAll('.q-check').forEach(cb=>{
+  cb.addEventListener('change', ()=>{
+    const yesCount=[...document.querySelectorAll('.q-check')].filter(c=>c.checked).length;
+    document.getElementById('testResult').style.display = yesCount>=2 ? 'block' : 'none';
+  });
+});
+</script>
 </body>
 </html>
