@@ -85,7 +85,7 @@ header h1 span{color:var(--primary)}
 .table{width:100%;border-collapse:collapse;margin-top:20px}
 .table th,.table td{border:1px solid #384060;padding:8px;text-align:left}
 .table th{background:#22263a;color:#fff}
-.highlight{color:var(--danger);font-weight:700}
+.highlight{color:#ff4d4d;font-weight:700}
 
 /* ---------- Auto-test ---------- */
 .test-box{background:#22263a;padding:28px 22px;border-radius:10px;max-width:780px;margin:60px auto;color:#fff}
@@ -126,6 +126,10 @@ header h1 span{color:var(--primary)}
 .about-text{flex:1 1 320px;font-size:1.05rem;line-height:1.55}
 .about-text h2{margin-bottom:14px;font-size:1.8rem;color:#fff}
 .about-text p{margin:.6em 0}
+
+/* ---- NUEVO: estilo del botón de soporte ---- */
+.btn-support{background:var(--whatsapp)}
+.btn-support:hover{background:var(--whatsapp-hover)}
 </style>
 </head>
 
@@ -242,13 +246,13 @@ header h1 span{color:var(--primary)}
 
 <!-- BLOQUE DE GARANTÍA -->
 <div style="margin:40px auto;max-width:280px;text-align:center">
-  <!-- Sello en SVG (no agrega peticiones HTTP) -->
   <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
     <circle cx="50" cy="50" r="48" stroke="#25D366" stroke-width="4"/>
     <path d="M30 52l12 12 28-28" stroke="#25D366" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>
   <p style="margin-top:12px;font-weight:600;color:#f2f2f2">
-    Tu compra es tan segura que si no notas el cambio TE DAMOS UNA GARANTÍA DE 7 DÍAS y<br><span style="font-weight:400">Te devolvemos el 100 %</span>
+    Tu compra es tan segura que si no notas el cambio TE DAMOS UNA GARANTÍA DE 7 DÍAS y<br>
+    <span style="font-weight:400">Te devolvemos el 100 %</span>
   </p>
 </div>
     
@@ -275,6 +279,15 @@ header h1 span{color:var(--primary)}
        <strong>(Pagar ahora)</strong>
     </a>
   </div>
+
+  <!-- NUEVO: Botón de soporte por WhatsApp -->
+  <a class="btn btn-support"
+     href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dificultades%20con%20el%20pago%20o%20prefiero%20otro%20m%C3%A9todo.%20%C2%BFMe%20pod%C3%A9s%20ayudar%3F"
+     target="_blank" rel="noopener"
+     onclick="fbq('track','Contact');"
+     style="margin-top:22px;display:inline-block;">
+     ¿Dificultades para pagar u otro método? Soporte por WhatsApp
+  </a>
 
   <p style="margin-top:26px">
     Oferta válida hasta <strong>31 de Agosto 2025</strong> o primeras 200 descargas.
