@@ -2,387 +2,397 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Adiós Ansiedad Social – VitaMente</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Adiós Ansiedad Social – Versión B · VitaMente</title>
 
-<!-- ===== META SEO & SOCIAL ===== -->
-<meta name="description"
-      content="Guía de 5 pasos basada en Terapia Cognitivo-Conductual para superar la ansiedad social en solo 21 días. Incluye bonos premium valorados en Gs. 1 360 000.">
-<meta property="og:type"        content="website">
-<meta property="og:title"       content="Adiós Ansiedad Social – VitaMente">
-<meta property="og:description" content="Habla sin miedo por tan solo Gs. 30 000. Descubre la guía validada por psicólogos para superar la ansiedad social.">
-<meta property="og:image"       content="https://pedro-benitez-web.github.io/vitamente-landing/portada_Ansiedad.webp">
-<meta property="og:url"         content="https://pedro-benitez-web.github.io/vitamente-landing/">
+<!-- META SEO & SOCIAL -->
+<meta name="description" content="Habla sin miedo en 21 días con una guía en 5 pasos (TCC) + soporte por WhatsApp. Garantía 7 días.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Adiós Ansiedad Social – Guía de 21 días">
+<meta property="og:description" content="Método claro y práctico para reducir la ansiedad social. Incluye bonos y soporte.">
+<meta property="og:image" content="https://pedro-benitez-web.github.io/vitamente-landing/portada_Ansiedad.webp">
+<meta property="og:url" content="https://pedro-benitez-web.github.io/vitamente-landing/">
 
-<!-- ============ META PIXEL (ID 775880484931341) ============ -->
+<!-- PIXEL META -->
 <script>
-!function(f,b,e,v,n,t,s){
-  if(f.fbq)return;n=f.fbq=function(){n.callMethod?
-  n.callMethod.apply(n,arguments):n.queue.push(arguments)};
-  if(!f._fbq)f._fbq=n;n.push=n;n.loaded=!0;n.version='2.0';
-  n.queue=[];t=b.createElement(e);t.async=!0;t.src=v;
-  s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)
-}(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','775880484931341');
-fbq('track','PageView');
+!function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
+n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
+n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','775880484931341');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
-       src="https://www.facebook.com/tr?id=775880484931341&ev=PageView&noscript=1"/></noscript>
-<!-- ========================================================= -->
+src="https://www.facebook.com/tr?id=775880484931341&ev=PageView&noscript=1"/></noscript>
 
+<!-- ESTILOS -->
 <style>
-/* ---------- Variables ---------- */
 :root{
-  --primary:#1498e3;--whatsapp:#25D366;--whatsapp-hover:#1ebe5d;
-  --text:#f2f2f2;--bg:#141625;--section:#1c2033;--danger:#ff4d4d;
-  --font:"Helvetica Neue",Arial,sans-serif;
+  --primary:#1498e3; --whatsapp:#25D366; --whatsapp-hover:#1ebe5d;
+  --text:#f2f2f2; --muted:#cfd3dc; --bg:#141625; --card:#1c2033; --line:#2a2f47;
+  --danger:#ff4d4d; --font:"Helvetica Neue", Arial, sans-serif;
 }
 *{box-sizing:border-box;margin:0;padding:0}
-body{font-family:var(--font);color:var(--text);background:var(--bg);line-height:1.6}
+body{font-family:var(--font);background:var(--bg);color:var(--text);line-height:1.6}
+a{color:inherit;text-decoration:none}
+.container{max-width:1080px;margin:auto;padding:0 20px}
+h1,h2,h3{color:#fff}
+h2{font-size:1.9rem;margin-bottom:14px}
+section{padding:60px 0}
+.card{background:var(--card);border-radius:12px;padding:20px}
+.btn{display:inline-block;border-radius:8px;padding:14px 20px;font-weight:700;text-align:center;transition:.2s}
+.btn:hover{transform:translateY(-2px)}
+.btn-primary{background:var(--primary);color:#fff}
+.btn-primary:hover{background:#0c6ab2}
+.btn-wa{background:var(--whatsapp);color:#fff}
+.btn-wa:hover{background:var(--whatsapp-hover)}
+.badge{display:inline-flex;align-items:center;gap:8px;font-size:.95rem;background:#22263a;color:#e6e6e6;padding:8px 14px;border-radius:999px}
+.grid{display:grid;gap:18px}
+.grid-2{grid-template-columns:repeat(2,1fr)}
+.grid-3{grid-template-columns:repeat(3,1fr)}
+@media (max-width:900px){.grid-3{grid-template-columns:1fr 1fr}}
+@media (max-width:680px){.grid-2,.grid-3{grid-template-columns:1fr}}
+.bullets{list-style:square;margin-left:20px}
+.bullets li{margin:.4em 0}
+.hr{height:1px;background:var(--line);margin:26px 0}
+.center{text-align:center}
 
-/* ---------- Layout general ---------- */
-section{padding:70px 20px;max-width:1000px;margin:auto}
-section:nth-of-type(even){background:var(--section)}
-h2{font-size:1.8rem;margin-bottom:.6em;color:#fff}
-p,li{font-size:1.05rem;margin:.4em 0}
-.bullets{list-style:square;margin-left:22px}
+/* HERO */
+.hero{padding:32px 0 20px}
+.hero .wrap{display:grid;grid-template-columns:1.2fr 1fr;gap:30px;align-items:center}
+.hero h1{font-size:2.4rem;line-height:1.15;margin-bottom:8px}
+.hero p.lead{color:var(--muted);font-size:1.08rem;margin:10px 0 16px}
+.hero .price{font-weight:800;color:#fff;margin:6px 0 18px}
+.hero .actions{display:flex;gap:12px;flex-wrap:wrap}
+.hero img{width:100%;max-width:420px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.hero .trust{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:.95rem;color:#d7dbe6}
+.hero .trust .mini{display:flex;align-items:center;gap:8px}
 
-/* ---------- Encabezado + portada ---------- */
-header{text-align:center;padding:60px 20px 30px}
-header h1{font-size:2.6rem;line-height:1.2;margin-bottom:18px;color:#fff}
-header h1 span{color:var(--primary)}
-.cover-img{display:block;margin:40px auto 32px;max-width:360px;width:90%;
-           border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.35);}
+/* HOW IT WORKS */
+.step{display:flex;gap:12px;align-items:flex-start}
+.step .num{width:36px;height:36px;border-radius:50%;background:var(--primary);display:flex;align-items:center;justify-content:center;font-weight:800}
+.timeline{display:grid;gap:14px;margin-top:12px}
+.kpis{display:flex;gap:14px;flex-wrap:wrap;margin-top:16px}
+.kpi{background:#22263a;border-radius:8px;padding:10px 14px;font-size:.95rem;color:#eaeaf2}
 
-/* ----- Cajas de impacto ----- */
-.hero-badge{background:#22263a;padding:10px 22px;border-radius:40px;font-size:1rem;
-            margin:24px auto 30px;color:#e6e6e6;display:inline-block}
-.hero-impact{background:var(--primary);padding:18px 24px;border-radius:8px;font-size:1.1rem;
-             font-weight:600;max-width:720px;margin:0 auto 26px;line-height:1.35}
-.hero-offer{background:var(--whatsapp);padding:18px 24px;border-radius:8px;font-size:1.05rem;
-            max-width:720px;margin:0 auto 40px;color:#fff;font-weight:500}
+/* GARANTÍA */
+.guarantee{display:flex;flex-direction:column;align-items:center;text-align:center;gap:8px}
+.guarantee svg{width:88px;height:88px}
 
-/* ---------- Botones ---------- */
-.btn{display:inline-block;background:var(--primary);color:#fff;text-decoration:none;
-     padding:14px 28px;border-radius:6px;font-weight:600;font-size:1rem;line-height:1.25;
-     transition:.25s;text-align:center}
-.btn:hover{background:#0c6ab2;transform:translateY(-2px)}
+/* PRICING */
+.pricing .plan{background:var(--card);border-radius:14px;padding:24px;border:1px solid #22263a}
+.pricing .plan h3{font-size:1.3rem;margin-bottom:4px}
+.pricing .price{font-size:1.6rem;font-weight:800;margin:6px 0 12px}
+.pricing ul{list-style:none}
+.pricing li{display:flex;gap:8px;margin:6px 0}
+.pricing li:before{content:"✓";color:#7ee39a}
+.cta-note{font-size:.9rem;color:#cfd3dc;margin-top:10px}
 
-.plan-buttons{display:flex;flex-wrap:wrap;gap:18px;justify-content:center;margin-top:24px}
-.plan-buttons .btn{flex:1 1 240px}
-.plan-simple{background:#1498e3}.plan-simple:hover{background:#0c6ab2}
-.plan-premium{background:#25D366}.plan-premium:hover{background:#1ebe5d}
-.plan-buttons small{display:block;font-size:.85rem;margin-top:4px;color:#f2f2f2}
+/* TESTIMONIOS */
+.testis{display:grid;gap:18px;grid-template-columns:repeat(3,1fr)}
+.testi{background:#22263a;border-radius:12px;padding:16px}
+.testi .name{margin-top:10px;color:#eaeaf2;font-weight:700}
+@media(max-width:900px){.testis{grid-template-columns:1fr 1fr}}
+@media(max-width:600px){.testis{grid-template-columns:1fr}}
 
-/* Avisos y cajas */
-.notice{background:var(--primary);color:#fff;text-align:center;padding:18px 20px;border-radius:10px;
-        font-size:1.1rem;margin:32px auto;max-width:750px;box-shadow:0 4px 12px rgba(0,0,0,.25);}
-.notice strong{font-size:1.2rem}
-.pas-warning{background:#8b0000;color:#fff;font-size:1.2rem;font-weight:600;
-             padding:24px 28px;border-radius:8px;max-width:900px;margin:32px auto;line-height:1.35}
+/* FAQ con <details> */
+details{background:#22263a;border-radius:10px;padding:14px 16px}
+details+details{margin-top:10px}
+summary{cursor:pointer;font-weight:700;color:#eaeaf2}
+summary::marker{color:#7ee39a}
+details p{margin-top:8px;color:#d7dbe6}
 
-/* Bonos tabla */
-.table{width:100%;border-collapse:collapse;margin-top:20px}
-.table th,.table td{border:1px solid #384060;padding:8px;text-align:left}
-.table th{background:#22263a;color:#fff}
-.highlight{color:#ff4d4d;font-weight:700}
+/* ABOUT */
+.about{display:grid;grid-template-columns:1fr 1.2fr;gap:24px;align-items:center}
+.about img{width:100%;max-width:280px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+@media(max-width:800px){.about{grid-template-columns:1fr;text-align:center}}
 
-/* ---------- Auto-test ---------- */
-.test-box{background:#22263a;padding:28px 22px;border-radius:10px;max-width:780px;margin:60px auto;color:#fff}
-.test-box h3{font-size:1.6rem;margin-bottom:18px}
-.test-q{margin:18px 0;font-size:1.05rem;display:flex;justify-content:space-between;align-items:center}
-.test-q input{transform:scale(1.3);margin-left:12px;cursor:pointer}
-.test-result{display:none;margin-top:26px;background:#1498e3;padding:18px;border-radius:8px;
-             font-weight:600;text-align:center}
+/* MOBILE BAR con 2 botones */
+.mobile-cta{position:fixed;left:0;right:0;bottom:0;background:#141625;border-top:2px solid var(--primary);
+display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
+.mobile-cta a{flex:1;max-width:360px}
+@media(min-width:769px){.mobile-cta{display:none}}
 
-/* ---------- CTA móvil persistente ---------- */
-@media(max-width:768px){
-  .mobile-cta{position:fixed;bottom:0;left:0;right:0;z-index:1000;background:#141625;
-              display:flex;justify-content:space-between;align-items:center;
-              padding:12px 16px;border-top:2px solid #1498e3;
-              box-shadow:0 -3px 10px rgba(0,0,0,.45)}
-  .mobile-cta span{color:#fff;font-weight:600;font-size:.95rem}
-  .btn-mobile{background:var(--whatsapp);padding:10px 18px;border-radius:6px;
-              font-size:.9rem;font-weight:700;color:#fff;text-decoration:none}
-  .btn-mobile:hover{background:var(--whatsapp-hover)}
-  body{padding-bottom:66px}
-}
-
-/* WhatsApp float */
-.whatsapp-float{position:fixed;bottom:24px;right:24px;width:62px;height:62px;background:var(--whatsapp);
-  border-radius:50%;display:flex;align-items:center;justify-content:center;
-  box-shadow:0 4px 10px rgba(0,0,0,.4);transition:.25s;z-index:999;}
-.whatsapp-float:hover{background:var(--whatsapp-hover);transform:scale(1.07)}
-.whatsapp-float svg{width:34px;height:34px;fill:#fff}
-
-/* Responsive títulos */
-@media(max-width:600px){header h1{font-size:1.9rem}h2{font-size:1.5rem}}
-
-/* —— Sección Quién soy —— */
-.about-box{display:flex;gap:28px;align-items:center;flex-wrap:wrap;
-           background:#22263a;border-radius:10px;padding:40px 26px;margin-top:60px}
-.about-box img{width:250px;max-width:90%;border-radius:10px;
-               box-shadow:0 4px 12px rgba(0,0,0,.4)}
-.about-text{flex:1 1 320px;font-size:1.05rem;line-height:1.55}
-.about-text h2{margin-bottom:14px;font-size:1.8rem;color:#fff}
-.about-text p{margin:.6em 0}
-
-/* ---- NUEVO: estilo del botón de soporte ---- */
-.btn-support{background:var(--whatsapp)}
-.btn-support:hover{background:var(--whatsapp-hover)}
+/* FOOTER */
+.footer{font-size:.9rem;color:#a9afbd;text-align:center;padding:26px 12px}
 </style>
 </head>
-
 <body>
 
-<!-- ========== HEADER ========== -->
-<header>
-  <!-- Portada arriba -->
-  <img src="portada_Ansiedad.webp" alt="Portada Ebook Ansiedad Social"
-       class="cover-img" loading="lazy">
+<!-- HERO -->
+<section class="hero">
+  <div class="container wrap">
+    <div>
+      <h1>Habla sin miedo en 21 días</h1>
+      <p class="lead">Guía en 5 pasos basada en Terapia Cognitivo-Conductual + exposición gradual. Incluye materiales y <strong>soporte por WhatsApp</strong>.</p>
+      <div class="price">Lanzamiento: <del>Gs. 120.000</del> <strong>Gs. 30.000</strong></div>
 
-  <h1>Habla sin miedo.<br>
-      <span>En 5 pasos y por tan solo <del>Gs. 120 000</del> Gs. 30 000</span>
-  </h1>
+      <div class="actions">
+        <a class="btn btn-primary"
+           href="https://pago.pagopar.com/6v0iw"
+           target="_blank"
+           onclick="fbq('track','InitiateCheckout');">Pagar y descargar ahora</a>
 
-  <div class="hero-badge">Guía probada y validada por psicólogos</div>
+        <a class="btn btn-wa"
+           href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago.%20%C2%BFMe%20ayudas%3F"
+           target="_blank"
+           onclick="fbq('track','Contact');">Tengo dudas / otros métodos</a>
+      </div>
 
-  <div class="hero-impact">
-    ¡¡¡Imagina entrar en una sala, sentir el pulso tranquilo y, al terminar la conversación,
-    darte cuenta de que no tartamudeaste, no temblaste, no inventaste excusas para huir!!!
+      <div class="trust">
+        <span class="mini">🛡️ Garantía 7 días</span>
+        <span class="mini">🔒 Pago seguro con Pagopar</span>
+        <span class="mini">📱 Acceso inmediato</span>
+      </div>
+    </div>
+
+    <div class="center">
+      <img src="portada_Ansiedad.webp" alt="Portada Ebook Ansiedad Social">
+      <div style="margin-top:10px">
+        <span class="badge">Validado por psicólogos</span>
+      </div>
+    </div>
   </div>
+</section>
 
-  <div class="hero-offer">
-    ¡Eso no es suerte! Es un proceso estructurado que hoy puedes empezar desde tu teléfono
-    por menos de lo que cuesta un café a la semana.
-  </div>
-
-  <!-- CTA TOP -->
-  <a class="btn main-download"
-     href="https://pago.pagopar.com/6v0iw"
-     target="_blank"
-     onclick="fbq('track','Lead');">
-     Pagar y descargar ahora
-  </a>
-</header>
-
-<!-- ========== PAS ========== -->
+<!-- DOLOR → PROMESA -->
 <section>
-  <h2>¿Te reconoces en este escenario?</h2>
-  <ul class="bullets">
-    <li>Te quedas sin palabras en las reuniones.</li>
-    <li>Rechazas invitaciones por miedo a “quedar mal”.</li>
-    <li>Cada “¿y a qué te dedicas?” acelera tu corazón como si fuera peligro real.</li>
-    <li>Te sientes frustrado después de una presentación porque no te desempeñaste como planeabas.</li>
-  </ul>
-
-  <p class="pas-warning">
-    Mientras lo pospones, pierdes oportunidades laborales, amistades y… confianza en ti mismo.
-    <br>LA ANSIEDAD CRECE AL RITMO DE TU SILENCIO.
-  </p>
-
-  <p class="notice">
-    <strong>¡NO TIENES QUE SEGUIR ASÍ! ¡EL CAMBIO ES POSIBLE!</strong><br>
-    El Ebook <em>“Supera la Ansiedad Social en 5 Pasos”</em> condensa técnicas de TCC y Exposición
-    Gradual en un plan de 21 días.
-  </p>
-</section>
-
-<!-- ========== AUTO-TEST “¿ES PARA MÍ?” ========== -->
-<section class="test-box">
-  <h3>“¿Es para mí?” · Auto-test rápido</h3>
-  <p>(Haz <strong>Click</strong> En la Casilla que te identifique.)</p>
-  
-  <div class="test-q">
-    <label for="q1">¿Evitas reuniones por miedo a quedarte mudo?</label>
-    <input id="q1" type="checkbox" class="q-check">
-  </div>
-
-  <div class="test-q">
-    <label for="q2">¿Tu corazón late a mil al presentarte?</label>
-    <input id="q2" type="checkbox" class="q-check">
-  </div>
-
-  <div class="test-q">
-    <label for="q3">¿Ensayas frases en tu cabeza y luego no las dices?</label>
-    <input id="q3" type="checkbox" class="q-check">
-  </div>
-
-  <div class="test-q">
-    <label for="q4">¿Has perdido al menos una oportunidad por esto?</label>
-    <input id="q4" type="checkbox" class="q-check">
-  </div>
-
-  <div class="test-result" id="testResult">
-    Ya pagas un costo más alto que este ebook.<br>
-    Empieza hoy mismo por menos de lo que cuesta un café.
+  <div class="container grid grid-2">
+    <div class="card">
+      <h2>¿Te reconoces?</h2>
+      <ul class="bullets">
+        <li>Te quedas en blanco al presentarte.</li>
+        <li>Evitas reuniones por miedo a “quedar mal”.</li>
+        <li>Latidos a mil y mente bloqueada en situaciones sociales.</li>
+        <li>Frustración después de hablar porque “no salió como querías”.</li>
+      </ul>
+    </div>
+    <div class="card">
+      <h2>Promesa clara</h2>
+      <p>En 21 días seguirás un proceso guiado para reducir la ansiedad, ordenar tus pensamientos y hablar con seguridad, sin excusas ni trucos mágicos.</p>
+      <div class="kpis">
+        <div class="kpi">10–15 min/día</div>
+        <div class="kpi">Plan paso a paso</div>
+        <div class="kpi">Soporte WhatsApp</div>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ========== BONOS PREMIUM ========== -->
+<!-- QUÉ RECIBES -->
 <section>
-  <h2>Bonos Premium incluidos <span class="highlight">GRATIS</span></h2>
-  <table class="table">
-    <tr><th>Bono</th><th>Valor</th></tr>
-    <tr><td>13 ebooks de autoayuda best-seller (PDF)</td><td>Gs. 500 000</td></tr>
-    <tr><td>Más de 50 audiolibros de liderazgo (MP3)</td><td>Gs. 300 000</td></tr>
-    <tr><td>Pack PNL (22 manuales prácticos)</td><td>Gs. 200 000</td></tr>
-    <tr><td>Pack Liderazgo 360° (59 libros)</td><td>Gs. 360 000</td></tr>
-  </table>
-  <p><em>Total bonos:</em> <strong>Gs. 1 360 000</strong> — incluidos
-     <span class="highlight">GRATIS</span> con tu ebook.</p>
-</section>
-
-<!-- ========== BENEFICIOS 21 DÍAS ========== -->
-<section>
-  <h2>¿Qué lograrás en solo 21 días?</h2>
-  <ul class="bullets">
-    <li>Ansiedad ↓ 50 % en tus situaciones críticas</li>
-    <li>Conversaciones fluidas sin bloqueos mentales</li>
-    <li>Pensamiento reprogramado y autoestima reforzada</li>
-    <li>Plan personal anti-recaídas y red de apoyo</li>
-  </ul>
-</section>
-
-<!-- BLOQUE DE GARANTÍA -->
-<div style="margin:40px auto;max-width:280px;text-align:center">
-  <svg width="100" height="100" viewBox="0 0 100 100" fill="none">
-    <circle cx="50" cy="50" r="48" stroke="#25D366" stroke-width="4"/>
-    <path d="M30 52l12 12 28-28" stroke="#25D366" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-  </svg>
-  <p style="margin-top:12px;font-weight:600;color:#f2f2f2">
-    Tu compra es tan segura que si no notas el cambio TE DAMOS UNA GARANTÍA DE 7 DÍAS y<br>
-    <span style="font-weight:400">Te devolvemos el 100 %</span>
-  </p>
-</div>
-    
-<!-- ========== PLANES / INVERSIÓN ========== -->
-<section id="planes" style="text-align:center">
-  <h2>Inversión de lanzamiento</h2>
-
-  <div class="plan-buttons">
-    <a class="btn plan-simple"
-       href="https://pago.pagopar.com/6v0iw"
-       target="_blank"
-       onclick="fbq('track','Purchase',{currency:'PYG',value:30000});">
-       Plan Simple · <del>Gs. 120 000</del> Gs. 30 000<br>
-       <small>Ebook + tabla editable</small>
-       <strong>(Pagar ahora)</strong>
-    </a>
-
-    <a class="btn plan-premium"
-       href="https://pago.pagopar.com/6v0io"
-       target="_blank"
-       onclick="fbq('track','Purchase',{currency:'PYG',value:60000});">
-       Plan Premium · <del>Gs. 300 000</del> <strong>Gs. 60 000</strong><br>
-       <small>Ebook + bonos (Gs. 1 360 000) + grupo WhatsApp</small>
-       <strong>(Pagar ahora)</strong>
-    </a>
-  </div>
-
-  <!-- NUEVO: Botón de soporte por WhatsApp -->
-  <a class="btn btn-support"
-     href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dificultades%20con%20el%20pago%20o%20prefiero%20otro%20m%C3%A9todo.%20%C2%BFMe%20pod%C3%A9s%20ayudar%3F"
-     target="_blank" rel="noopener"
-     onclick="fbq('track','Contact');"
-     style="margin-top:22px;display:inline-block;">
-     ¿Dificultades para pagar u otro método? Soporte por WhatsApp
-  </a>
-
-  <p style="margin-top:26px">
-    Oferta válida hasta <strong>31 de Agosto 2025</strong> o primeras 200 descargas.
-  </p>
-</section>
-
-<!-- ========== TESTIMONIOS / HISTORIAS ========== -->
-<section>
-  <h2>Historias Reales</h2>
-  <blockquote>
-    “Viví mucho tiempo con la incertidumbre, preguntándome por qué me sentía así.
-    Este ebook fue la luz que me hizo ver que la raíz de todo mi malestar era una cadena
-    de pensamientos negativos. Ahora sé que la transformación es real si me esfuerzo
-    y si tengo la guía correcta. <strong>Valió cada centavo</strong>.”
-    — Sofía R., 28 años
-  </blockquote>
-</section>
-
-<!-- ========== FAQ ========== -->
-<section>
-  <h2>Preguntas frecuentes</h2>
-  <p><strong>¿Por qué un precio reducido para un contenido de alto valor?</strong><br>
-     Más que un precio, es una oportunidad. Reducimos el costo para impactar a más personas.</p>
-  <p><strong>¿Y si soy solo tímido?</strong><br>La timidez no bloquea tu vida; la ansiedad social sí.
-     Si evitas oportunidades, este método es para ti.</p>
-  <p><strong>¿Cuánto tiempo exacto necesito?</strong><br>
-     10-15 min/día → igual que revisar Instagram.</p>
-  <p><strong>¿Y si mi caso es severo?</strong><br>
-     Entonces necesitas acompañamiento profesional que también puedes seguir con nosotros.
-     <a href="https://wa.me/595976418720"
-        target="_blank"
-        style="color:#25D366;font-weight:600">Haz click aquí para comunicarte</a>.
-  </p>
-</section>
-
-<!-- ========== SOPORTE ========= -->
-<section style="background:#1c2033;text-align:center">
-  <h2>Soporte adicional</h2>
-  <p>Si todo esto fuera poco, <strong>tenemos grupo de ayuda en WhatsApp</strong>
-     para un mejor resultado y responder dudas.</p>
-</section>
-
-<!-- ========== QUIÉN SOY ========== -->
-<section class="about-box">
-  <img src="fotofamilia_pedro.webp" alt="Lic. Pedro Benítez y familia" loading="lazy">
-
-  <div class="about-text">
-    <h2>¿Quién soy?</h2>
-    <p>Con más de una década dedicada al bienestar psicológico, soy el
-       <strong>Lic. Pedro Benítez</strong>. Obtuve mi licenciatura en la
-       <em>Facultad de Filosofía de la UNA</em>, donde curso la Maestría en Psicología Clínica.</p>
-    <p>He trabajado con niños, adolescentes y adultos, especializándome en Desarrollo Infantil,
-       Trastorno del Espectro Autista y Terapia Cognitivo-Conductual. Desde 2016 soy docente
-       universitario y he servido como psicólogo escolar y en el Ministerio de la Niñez.</p>
-    <p>Fuera de lo profesional, soy un hombre de fe, padre de dos niños y sobreviviente de cáncer;
-       experiencias que fortalecen mi compromiso de acompañar a cada persona hacia la superación
-       y el bienestar.</p>
+  <div class="container">
+    <h2 class="center">Qué recibes</h2>
+    <div class="grid grid-3">
+      <div class="card center">
+        <h3>Plan 21 días</h3>
+        <p>Rutina guiada con ejercicios TCC + exposición gradual.</p>
+      </div>
+      <div class="card center">
+        <h3>Materiales</h3>
+        <p>Tabla editable, plantillas y recursos complementarios.</p>
+      </div>
+      <div class="card center">
+        <h3>Soporte</h3>
+        <p>Atención por WhatsApp para dudas y seguimiento.</p>
+      </div>
+    </div>
   </div>
 </section>
 
-<!-- ========== FOOTER ========= -->
-<section style="padding:30px 0;text-align:center;font-size:.9rem;color:#aaa">
+<!-- CÓMO FUNCIONA -->
+<section>
+  <div class="container">
+    <h2 class="center">Cómo funciona</h2>
+    <div class="grid grid-3">
+      <div class="card">
+        <div class="step">
+          <div class="num">1</div>
+          <div>
+            <h3>Evalúa y prepara</h3>
+            <p>Auto-test inicial, define situaciones críticas y metas.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="step">
+          <div class="num">2</div>
+          <div>
+            <h3>Practica guiado</h3>
+            <p>Ejercicios diarios (10–15 min) para regular cuerpo y mente.</p>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="step">
+          <div class="num">3</div>
+          <div>
+            <h3>Exposición segura</h3>
+            <p>Sube de nivel gradualmente y registra avances.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="timeline">
+      <div class="hr"></div>
+      <div class="center" style="color:#d7dbe6">Día 1–7 • Respiración + reestructuración • Día 8–14 • Ensayos guiados • Día 15–21 • Exposición real</div>
+    </div>
+  </div>
+</section>
+
+<!-- GARANTÍA -->
+<section>
+  <div class="container guarantee">
+    <svg viewBox="0 0 100 100" fill="none" aria-hidden="true">
+      <circle cx="50" cy="50" r="48" stroke="#25D366" stroke-width="4"/>
+      <path d="M30 52l12 12 28-28" stroke="#25D366" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
+    <h2>Garantía 7 días – Devolución 100 %</h2>
+    <p style="max-width:700px;color:#cfd3dc">Si en 7 días no ves utilidad, te devolvemos tu dinero. Sin preguntas.</p>
+  </div>
+</section>
+
+<!-- PRECIOS -->
+<section class="pricing">
+  <div class="container">
+    <h2 class="center">Elige tu plan</h2>
+    <div class="grid grid-2" style="margin-top:16px">
+      <!-- SIMPLE -->
+      <div class="plan">
+        <h3>Plan Simple</h3>
+        <div class="price"><del>Gs. 120.000</del> <strong>Gs. 30.000</strong></div>
+        <ul>
+          <li>Guía en 5 pasos (PDF)</li>
+          <li>Plan de 21 días</li>
+          <li>Tabla editable</li>
+        </ul>
+        <div class="center" style="margin-top:14px">
+          <a class="btn btn-primary" href="https://pago.pagopar.com/6v0iw" target="_blank"
+             onclick="fbq('track','InitiateCheckout');">Pagar Plan Simple</a>
+          <div class="cta-note">Pago con Pagopar · Acceso inmediato</div>
+        </div>
+      </div>
+
+      <!-- PREMIUM -->
+      <div class="plan">
+        <h3>Plan Premium</h3>
+        <div class="price"><del>Gs. 300.000</del> <strong>Gs. 60.000</strong></div>
+        <ul>
+          <li>Todo lo del Plan Simple</li>
+          <li>Bonos Premium (Gs. 1.360.000)</li>
+          <li>Grupo de apoyo por WhatsApp</li>
+        </ul>
+        <div class="center" style="margin-top:14px">
+          <a class="btn btn-wa" href="https://pago.pagopar.com/6v0io" target="_blank"
+             onclick="fbq('track','InitiateCheckout');">Pagar Plan Premium</a>
+          <div class="cta-note">Pago con Pagopar · Acceso inmediato</div>
+        </div>
+      </div>
+    </div>
+
+    <div class="center" style="margin-top:18px">
+      <a class="btn btn-wa"
+         href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dificultades%20con%20el%20pago%20o%20prefiero%20otro%20m%C3%A9todo.%20%C2%BFPod%C3%A9s%20ayudarme%3F"
+         target="_blank" onclick="fbq('track','Contact');">
+         ¿Dificultades o preferís otro método de pago? Chateá aquí</a>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIOS -->
+<section>
+  <div class="container">
+    <h2 class="center">Historias reales</h2>
+    <div class="testis" style="margin-top:16px">
+      <div class="testi">
+        <p>“Me presenté en clase sin quedarme en blanco. El plan me ordenó la cabeza.”</p>
+        <div class="name">— Sofía · 28</div>
+      </div>
+      <div class="testi">
+        <p>“Dejé de evitar reuniones. Los ejercicios diarios son cortos y claros.”</p>
+        <div class="name">— Diego · 31</div>
+      </div>
+      <div class="testi">
+        <p>“La garantía me dio confianza. A la semana ya notaba menos latidos.”</p>
+        <div class="name">— Laura · 26</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FAQ -->
+<section>
+  <div class="container">
+    <h2 class="center">Preguntas frecuentes</h2>
+    <div style="max-width:860px;margin:14px auto 0" class="grid">
+      <details>
+        <summary>¿Cuánto tiempo necesito al día?</summary>
+        <p>Entre 10 y 15 minutos. La clave es la constancia durante 21 días.</p>
+      </details>
+      <details>
+        <summary>¿Sirve si “solo” soy tímido?</summary>
+        <p>Sí, te enseña a regular el cuerpo y ordenar pensamientos. Si evitas oportunidades por ansiedad, es para vos.</p>
+      </details>
+      <details>
+        <summary>¿Qué pasa si mi caso es severo?</summary>
+        <p>Recomendamos acompañamiento profesional. Podemos orientarte por WhatsApp para derivarte.</p>
+      </details>
+      <details>
+        <summary>¿Hay garantía?</summary>
+        <p>Sí. 7 días de prueba. Si no te ayuda, pedís devolución y listo.</p>
+      </details>
+      <details>
+        <summary>¿Cómo recibo el material?</summary>
+        <p>Al pagar, accedés de inmediato a los materiales digitales. Te queda un enlace de respaldo por WhatsApp o correo si lo solicitás.</p>
+      </details>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section>
+  <div class="container about">
+    <div class="center">
+      <img src="fotofamilia_pedro.webp" alt="Lic. Pedro Benítez y familia">
+    </div>
+    <div>
+      <h2>¿Quién soy?</h2>
+      <p>Soy el <strong>Lic. Pedro Benítez</strong>, especialista en Terapia Cognitivo-Conductual, docente universitario desde 2016 y con trayectoria en psicología escolar y Ministerio de la Niñez.</p>
+      <p>Mi misión es acompañarte con un método claro y práctico para que recuperes la confianza al hablar.</p>
+    </div>
+  </div>
+</section>
+
+<!-- CIERRE -->
+<section>
+  <div class="container center">
+    <h2>¿Listo para hablar con seguridad?</h2>
+    <div class="actions" style="justify-content:center;margin-top:8px">
+      <a class="btn btn-primary" href="https://pago.pagopar.com/6v0iw" target="_blank"
+         onclick="fbq('track','InitiateCheckout');">Pagar Plan Simple</a>
+      <a class="btn btn-wa" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago."
+         target="_blank" onclick="fbq('track','Contact');">Necesito ayuda</a>
+    </div>
+    <div class="cta-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<div class="footer">
   © 2025 VitaMente · Todos los derechos reservados ·
-  <a href="politica_privacidad.html" style="color:#aaa">Política de privacidad</a> ·
-  <a href="terminos_condiciones.html" style="color:#aaa">Términos y condiciones</a>
-</section>
-
-<!-- ========== CTA MÓVIL ========= -->
-<div class="mobile-cta">
-  <span>Habla sin miedo – Gs 30 000</span>
-  <a class="btn-mobile"
-     href="https://pago.pagopar.com/6v0iw"
-     target="_blank"
-     onclick="fbq('track','Lead');">
-     Pagar ahora
-  </a>
+  <a href="politica_privacidad.html">Política de privacidad</a> ·
+  <a href="terminos_condiciones.html">Términos y condiciones</a>
+  <div style="margin-top:8px;font-size:.85rem;color:#9aa0ad">Este material no sustituye atención profesional presencial.</div>
 </div>
 
-<!-- ========== BOTÓN WHATSAPP FLOTANTE ========= -->
-<a class="whatsapp-float" href="https://wa.me/595976418720" target="_blank"
-   aria-label="Chat WhatsApp">
-  <svg viewBox="0 0 32 32" aria-label="Logo WhatsApp">
-    <path d="M4 6a2 2 0 0 1 2-2h20a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2H12l-6 6v-6H6a2 2 0 0 1-2-2V6z"/>
-  </svg>
-</a>
+<!-- STICKY MOBILE BAR (PAGAR + SOPORTE) -->
+<div class="mobile-cta">
+  <a class="btn btn-primary" href="https://pago.pagopar.com/6v0iw" target="_blank"
+     onclick="fbq('track','InitiateCheckout');">Pagar</a>
+  <a class="btn btn-wa" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago."
+     target="_blank" onclick="fbq('track','Contact');">Soporte</a>
+</div>
 
-<!-- ========== SCRIPTS ========= -->
-<script>
-/* Auto-test: muestra resultado si hay 2+ respuestas */
-document.querySelectorAll('.q-check').forEach(cb=>{
-  cb.addEventListener('change',()=>{
-    const yes=[...document.querySelectorAll('.q-check')].filter(c=>c.checked).length;
-    document.getElementById('testResult').style.display=yes>=2?'block':'none';
-  });
-});
-</script>
 </body>
 </html>
