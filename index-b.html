@@ -122,7 +122,15 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   box-shadow:0 6px 18px rgba(0,0,0,.35);
   display:block;
 }
- 
+
+.mid-video{
+  width:100%;
+  max-width:520px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  display:block;
+}
+  
 </style>
 </head>
 <body>
@@ -269,6 +277,69 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   </div>
 </section>
 
+<!-- ===== VER VIDEO (20s) + CTA ===== -->
+<section id="ver-video">
+  <div class="container grid grid-2" style="align-items:center">
+    <!-- Video -->
+    <div class="card center">
+      <video
+        id="explainerVideo"
+        class="mid-video"
+        poster="habla_sin_miedo.png"
+        preload="metadata"
+        playsinline muted controls
+      >
+        <!-- Opción A (recomendado si renombras el archivo) -->
+        <source src="te-quedas-en-blanco.mp4" type="video/mp4">
+        <!-- Opción B (si mantenés el nombre con signos/espacios, usá la URL codificada):
+        <source src="%C2%BFTe%20quedas%20en%20Blanco%20al%20presentarte.mp4" type="video/mp4">
+        -->
+        Tu navegador no soporta video HTML5.
+      </video>
+    </div>
+
+    <!-- Texto + CTA -->
+    <div class="card">
+      <h2>Ver video (20s) y empezar hoy</h2>
+      <p style="color:#cfd3dc;margin:8px 0 12px">
+        En este clip te explico los <strong>5 pasos</strong> del plan: cuerpo → pensamientos → exposición. 
+        <br>Son <strong>10–15 min/día</strong> durante 21 días, con soporte por WhatsApp.
+      </p>
+
+      <div class="actions" style="gap:10px;flex-wrap:wrap">
+        <a class="btn btn-primary"
+           href="https://pago.pagopar.com/6v0iw"
+           target="_blank"
+           onclick="fbq('track','InitiateCheckout');"
+           aria-label="Pagar ahora Plan Simple">
+          Pagar ahora
+        </a>
+
+        <a class="btn btn-wa"
+           href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20antes%20de%20pagar%20%C2%BFMe%20ayud%C3%A1s%3F"
+           target="_blank"
+           onclick="fbq('track','Contact');"
+           aria-label="Soporte por WhatsApp">
+          ¿Dudas? Soporte por WhatsApp
+        </a>
+
+        <a class="btn" style="background:#2a2f47;color:#fff"
+           href="https://pago.pagopar.com/6v0io"
+           target="_blank"
+           onclick="fbq('track','InitiateCheckout');"
+           aria-label="Ver Plan Premium">
+          Ver Plan Premium
+        </a>
+      </div>
+
+      <p class="cta-note" style="margin-top:10px">
+        Pago con tarjeta/débito/QR vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
+      </p>
+    </div>
+  </div>
+</section>
+<!-- ================================== -->
+  
 <!-- GARANTÍA -->
 <section>
   <div class="container guarantee">
@@ -724,6 +795,18 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 </script>
 <!-- ============ FIN FUNNEL ============ -->
 
+<script>
+  (function(){
+    var v = document.getElementById('explainerVideo');
+    if(!v) return;
+    var fired = false;
+    v.addEventListener('play', function(){
+      if(fired) return; fired = true;
+      try{ if(window.fbq){ fbq('trackCustom','VideoStarted',{placement:'midpage'}); } }catch(e){}
+    });
+  })();
+</script>
+  
   <script>
   (function(){
     var v = document.getElementById('introVideo');
