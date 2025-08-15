@@ -63,6 +63,9 @@ section{padding:60px 0}
 .hero img{width:100%;max-width:420px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 .hero .trust{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:.95rem;color:#d7dbe6}
 .hero .trust .mini{display:flex;align-items:center;gap:8px}
+  <p style="margin-top:6px;color:#cfd3dc;font-size:.95rem">
+  Pago con tarjeta/débito/QR vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
+</p>
 
 /* HOW IT WORKS */
 .step{display:flex;gap:12px;align-items:flex-start}
@@ -111,6 +114,15 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 
 /* FOOTER */
 .footer{font-size:.9rem;color:#a9afbd;text-align:center;padding:26px 12px}
+
+  .hero-video{
+  width:100%;
+  max-width:420px;
+  border-radius:12px;
+  box-shadow:0 6px 18px rgba(0,0,0,.35);
+  display:block;
+}
+ 
 </style>
 </head>
 <body>
@@ -143,12 +155,32 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     </div>
 
     <div class="center">
-      <img src="portada_Ansiedad.webp" alt="Portada Ebook Ansiedad Social">
-      <div style="margin-top:10px">
-        <span class="badge">Validado por psicólogos</span>
-      </div>
-    </div>
+  <video
+    id="introVideo"
+    class="hero-video"
+    poster="habla_sin_miedo.png"
+    preload="metadata"
+    playsinline
+    muted
+    autoplay
+    loop
+    controls
+  >
+    <!-- Opción recomendada (archivo renombrado) -->
+    <source src="te-quedas-en-blanco.mp4" type="video/mp4">
+
+    <!-- Opción alternativa si NO renombrás el archivo (URL codificada):
+    <source src="%C2%BFTe%20quedas%20en%20Blanco%20al%20presentarte.mp4" type="video/mp4">
+    -->
+
+    Tu navegador no soporta video HTML5. Mira la portada:
+  </video>
+
+  <div style="margin-top:10px">
+    <span class="badge">Validado por psicólogos</span>
   </div>
+</div>
+</div>
 </section>
 
 <!-- DOLOR → PROMESA -->
@@ -691,6 +723,19 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 })();
 </script>
 <!-- ============ FIN FUNNEL ============ -->
+
+  <script>
+  (function(){
+    var v = document.getElementById('introVideo');
+    if(!v) return;
+    var fired = false;
+    v.addEventListener('play', function(){
+      if(fired) return;
+      fired = true;
+      try{ if(window.fbq){ fbq('trackCustom','VideoStarted',{placement:'hero'}); } }catch(e){}
+    });
+  })();
+</script>
 
 </body>
 </html>
