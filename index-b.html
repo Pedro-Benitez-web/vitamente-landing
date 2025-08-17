@@ -60,12 +60,9 @@ section{padding:60px 0}
 .hero p.lead{color:var(--muted);font-size:1.08rem;margin:10px 0 16px}
 .hero .price{font-weight:800;color:#fff;margin:6px 0 18px}
 .hero .actions{display:flex;gap:12px;flex-wrap:wrap}
-.hero img{width:100%;max-width:420px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
+.hero img,.hero-video{width:100%;max-width:420px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 .hero .trust{display:flex;gap:12px;flex-wrap:wrap;margin-top:14px;font-size:.95rem;color:#d7dbe6}
 .hero .trust .mini{display:flex;align-items:center;gap:8px}
-  <p style="margin-top:6px;color:#cfd3dc;font-size:.95rem">
-  Pago con tarjeta/débito/QR vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
-</p>
 
 /* HOW IT WORKS */
 .step{display:flex;gap:12px;align-items:flex-start}
@@ -115,22 +112,8 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 /* FOOTER */
 .footer{font-size:.9rem;color:#a9afbd;text-align:center;padding:26px 12px}
 
-  .hero-video{
-  width:100%;
-  max-width:420px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-  display:block;
-}
-
-.mid-video{
-  width:100%;
-  max-width:520px;
-  border-radius:12px;
-  box-shadow:0 6px 18px rgba(0,0,0,.35);
-  display:block;
-}
-  
+/* VIDEO estilos */
+.mid-video{width:100%;max-width:520px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35);display:block}
 </style>
 </head>
 <body>
@@ -144,16 +127,18 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       <div class="price">Lanzamiento: <del>Gs. 120.000</del> <strong>Gs. 30.000</strong></div>
 
       <div class="actions">
-        <a class="btn btn-primary"
+        <a class="btn btn-primary js-pay js-utm"
            href="https://pago.pagopar.com/6v0iw"
-           target="_blank"
-           onclick="fbq('track','InitiateCheckout');">Pagar y descargar ahora</a>
+           target="_blank" rel="noopener">Pagar y descargar ahora</a>
 
-        <a class="btn btn-wa"
-           href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago.%20%C2%BFMe%20ayudas%3F"
-           target="_blank"
-           onclick="fbq('track','Contact');">Tengo dudas / otros métodos</a>
+        <a class="btn btn-wa js-wa js-utm"
+           href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago.%20%C2%BFMe%20ayud%C3%A1s%3F"
+           target="_blank" rel="noopener">Tengo dudas / otros métodos</a>
       </div>
+
+      <p style="margin-top:6px;color:#cfd3dc;font-size:.95rem">
+        Pago con tarjeta/débito/QR vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
+      </p>
 
       <div class="trust">
         <span class="mini">🛡️ Garantía 7 días</span>
@@ -163,32 +148,13 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     </div>
 
     <div class="center">
-  <video
-    id="introVideo"
-    class="hero-video"
-    poster="habla_sin_miedo.png"
-    preload="metadata"
-    playsinline
-    muted
-    autoplay
-    loop
-    controls
-  >
-    <!-- Opción recomendada (archivo renombrado) -->
-    <source src="te-quedas-en-blanco.mp4" type="video/mp4">
-
-    <!-- Opción alternativa si NO renombrás el archivo (URL codificada):
-    <source src="%C2%BFTe%20quedas%20en%20Blanco%20al%20presentarte.mp4" type="video/mp4">
-    -->
-
-    Tu navegador no soporta video HTML5. Mira la portada:
-  </video>
-
-  <div style="margin-top:10px">
-    <span class="badge">Validado por psicólogos</span>
+      <video id="introVideo" class="hero-video" poster="habla_sin_miedo.png" preload="metadata" playsinline muted autoplay loop controls>
+        <source src="te-quedas-en-blanco.mp4" type="video/mp4">
+        Tu navegador no soporta video HTML5.
+      </video>
+      <div style="margin-top:10px"><span class="badge">Validado por psicólogos</span></div>
+    </div>
   </div>
-</div>
-</div>
 </section>
 
 <!-- DOLOR → PROMESA -->
@@ -277,59 +243,36 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   </div>
 </section>
 
-<!-- ===== VER VIDEO (20s) + CTA ===== -->
+<!-- ===== VIDEO DE PEDRO + CTA ===== -->
 <section id="ver-video">
   <div class="container grid grid-2" style="align-items:center">
     <!-- Video -->
     <div class="card center">
-      <video
-        id="explainerVideo"
-        class="mid-video"
-        poster="habla_sin_miedo.png"
-        preload="metadata"
-        playsinline muted controls
-      >
-        <!-- Opción A (recomendado si renombras el archivo) -->
-        <source src="te-quedas-en-blanco.mp4" type="video/mp4">
-        <!-- Opción B (si mantenés el nombre con signos/espacios, usá la URL codificada):
-        <source src="%C2%BFTe%20quedas%20en%20Blanco%20al%20presentarte.mp4" type="video/mp4">
-        -->
+      <video id="explainerVideo" class="mid-video" poster="habla_sin_miedo.png" preload="metadata" playsinline controls>
+        <source src="Video_Pedro.mp4" type="video/mp4">
         Tu navegador no soporta video HTML5.
       </video>
     </div>
 
     <!-- Texto + CTA -->
     <div class="card">
-      <h2>Ver video (20s) y empezar hoy</h2>
+      <h2>Mirá el video y empezá hoy</h2>
       <p style="color:#cfd3dc;margin:8px 0 12px">
-        En este clip te explico los <strong>5 pasos</strong> del plan: cuerpo → pensamientos → exposición. 
-        <br>Son <strong>10–15 min/día</strong> durante 21 días, con soporte por WhatsApp.
+        En 21 días, 5 pasos prácticos (TCC) para hablar con seguridad. <strong>10–15 min/día</strong> + soporte por WhatsApp.
       </p>
 
       <div class="actions" style="gap:10px;flex-wrap:wrap">
-        <a class="btn btn-primary"
+        <a class="btn btn-primary js-pay js-utm"
            href="https://pago.pagopar.com/6v0iw"
-           target="_blank"
-           onclick="fbq('track','InitiateCheckout');"
-           aria-label="Pagar ahora Plan Simple">
-          Pagar ahora
-        </a>
+           target="_blank" rel="noopener" aria-label="Pagar ahora Plan Simple">Pagar ahora</a>
 
-        <a class="btn btn-wa"
+        <a class="btn btn-wa js-wa js-utm"
            href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20antes%20de%20pagar%20%C2%BFMe%20ayud%C3%A1s%3F"
-           target="_blank"
-           onclick="fbq('track','Contact');"
-           aria-label="Soporte por WhatsApp">
-          ¿Dudas? Soporte por WhatsApp
-        </a>
+           target="_blank" rel="noopener" aria-label="Soporte por WhatsApp">¿Dudas? Soporte por WhatsApp</a>
 
-        <a class="btn" style="background:#2a2f47;color:#fff"
+        <a class="btn js-pay js-utm" style="background:#2a2f47;color:#fff"
            href="https://pago.pagopar.com/6v0io"
-           target="_blank"
-           onclick="fbq('track','InitiateCheckout');"
-           aria-label="Ver Plan Premium">
-          Ver Plan Premium
-        </a>
+           target="_blank" rel="noopener" aria-label="Ver Plan Premium">Ver Plan Premium</a>
       </div>
 
       <p class="cta-note" style="margin-top:10px">
@@ -339,7 +282,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   </div>
 </section>
 <!-- ================================== -->
-  
+
 <!-- GARANTÍA -->
 <section>
   <div class="container guarantee">
@@ -367,8 +310,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
           <li>Tabla editable</li>
         </ul>
         <div class="center" style="margin-top:14px">
-          <a class="btn btn-primary" href="https://pago.pagopar.com/6v0iw" target="_blank"
-             onclick="fbq('track','InitiateCheckout');">Pagar Plan Simple</a>
+          <a class="btn btn-primary js-pay js-utm" href="https://pago.pagopar.com/6v0iw" target="_blank" rel="noopener">Pagar Plan Simple</a>
           <div class="cta-note">Pago con Pagopar · Acceso inmediato</div>
         </div>
       </div>
@@ -383,17 +325,16 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
           <li>Grupo de apoyo por WhatsApp</li>
         </ul>
         <div class="center" style="margin-top:14px">
-          <a class="btn btn-wa" href="https://pago.pagopar.com/6v0io" target="_blank"
-             onclick="fbq('track','InitiateCheckout');">Pagar Plan Premium</a>
+          <a class="btn btn-wa js-pay js-utm" href="https://pago.pagopar.com/6v0io" target="_blank" rel="noopener">Pagar Plan Premium</a>
           <div class="cta-note">Pago con Pagopar · Acceso inmediato</div>
         </div>
       </div>
     </div>
 
     <div class="center" style="margin-top:18px">
-      <a class="btn btn-wa"
+      <a class="btn btn-wa js-wa js-utm"
          href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dificultades%20con%20el%20pago%20o%20prefiero%20otro%20m%C3%A9todo.%20%C2%BFPod%C3%A9s%20ayudarme%3F"
-         target="_blank" onclick="fbq('track','Contact');">
+         target="_blank" rel="noopener">
          ¿Dificultades o preferís otro método de pago? Chateá aquí</a>
     </div>
   </div>
@@ -453,7 +394,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 <section>
   <div class="container about">
     <div class="center">
-      <img src="fotofamilia_pedro.webp" alt="Lic. Pedro Benítez y familia">
+      <img src="fotofamilia_pedro.webp" alt="Lic. Pedro Benítez y familia" loading="lazy">
     </div>
     <div>
       <h2>¿Quién soy?</h2>
@@ -468,10 +409,8 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   <div class="container center">
     <h2>¿Listo para hablar con seguridad?</h2>
     <div class="actions" style="justify-content:center;margin-top:8px">
-      <a class="btn btn-primary" href="https://pago.pagopar.com/6v0iw" target="_blank"
-         onclick="fbq('track','InitiateCheckout');">Pagar Plan Simple</a>
-      <a class="btn btn-wa" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago."
-         target="_blank" onclick="fbq('track','Contact');">Necesito ayuda</a>
+      <a class="btn btn-primary js-pay js-utm" href="https://pago.pagopar.com/6v0iw" target="_blank" rel="noopener">Pagar Plan Simple</a>
+      <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Necesito ayuda</a>
     </div>
     <div class="cta-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
   </div>
@@ -486,13 +425,11 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 
 <!-- STICKY MOBILE BAR (PAGAR + SOPORTE) -->
 <div class="mobile-cta">
-  <a class="btn btn-primary" href="https://pago.pagopar.com/6v0iw" target="_blank"
-     onclick="fbq('track','InitiateCheckout');">Pagar</a>
-  <a class="btn btn-wa" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago."
-     target="_blank" onclick="fbq('track','Contact');">Soporte</a>
+  <a class="btn btn-primary js-pay js-utm" href="https://pago.pagopar.com/6v0iw" target="_blank" rel="noopener">Pagar</a>
+  <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Soporte</a>
 </div>
 
-<!-- ====== VITAMENTE · FUNNEL DE CALIFICACIÓN DE LEADS ====== -->
+<!-- ====== FUNNEL DE CALIFICACIÓN (se mantiene tal cual) ====== -->
 <style>
   :root{--primary:#1498e3;--wa:#25D366;--bg:#141625;--card:#1c2033;--text:#f2f2f2}
   .vit-fab{position:fixed;right:18px;bottom:86px;z-index:1100;background:var(--primary);
@@ -526,7 +463,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   @media (max-width:480px){.vit-title{font-size:1.05rem}}
 </style>
 
-<button class="vit-fab" id="vitOpenFunnel">🧭 Test rápido: ¿es para mí?</button>
+<button class="vit-fab" id="vitOpenFunnel">🧭 ¿Es para vos? Hacé el test en 60s</button>
 
 <div class="vit-modal" id="vitFunnelModal" aria-hidden="true">
   <div class="vit-sheet" role="dialog" aria-modal="true" aria-labelledby="vitFunnelTitle">
@@ -539,15 +476,13 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 </div>
 
 <script>
+/* ====== Funnel (igual que antes) ====== */
 (function(){
-  // ====== CONFIGURA AQUÍ TUS ENLACES ======
   const PAY_SIMPLE  = "https://pago.pagopar.com/6v0iw";
   const PAY_PREMIUM = "https://pago.pagopar.com/6v0io";
   const WA_BASE = "https://wa.me/595976418720?text=";
-  // (Opcional) Google Apps Script Web App para guardar leads en Google Sheets:
-  const SHEETS_WEBAPP_URL = ""; // p.ej: "https://script.google.com/macros/s/AKfycbx.../exec"
+  const SHEETS_WEBAPP_URL = ""; // opcional
 
-  // ====== UTM helper ======
   function getUTM(){
     const q = new URLSearchParams(window.location.search);
     const keep = ["utm_source","utm_medium","utm_campaign","utm_content"];
@@ -565,259 +500,165 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     return u.toString();
   }
 
-  // ====== Estado ======
-  const state = {
-    name:"", phone:"",
-    triggers:[],
-    symptoms:{ sudor:0, temblor:0, mente:0 },
-    tiempo:false, voluntad:false, severo:false,
-    score:0
-  };
+  const state = {name:"", phone:"", triggers:[], symptoms:{sudor:0, temblor:0, mente:0}, tiempo:false, voluntad:false, severo:false, score:0};
 
-  // ====== Pasos (render) ======
   const STEPS = [
-    function step0(){
+    function(){return `
+      <div class="vit-q">
+        <h4>¡Bienvenido! Este test te ayuda a saber si la guía te sirve.</h4>
+        <div class="vit-row">
+          <input id="vName" type="text" placeholder="Tu nombre (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
+          <input id="vPhone" type="tel" placeholder="WhatsApp (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
+        </div>
+        <div class="vit-actions"><button class="vit-btn ghost" data-next>Empezar (60s)</button></div>
+        <div class="vit-note">No sustituye atención profesional. Si tenés malestar severo, usaremos otra vía.</div>
+      </div>`;},
+    function(){
+      const opts=["Presentarme","Reuniones","Llamadas","Hablar con desconocidos","Exponer en clase/trabajo"];
+      const chips=opts.map(o=>`<label class="vit-chip"><input type="checkbox" value="${o}">${o}</label>`).join("");
       return `
-        <div class="vit-q">
-          <h4>¡Bienvenido! Este test te ayuda a saber si la guía te sirve.</h4>
-          <div class="vit-row">
-            <input id="vName" type="text" placeholder="Tu nombre (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
-            <input id="vPhone" type="tel" placeholder="WhatsApp (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
-          </div>
-          <div class="vit-actions">
-            <button class="vit-btn ghost" data-next>Empezar (60s)</button>
-          </div>
-          <div class="vit-note">No sustituye atención profesional. Si tenés malestar severo, usaremos otra vía.</div>
-        </div>`;
-    },
-    function step1(){
-      const opts = ["Presentarme","Reuniones","Llamadas","Hablar con desconocidos","Exponer en clase/trabajo"];
-      const chips = opts.map(o=>`<label class="vit-chip"><input type="checkbox" value="${o}">${o}</label>`).join("");
-      return `
-        <div class="vit-q">
-          <h4>1) ¿Qué situaciones te activan?</h4>
-          <div class="vit-row" id="vChips">${chips}</div>
-          <div class="vit-actions">
-            <button class="vit-btn ghost" data-prev>Volver</button>
-            <button class="vit-btn primary" data-next>Siguiente</button>
-          </div>
-        </div>`;
-    },
-    function step2(){
-      function radios(id,label){ 
-        return `
-        <div class="vit-q">
-          <h4>${label}</h4>
+      <div class="vit-q">
+        <h4>1) ¿Qué situaciones te activan?</h4>
+        <div class="vit-row" id="vChips">${chips}</div>
+        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>
+      </div>`;},
+    function(){
+      function radios(id,label){
+        return `<div class="vit-q"><h4>${label}</h4>
           <div class="vit-radio" data-group="${id}">
             <label><input type="radio" name="${id}" value="0"> Nada</label>
             <label><input type="radio" name="${id}" value="1"> Leve</label>
             <label><input type="radio" name="${id}" value="2"> Moderado</label>
             <label><input type="radio" name="${id}" value="3"> Fuerte</label>
-          </div>
-        </div>`;
+          </div></div>`;
       }
+      return `${radios("sudor","2) Sudoración")}${radios("temblor","3) Temblor / voz temblorosa")}${radios("mente","4) Mente en blanco / bloqueo")}
+      <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>`;},
+    function(){
       return `
-        ${radios("sudor","2) Sudoración")}
-        ${radios("temblor","3) Temblor / voz temblorosa")}
-        ${radios("mente","4) Mente en blanco / bloqueo")}
-        <div class="vit-actions">
-          <button class="vit-btn ghost" data-prev>Volver</button>
-          <button class="vit-btn primary" data-next>Siguiente</button>
-        </div>`;
-    },
-    function step3(){
-      return `
-        <div class="vit-q">
-          <h4>5) ¿Podés dedicar <strong>10–15 min al día</strong> durante 21 días?</h4>
-          <div class="vit-row">
-            <label class="vit-chip"><input type="radio" name="tiempo" value="si">Sí</label>
-            <label class="vit-chip"><input type="radio" name="tiempo" value="no">No</label>
-          </div>
+      <div class="vit-q">
+        <h4>5) ¿Podés dedicar <strong>10–15 min al día</strong> durante 21 días?</h4>
+        <div class="vit-row">
+          <label class="vit-chip"><input type="radio" name="tiempo" value="si">Sí</label>
+          <label class="vit-chip"><input type="radio" name="tiempo" value="no">No</label>
         </div>
-        <div class="vit-q">
-          <h4>6) ¿Estás dispuesto/a a practicar aunque dé un poco de miedo?</h4>
-          <div class="vit-row">
-            <label class="vit-chip"><input type="radio" name="voluntad" value="si">Sí</label>
-            <label class="vit-chip"><input type="radio" name="voluntad" value="no">No</label>
-          </div>
+      </div>
+      <div class="vit-q">
+        <h4>6) ¿Estás dispuesto/a a practicar aunque dé un poco de miedo?</h4>
+        <div class="vit-row">
+          <label class="vit-chip"><input type="radio" name="voluntad" value="si">Sí</label>
+          <label class="vit-chip"><input type="radio" name="voluntad" value="no">No</label>
         </div>
-        <div class="vit-q">
-          <h4>7) Señales de severidad (elegí si aplica)</h4>
-          <div class="vit-row">
-            <label class="vit-chip"><input type="checkbox" name="severo" value="panic">Crisis frecuentes / pánico</label>
-            <label class="vit-chip"><input type="checkbox" name="severo" value="autodano">Ideas de autodaño</label>
-          </div>
-          <div class="vit-note">Si marcás algo aquí, te recomendamos primero hablar por WhatsApp para orientarte.</div>
+      </div>
+      <div class="vit-q">
+        <h4>7) Señales de severidad (elegí si aplica)</h4>
+        <div class="vit-row">
+          <label class="vit-chip"><input type="checkbox" name="severo" value="panic">Crisis frecuentes / pánico</label>
+          <label class="vit-chip"><input type="checkbox" name="severo" value="autodano">Ideas de autodaño</label>
         </div>
-        <div class="vit-actions">
-          <button class="vit-btn ghost" data-prev>Volver</button>
-          <button class="vit-btn primary" data-next>Ver resultado</button>
-        </div>`;
-    },
-    function step4(){
-      const rec = computeScoreAndRecommendation();
-      const plan = rec.plan; // "premium" | "simple" | "soporte"
+        <div class="vit-note">Si marcás algo aquí, te recomendamos primero hablar por WhatsApp para orientarte.</div>
+      </div>
+      <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Ver resultado</button></div>`;},
+    function(){
+      const s = state.symptoms.sudor + state.symptoms.temblor + state.symptoms.mente;
+      let score = Math.round((s/9)*70); if(state.tiempo) score+=15; if(state.voluntad) score+=15;
+      let plan="simple"; if(state.severo){ score=Math.max(0,score-30); plan="soporte"; } else if(score>=70){ plan="premium"; }
+      state.score=Math.min(100,score);
+
       const badge = plan==="premium"?"Recomendado: Plan Premium":(plan==="simple"?"Recomendado: Plan Simple":"Primero hablemos");
-      const desc = {
-        premium:"Tenés activación moderada/alta y disposición a practicar. El grupo y los bonos te aceleran.",
-        simple:"Buen punto de partida para empezar hoy mismo con la guía y tabla editable.",
-        soporte:"Por tu respuesta, lo mejor es orientarte primero por WhatsApp antes de comprar."
-      }[plan];
+      const desc = {premium:"Tenés activación moderada/alta y disposición a practicar. El grupo y los bonos te aceleran.",
+                    simple:"Buen punto de partida para empezar hoy mismo con la guía y tabla editable.",
+                    soporte:"Por tu respuesta, lo mejor es orientarte primero por WhatsApp antes de comprar."}[plan];
 
-      const hrefSimple  = withUtm(PAY_SIMPLE);
-      const hrefPremium = withUtm(PAY_PREMIUM);
-      const waText = encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.");
-      const hrefWA = withUtm(WA_BASE + waText);
+      const hrefSimple = withUtm(PAY_SIMPLE);
+      const hrefPremium= withUtm(PAY_PREMIUM);
+      const waText=encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.");
+      const hrefWA = withUtm(WA_BASE+waText);
 
-      try{ if(window.fbq){ fbq('trackCustom','LeadQuizCompleted', {score:state.score, plan}); } }catch(e){}
+      try{ if(window.fbq){ fbq('trackCustom','LeadQuizCompleted',{score:state.score, plan}); } }catch(e){}
 
-      return `
-        <div class="vit-result">
-          <div class="vit-badge">${badge}</div>
-          <p style="margin:8px 0 4px">${desc}</p>
-          <div class="vit-actions">
-            ${plan!=="soporte" ? `<a class="vit-btn primary" href="${plan==="premium"?hrefPremium:hrefSimple}" target="_blank" rel="noopener" id="vitBuyBtn">${plan==="premium"?"Comprar Premium (Gs. 60.000)":"Comprar Simple (Gs. 30.000)"}</a>` : ""}
-            <a class="vit-btn wa" href="${hrefWA}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
-            <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
-          </div>
-          <div class="vit-note">Pago seguro con Pagopar · Acceso inmediato · Garantía 7 días</div>
-        </div>`;
-    }
+      return `<div class="vit-result">
+        <div class="vit-badge">${badge}</div>
+        <p style="margin:8px 0 4px">${desc}</p>
+        <div class="vit-actions">
+          ${plan!=="soporte" ? `<a class="vit-btn primary" href="${plan==="premium"?hrefPremium:hrefSimple}" target="_blank" rel="noopener" id="vitBuyBtn">${plan==="premium"?"Comprar Premium (Gs. 60.000)":"Comprar Simple (Gs. 30.000)"}</a>` : ""}
+          <a class="vit-btn wa" href="${hrefWA}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
+          <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
+        </div>
+        <div class="vit-note">Pago seguro con Pagopar · Acceso inmediato · Garantía 7 días</div>
+      </div>`;}
   ];
 
-  // ====== Lógica de puntaje ======
-  function computeScoreAndRecommendation(){
-    const s = state.symptoms.sudor + state.symptoms.temblor + state.symptoms.mente; // 0..9
-    let score = Math.round((s/9)*70);
-    if(state.tiempo) score += 15;
-    if(state.voluntad) score += 15;
-    let plan = "simple";
-    if(state.severo){ score = Math.max(0, score-30); plan = "soporte"; }
-    else if(score >= 70){ plan = "premium"; }
-    else if(score >= 35){ plan = "simple"; }
-    else { plan = "simple"; }
-    state.score = Math.min(100, score);
-    return {score:state.score, plan};
-  }
-
-  // ====== Render ======
-  const modal = document.getElementById("vitFunnelModal");
-  const body = document.getElementById("vitFunnelBody");
-  const openBtn = document.getElementById("vitOpenFunnel");
-  const closeBtn = document.getElementById("vitCloseFunnel");
-
-  let stepIndex = 0;
+  const modal=document.getElementById("vitFunnelModal"), body=document.getElementById("vitFunnelBody");
+  let stepIndex=0;
   function render(){
-    body.innerHTML = STEPS[stepIndex]();
+    body.innerHTML=STEPS[stepIndex]();
     body.querySelectorAll(".vit-chip").forEach(ch=>{
       ch.addEventListener("click", ()=>{
-        const input = ch.querySelector("input");
-        if(input.type==="checkbox"){
-          input.checked = !input.checked;
-          ch.classList.toggle("active", input.checked);
-        }else if(input.type==="radio"){
-          const name = input.name;
-          body.querySelectorAll(`input[name="${name}"]`).forEach(r=>{
-            const lbl = r.closest(".vit-chip");
-            if(lbl) lbl.classList.remove("active");
-          });
-          input.checked = true;
-          ch.classList.add("active");
-        }
+        const input=ch.querySelector("input");
+        if(input.type==="checkbox"){ input.checked=!input.checked; ch.classList.toggle("active",input.checked); }
+        else{ const name=input.name; body.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.closest(".vit-chip")?.classList.remove("active")); input.checked=true; ch.classList.add("active"); }
       });
     });
-    const next = body.querySelector("[data-next]");
-    const prev = body.querySelector("[data-prev]");
-    if(next) next.addEventListener("click", onNext);
-    if(prev) prev.addEventListener("click", ()=>{ stepIndex=Math.max(0,stepIndex-1); render(); });
-    const restart = body.querySelector("#vitRestart");
-    if(restart) restart.addEventListener("click", ()=>{ stepIndex=0; render(); });
-    const buy = body.querySelector("#vitBuyBtn");
-    if(buy) buy.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} });
-    const ws = body.querySelector("#vitSupportBtn");
-    if(ws) ws.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} });
+    body.querySelector("[data-next]")?.addEventListener("click", onNext);
+    body.querySelector("[data-prev]")?.addEventListener("click", ()=>{ stepIndex=Math.max(0,stepIndex-1); render(); });
+    body.querySelector("#vitRestart")?.addEventListener("click", ()=>{ stepIndex=0; render(); });
+    body.querySelector("#vitBuyBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} }, {once:true});
+    body.querySelector("#vitSupportBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
   }
-
   function onNext(){
-    if(stepIndex===0){
-      state.name = (document.getElementById("vName")||{}).value?.trim()||"";
-      state.phone= (document.getElementById("vPhone")||{}).value?.trim()||"";
-      try{ if(window.fbq){ fbq('trackCustom','LeadQuizStart'); } }catch(e){}
-    }
-    if(stepIndex===1){
-      state.triggers = [];
-      body.querySelectorAll("#vChips input:checked").forEach(i=>state.triggers.push(i.value));
-    }
-    if(stepIndex===2){
-      ["sudor","temblor","mente"].forEach(k=>{
-        const sel = body.querySelector(`input[name="${k}"]:checked`);
-        state.symptoms[k] = sel ? parseInt(sel.value,10) : 0;
-      });
-    }
-    if(stepIndex===3){
-      state.tiempo = body.querySelector('input[name="tiempo"]:checked')?.value==="si";
-      state.voluntad = body.querySelector('input[name="voluntad"]:checked')?.value==="si";
-      state.severo = !!body.querySelector('input[name="severo"]:checked');
-      maybeSendToSheets();
-    }
-    stepIndex = Math.min(STEPS.length-1, stepIndex+1);
-    render();
+    if(stepIndex===0){ state.name=(document.getElementById("vName")||{}).value?.trim()||""; state.phone=(document.getElementById("vPhone")||{}).value?.trim()||""; try{ if(window.fbq){ fbq('trackCustom','LeadQuizStart'); } }catch(e){} }
+    if(stepIndex===1){ state.triggers=[]; body.querySelectorAll("#vChips input:checked").forEach(i=>state.triggers.push(i.value)); }
+    if(stepIndex===2){ ["sudor","temblor","mente"].forEach(k=>{ const sel=body.querySelector(`input[name="${k}"]:checked`); state.symptoms[k]=sel?parseInt(sel.value,10):0; }); }
+    if(stepIndex===3){ state.tiempo=body.querySelector('input[name="tiempo"]:checked')?.value==="si"; state.voluntad=body.querySelector('input[name="voluntad"]:checked')?.value==="si"; state.severo=!!body.querySelector('input[name="severo"]:checked'); }
+    stepIndex=Math.min(STEPS.length-1, stepIndex+1); render();
   }
-
-  // ====== Sheets (opcional) ======
-  async function maybeSendToSheets(){
-    if(!SHEETS_WEBAPP_URL) return;
-    try{
-      const payload = {
-        name: state.name, phone: state.phone,
-        triggers: state.triggers.join(", "),
-        sudor: state.symptoms.sudor,
-        temblor: state.symptoms.temblor,
-        mente: state.symptoms.mente,
-        tiempo: state.tiempo, voluntad: state.voluntad, severo: state.severo,
-        scorePreview: Math.round((state.symptoms.sudor+state.symptoms.temblor+state.symptoms.mente)/9*70),
-        utm: location.search, ts: new Date().toISOString()
-      };
-      await fetch(SHEETS_WEBAPP_URL, {
-        method:"POST",
-        headers:{ "Content-Type":"application/json" },
-        body: JSON.stringify(payload)
-      });
-    }catch(e){}
-  }
-
   function open(){ modal.style.display="block"; modal.setAttribute("aria-hidden","false"); stepIndex=0; render(); }
   function close(){ modal.style.display="none"; modal.setAttribute("aria-hidden","true"); }
   document.getElementById("vitOpenFunnel").addEventListener("click", open);
   document.getElementById("vitCloseFunnel").addEventListener("click", close);
-  modal.addEventListener("click", (e)=>{ if(e.target===modal) close(); });
+  modal.addEventListener("click", e=>{ if(e.target===modal) close(); });
 })();
 </script>
-<!-- ============ FIN FUNNEL ============ -->
 
+<!-- ====== Tracking de videos + UTMs + Pixel sin duplicados ====== -->
 <script>
-  (function(){
-    var v = document.getElementById('explainerVideo');
-    if(!v) return;
-    var fired = false;
-    v.addEventListener('play', function(){
-      if(fired) return; fired = true;
-      try{ if(window.fbq){ fbq('trackCustom','VideoStarted',{placement:'midpage'}); } }catch(e){}
+(function(){
+  // 1) Traquear play de videos
+  function trackOnce(videoId, placement){
+    const v=document.getElementById(videoId); if(!v) return;
+    let fired=false; v.addEventListener('play', ()=>{ if(fired) return; fired=true; try{ if(window.fbq){ fbq('trackCustom','VideoStarted',{placement}); } }catch(e){} });
+  }
+  trackOnce('introVideo','hero');
+  trackOnce('explainerVideo','midpage');
+
+  // 2) Añadir UTMs automáticamente a enlaces de pago/WA
+  function currentUTM(){
+    const q=new URLSearchParams(location.search);
+    const keep=["utm_source","utm_medium","utm_campaign","utm_content"];
+    const out=new URLSearchParams(); keep.forEach(k=>{ if(q.get(k)) out.set(k,q.get(k)); });
+    return out.toString();
+  }
+  const utm=currentUTM();
+  if(utm){
+    document.querySelectorAll('a.js-utm').forEach(a=>{
+      try{
+        const u=new URL(a.href);
+        const p=new URLSearchParams(u.search);
+        new URLSearchParams(utm).forEach((v,k)=>{ if(!p.get(k)) p.set(k,v); });
+        u.search=p.toString(); a.href=u.toString();
+      }catch(e){}
     });
-  })();
-</script>
-  
-  <script>
-  (function(){
-    var v = document.getElementById('introVideo');
-    if(!v) return;
-    var fired = false;
-    v.addEventListener('play', function(){
-      if(fired) return;
-      fired = true;
-      try{ if(window.fbq){ fbq('trackCustom','VideoStarted',{placement:'hero'}); } }catch(e){}
-    });
-  })();
+  }
+
+  // 3) Pixel: track sin duplicados
+  document.querySelectorAll('a.js-pay').forEach(a=>{
+    a.addEventListener('click', ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} }, {once:true});
+  });
+  document.querySelectorAll('a.js-wa').forEach(a=>{
+    a.addEventListener('click', ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
+  });
+})();
 </script>
 
 </body>
