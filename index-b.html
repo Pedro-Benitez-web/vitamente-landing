@@ -482,9 +482,9 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   const PAY_PREMIUM = "https://pago.pagopar.com/6v0io";
   const WA_BASE = "https://wa.me/595976418720?text=";
   // <-- PEGA AQUÍ tu URL de Apps Script (Ruta A):
-  const LEAD_WEBHOOK_URL = https://script.google.com/macros/s/AKfycby2zt11YA1HcTp4TYqsXy2vZ9i-FLRnwdHRpd27kkaP1LgOlEdTbL9fagXOGiRB_zg7Yw/exec;
+  const LEAD_WEBHOOK_URL = "PEGÁ_ACÁ_TU_URL_DE_APPS_SCRIPT";
 
-  // ====== Helpers UTM / cookies / envío ======
+  // ====== Helpers UTM / cookies / test code / envío ======
   function getUTM(){
     const q = new URLSearchParams(window.location.search);
     const keep = ["utm_source","utm_medium","utm_campaign","utm_content"];
@@ -509,6 +509,10 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     const p = new URLSearchParams(location.search);
     const fbclid = p.get('fbclid');
     return fbclid ? 'fb.1.'+Date.now()+'.'+fbclid : '';
+  }
+  function getTestEventCode(){
+    const q = new URLSearchParams(location.search);
+    return q.get('fb_test_event_code') || '';
   }
   function postJSON(url, data){
     try{
@@ -622,7 +626,8 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
         plan,
         utm: location.search,
         fbp: getCookie('_fbp') || '',
-        fbc: getCookie('_fbc') || getFbcFromUrl() || ''
+        fbc: getCookie('_fbc') || getFbcFromUrl() || '',
+        test_event_code: getTestEventCode()   // <-- clave para Test Events
       };
       if(LEAD_WEBHOOK_URL){ postJSON(LEAD_WEBHOOK_URL, payload); }
 
