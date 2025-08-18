@@ -429,7 +429,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Soporte</a>
 </div>
 
-<!-- ====== FUNNEL DE CALIFICACIÓN (se mantiene tal cual) ====== -->
+<!-- ====== FUNNEL DE CALIFICACIÓN con CAPI ====== -->
 <style>
   :root{--primary:#1498e3;--wa:#25D366;--bg:#141625;--card:#1c2033;--text:#f2f2f2}
   .vit-fab{position:fixed;right:18px;bottom:86px;z-index:1100;background:var(--primary);
@@ -476,13 +476,15 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 </div>
 
 <script>
-/* ====== Funnel (igual que antes) ====== */
 (function(){
+  // ====== CONFIGURACIÓN ======
   const PAY_SIMPLE  = "https://pago.pagopar.com/6v0iw";
   const PAY_PREMIUM = "https://pago.pagopar.com/6v0io";
   const WA_BASE = "https://wa.me/595976418720?text=";
-  const SHEETS_WEBAPP_URL = ""; // opcional
+  // <-- PEGA AQUÍ tu URL de Apps Script (Ruta A):
+  const LEAD_WEBHOOK_URL = https://script.google.com/macros/s/AKfycbyhOO9HThWX-J7YrjO0ko3ic9mTj-P7nVR7a4VSONQdXOXKuSjcJvRa9_kw_nAdTFFB0w/exec;
 
+  // ====== Helpers UTM / cookies / envío ======
   function getUTM(){
     const q = new URLSearchParams(window.location.search);
     const keep = ["utm_source","utm_medium","utm_campaign","utm_content"];
@@ -499,105 +501,179 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     cur.forEach((v,k)=>{ if(!u.searchParams.get(k)) u.searchParams.set(k,v); });
     return u.toString();
   }
+  function getCookie(name){
+    const m = document.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function getFbcFromUrl(){
+    const p = new URLSearchParams(location.search);
+    const fbclid = p.get('fbclid');
+    return fbclid ? 'fb.1.'+Date.now()+'.'+fbclid : '';
+  }
+  function postJSON(url, data){
+    try{
+      const blob = new Blob([JSON.stringify(data)], {type:'application/json'});
+      if(navigator.sendBeacon){ navigator.sendBeacon(url, blob); return; }
+    }catch(e){}
+    fetch(url, {method:'POST', headers:{'Content-Type':'application/json'}, body: JSON.stringify(data)}).catch(()=>{});
+  }
 
-  const state = {name:"", phone:"", triggers:[], symptoms:{sudor:0, temblor:0, mente:0}, tiempo:false, voluntad:false, severo:false, score:0};
+  // ====== Estado ======
+  const state = {
+    name:"", phone:"",
+    triggers:[],
+    symptoms:{ sudor:0, temblor:0, mente:0 },
+    tiempo:false, voluntad:false, severo:false,
+    score:0
+  };
 
+  // ====== Pasos (render) ======
   const STEPS = [
-    function(){return `
-      <div class="vit-q">
-        <h4>¡Bienvenido! Este test te ayuda a saber si la guía te sirve.</h4>
-        <div class="vit-row">
-          <input id="vName" type="text" placeholder="Tu nombre (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
-          <input id="vPhone" type="tel" placeholder="WhatsApp (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
-        </div>
-        <div class="vit-actions"><button class="vit-btn ghost" data-next>Empezar (60s)</button></div>
-        <div class="vit-note">No sustituye atención profesional. Si tenés malestar severo, usaremos otra vía.</div>
-      </div>`;},
-    function(){
-      const opts=["Presentarme","Reuniones","Llamadas","Hablar con desconocidos","Exponer en clase/trabajo"];
-      const chips=opts.map(o=>`<label class="vit-chip"><input type="checkbox" value="${o}">${o}</label>`).join("");
+    function step0(){
       return `
-      <div class="vit-q">
-        <h4>1) ¿Qué situaciones te activan?</h4>
-        <div class="vit-row" id="vChips">${chips}</div>
-        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>
-      </div>`;},
-    function(){
-      function radios(id,label){
-        return `<div class="vit-q"><h4>${label}</h4>
+        <div class="vit-q">
+          <h4>¡Bienvenido! Este test te ayuda a saber si la guía te sirve.</h4>
+          <div class="vit-row">
+            <input id="vName" type="text" placeholder="Tu nombre (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
+            <input id="vPhone" type="tel" placeholder="WhatsApp (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
+          </div>
+          <div class="vit-actions"><button class="vit-btn ghost" data-next>Empezar (60s)</button></div>
+          <div class="vit-note">No sustituye atención profesional. Si tenés malestar severo, usaremos otra vía.</div>
+        </div>`;
+    },
+    function step1(){
+      const opts = ["Presentarme","Reuniones","Llamadas","Hablar con desconocidos","Exponer en clase/trabajo"];
+      const chips = opts.map(o=>`<label class="vit-chip"><input type="checkbox" value="${o}">${o}</label>`).join("");
+      return `
+        <div class="vit-q">
+          <h4>1) ¿Qué situaciones te activan?</h4>
+          <div class="vit-row" id="vChips">${chips}</div>
+          <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>
+        </div>`;
+    },
+    function step2(){
+      function radios(id,label){ 
+        return `
+        <div class="vit-q">
+          <h4>${label}</h4>
           <div class="vit-radio" data-group="${id}">
             <label><input type="radio" name="${id}" value="0"> Nada</label>
             <label><input type="radio" name="${id}" value="1"> Leve</label>
             <label><input type="radio" name="${id}" value="2"> Moderado</label>
             <label><input type="radio" name="${id}" value="3"> Fuerte</label>
-          </div></div>`;
+          </div>
+        </div>`;
       }
-      return `${radios("sudor","2) Sudoración")}${radios("temblor","3) Temblor / voz temblorosa")}${radios("mente","4) Mente en blanco / bloqueo")}
-      <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>`;},
-    function(){
       return `
-      <div class="vit-q">
-        <h4>5) ¿Podés dedicar <strong>10–15 min al día</strong> durante 21 días?</h4>
-        <div class="vit-row">
-          <label class="vit-chip"><input type="radio" name="tiempo" value="si">Sí</label>
-          <label class="vit-chip"><input type="radio" name="tiempo" value="no">No</label>
+        ${radios("sudor","2) Sudoración")}
+        ${radios("temblor","3) Temblor / voz temblorosa")}
+        ${radios("mente","4) Mente en blanco / bloqueo")}
+        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>`;
+    },
+    function step3(){
+      return `
+        <div class="vit-q">
+          <h4>5) ¿Podés dedicar <strong>10–15 min al día</strong> durante 21 días?</h4>
+          <div class="vit-row">
+            <label class="vit-chip"><input type="radio" name="tiempo" value="si">Sí</label>
+            <label class="vit-chip"><input type="radio" name="tiempo" value="no">No</label>
+          </div>
         </div>
-      </div>
-      <div class="vit-q">
-        <h4>6) ¿Estás dispuesto/a a practicar aunque dé un poco de miedo?</h4>
-        <div class="vit-row">
-          <label class="vit-chip"><input type="radio" name="voluntad" value="si">Sí</label>
-          <label class="vit-chip"><input type="radio" name="voluntad" value="no">No</label>
+        <div class="vit-q">
+          <h4>6) ¿Estás dispuesto/a a practicar aunque dé un poco de miedo?</h4>
+          <div class="vit-row">
+            <label class="vit-chip"><input type="radio" name="voluntad" value="si">Sí</label>
+            <label class="vit-chip"><input type="radio" name="voluntad" value="no">No</label>
+          </div>
         </div>
-      </div>
-      <div class="vit-q">
-        <h4>7) Señales de severidad (elegí si aplica)</h4>
-        <div class="vit-row">
-          <label class="vit-chip"><input type="checkbox" name="severo" value="panic">Crisis frecuentes / pánico</label>
-          <label class="vit-chip"><input type="checkbox" name="severo" value="autodano">Ideas de autodaño</label>
+        <div class="vit-q">
+          <h4>7) Señales de severidad (elegí si aplica)</h4>
+          <div class="vit-row">
+            <label class="vit-chip"><input type="checkbox" name="severo" value="panic">Crisis frecuentes / pánico</label>
+            <label class="vit-chip"><input type="checkbox" name="severo" value="autodano">Ideas de autodaño</label>
+          </div>
+          <div class="vit-note">Si marcás algo aquí, te recomendamos primero hablar por WhatsApp para orientarte.</div>
         </div>
-        <div class="vit-note">Si marcás algo aquí, te recomendamos primero hablar por WhatsApp para orientarte.</div>
-      </div>
-      <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Ver resultado</button></div>`;},
-    function(){
-      const s = state.symptoms.sudor + state.symptoms.temblor + state.symptoms.mente;
-      let score = Math.round((s/9)*70); if(state.tiempo) score+=15; if(state.voluntad) score+=15;
-      let plan="simple"; if(state.severo){ score=Math.max(0,score-30); plan="soporte"; } else if(score>=70){ plan="premium"; }
-      state.score=Math.min(100,score);
+        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Ver resultado</button></div>`;
+    },
+    function step4(){
+      // === Calcular score y recomendación
+      const s = state.symptoms.sudor + state.symptoms.temblor + state.symptoms.mente; // 0..9
+      let score = Math.round((s/9)*70); if(state.tiempo) score += 15; if(state.voluntad) score += 15;
+      let plan = "simple";
+      if(state.severo){ score = Math.max(0, score-30); plan = "soporte"; }
+      else if(score >= 70){ plan = "premium"; }
+      state.score = Math.min(100, score);
 
+      // === Enviar Lead calificado a tu endpoint (CAPI)
+      const event_id = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+      const payload = {
+        event_id,
+        name: state.name,
+        phone: state.phone,
+        triggers: state.triggers.join(', '),
+        sudor: state.symptoms.sudor,
+        temblor: state.symptoms.temblor,
+        mente: state.symptoms.mente,
+        tiempo: state.tiempo,
+        voluntad: state.voluntad,
+        severo: state.severo,
+        score: state.score,
+        plan,
+        utm: location.search,
+        fbp: getCookie('_fbp') || '',
+        fbc: getCookie('_fbc') || getFbcFromUrl() || ''
+      };
+      if(LEAD_WEBHOOK_URL){ postJSON(LEAD_WEBHOOK_URL, payload); }
+
+      // Pixel front (quiz completed)
+      try{ if(window.fbq){ fbq('trackCustom','LeadQuizCompleted', {score:state.score, plan}); } }catch(e){}
+
+      // === Render resultado
       const badge = plan==="premium"?"Recomendado: Plan Premium":(plan==="simple"?"Recomendado: Plan Simple":"Primero hablemos");
-      const desc = {premium:"Tenés activación moderada/alta y disposición a practicar. El grupo y los bonos te aceleran.",
-                    simple:"Buen punto de partida para empezar hoy mismo con la guía y tabla editable.",
-                    soporte:"Por tu respuesta, lo mejor es orientarte primero por WhatsApp antes de comprar."}[plan];
+      const desc = {
+        premium:"Tenés activación moderada/alta y disposición a practicar. El grupo y los bonos te aceleran.",
+        simple:"Buen punto de partida para empezar hoy mismo con la guía y tabla editable.",
+        soporte:"Por tu respuesta, lo mejor es orientarte primero por WhatsApp antes de comprar."
+      }[plan];
 
-      const hrefSimple = withUtm(PAY_SIMPLE);
-      const hrefPremium= withUtm(PAY_PREMIUM);
-      const waText=encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.");
-      const hrefWA = withUtm(WA_BASE+waText);
+      const hrefSimple  = withUtm(PAY_SIMPLE);
+      const hrefPremium = withUtm(PAY_PREMIUM);
+      const waText = encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.");
+      const hrefWA = withUtm(WA_BASE + waText);
 
-      try{ if(window.fbq){ fbq('trackCustom','LeadQuizCompleted',{score:state.score, plan}); } }catch(e){}
-
-      return `<div class="vit-result">
-        <div class="vit-badge">${badge}</div>
-        <p style="margin:8px 0 4px">${desc}</p>
-        <div class="vit-actions">
-          ${plan!=="soporte" ? `<a class="vit-btn primary" href="${plan==="premium"?hrefPremium:hrefSimple}" target="_blank" rel="noopener" id="vitBuyBtn">${plan==="premium"?"Comprar Premium (Gs. 60.000)":"Comprar Simple (Gs. 30.000)"}</a>` : ""}
-          <a class="vit-btn wa" href="${hrefWA}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
-          <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
-        </div>
-        <div class="vit-note">Pago seguro con Pagopar · Acceso inmediato · Garantía 7 días</div>
-      </div>`;}
+      return `
+        <div class="vit-result">
+          <div class="vit-badge">${badge}</div>
+          <p style="margin:8px 0 4px">${desc}</p>
+          <div class="vit-actions">
+            ${plan!=="soporte" ? `<a class="vit-btn primary" href="${plan==="premium"?hrefPremium:hrefSimple}" target="_blank" rel="noopener" id="vitBuyBtn">${plan==="premium"?"Comprar Premium (Gs. 60.000)":"Comprar Simple (Gs. 30.000)"}</a>` : ""}
+            <a class="vit-btn wa" href="${hrefWA}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
+            <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
+          </div>
+          <div class="vit-note">Pago seguro con Pagopar · Acceso inmediato · Garantía 7 días</div>
+        </div>`;
+    }
   ];
 
-  const modal=document.getElementById("vitFunnelModal"), body=document.getElementById("vitFunnelBody");
-  let stepIndex=0;
+  // ====== Render / navegación ======
+  const modal = document.getElementById("vitFunnelModal");
+  const body = document.getElementById("vitFunnelBody");
+  const openBtn = document.getElementById("vitOpenFunnel");
+  const closeBtn = document.getElementById("vitCloseFunnel");
+
+  let stepIndex = 0;
   function render(){
-    body.innerHTML=STEPS[stepIndex]();
+    body.innerHTML = STEPS[stepIndex]();
     body.querySelectorAll(".vit-chip").forEach(ch=>{
       ch.addEventListener("click", ()=>{
-        const input=ch.querySelector("input");
-        if(input.type==="checkbox"){ input.checked=!input.checked; ch.classList.toggle("active",input.checked); }
-        else{ const name=input.name; body.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.closest(".vit-chip")?.classList.remove("active")); input.checked=true; ch.classList.add("active"); }
+        const input = ch.querySelector("input");
+        if(input.type==="checkbox"){ input.checked = !input.checked; ch.classList.toggle("active", input.checked); }
+        else{
+          const name = input.name;
+          body.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.closest(".vit-chip")?.classList.remove("active"));
+          input.checked = true; ch.classList.add("active");
+        }
       });
     });
     body.querySelector("[data-next]")?.addEventListener("click", onNext);
@@ -606,25 +682,44 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     body.querySelector("#vitBuyBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} }, {once:true});
     body.querySelector("#vitSupportBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
   }
+
   function onNext(){
-    if(stepIndex===0){ state.name=(document.getElementById("vName")||{}).value?.trim()||""; state.phone=(document.getElementById("vPhone")||{}).value?.trim()||""; try{ if(window.fbq){ fbq('trackCustom','LeadQuizStart'); } }catch(e){} }
-    if(stepIndex===1){ state.triggers=[]; body.querySelectorAll("#vChips input:checked").forEach(i=>state.triggers.push(i.value)); }
-    if(stepIndex===2){ ["sudor","temblor","mente"].forEach(k=>{ const sel=body.querySelector(`input[name="${k}"]:checked`); state.symptoms[k]=sel?parseInt(sel.value,10):0; }); }
-    if(stepIndex===3){ state.tiempo=body.querySelector('input[name="tiempo"]:checked')?.value==="si"; state.voluntad=body.querySelector('input[name="voluntad"]:checked')?.value==="si"; state.severo=!!body.querySelector('input[name="severo"]:checked'); }
-    stepIndex=Math.min(STEPS.length-1, stepIndex+1); render();
+    if(stepIndex===0){
+      state.name = (document.getElementById("vName")||{}).value?.trim()||"";
+      state.phone= (document.getElementById("vPhone")||{}).value?.trim()||"";
+      try{ if(window.fbq){ fbq('trackCustom','LeadQuizStart'); } }catch(e){}
+    }
+    if(stepIndex===1){
+      state.triggers = [];
+      body.querySelectorAll("#vChips input:checked").forEach(i=>state.triggers.push(i.value));
+    }
+    if(stepIndex===2){
+      ["sudor","temblor","mente"].forEach(k=>{
+        const sel = body.querySelector(`input[name="${k}"]:checked`);
+        state.symptoms[k] = sel ? parseInt(sel.value,10) : 0;
+      });
+    }
+    if(stepIndex===3){
+      state.tiempo = body.querySelector('input[name="tiempo"]:checked')?.value==="si";
+      state.voluntad = body.querySelector('input[name="voluntad"]:checked')?.value==="si";
+      state.severo = !!body.querySelector('input[name="severo"]:checked');
+    }
+    stepIndex = Math.min(STEPS.length-1, stepIndex+1);
+    render();
   }
+
   function open(){ modal.style.display="block"; modal.setAttribute("aria-hidden","false"); stepIndex=0; render(); }
   function close(){ modal.style.display="none"; modal.setAttribute("aria-hidden","true"); }
-  document.getElementById("vitOpenFunnel").addEventListener("click", open);
-  document.getElementById("vitCloseFunnel").addEventListener("click", close);
-  modal.addEventListener("click", e=>{ if(e.target===modal) close(); });
+  openBtn.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+  modal.addEventListener("click", (e)=>{ if(e.target===modal) close(); });
 })();
 </script>
 
 <!-- ====== Tracking de videos + UTMs + Pixel sin duplicados ====== -->
 <script>
 (function(){
-  // 1) Traquear play de videos
+  // 1) Traquear play de videos (front)
   function trackOnce(videoId, placement){
     const v=document.getElementById(videoId); if(!v) return;
     let fired=false; v.addEventListener('play', ()=>{ if(fired) return; fired=true; try{ if(window.fbq){ fbq('trackCustom','VideoStarted',{placement}); } }catch(e){} });
