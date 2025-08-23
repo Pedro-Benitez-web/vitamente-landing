@@ -280,7 +280,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       </div>
 
       <p class="cta-note" style="margin-top:10px">
-        Pago con QR/Billetera/Transferencia · Acceso inmediato · <strong>Garantía 7 días</strong>
+        Generar QR o por Billetera · Acceso inmediato · <strong>Garantía 7 días</strong>
       </p>
     </div>
   </div>
@@ -322,7 +322,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
              data-card="">
              Elegir método de pago
           </a>
-          <div class="cta-note">Pagopar (QR/Billetera/Transferencia) · Acceso inmediato</div>
+          <div class="cta-note">Pagopar (QR/Billetera) · Acceso inmediato</div>
         </div>
       </div>
 
@@ -344,7 +344,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
              data-card="">
              Elegir método de pago
           </a>
-          <div class="cta-note">Pagopar (QR/Billetera/Transferencia) · Acceso inmediato</div>
+          <div class="cta-note">Pagopar (QR/Billetera) · Acceso inmediato</div>
         </div>
       </div>
     </div>
@@ -501,7 +501,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   const PAY_PREMIUM = "https://pago.pagopar.com/6v0io";
   const WA_BASE = "https://wa.me/595976418720?text=";
   // <-- PEGA AQUÍ tu URL de Apps Script (Ruta A):
-  const LEAD_WEBHOOK_URL = "PEGÁ_ACÁ_TU_URL_DE_APPS_SCRIPT";
+  const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxlRqCDswjylV3s7JtjMq-PuFYrOGCOQJVDC6TYZ8yuk0o8He5pSBFHq8SEFIO_X-XGmA/exec";
 
   // ====== Helpers UTM / cookies / test code / envío ======
   function getUTM(){
@@ -798,8 +798,8 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   <div class="pay-card">
     <h3 id="payTitle">Elegí cómo querés pagar</h3>
     <div class="pay-grid">
-      <a id="btnPagopar" class="btn" style="background:#1498e3" target="_blank" rel="noopener">Pagopar (QR / Billetera / Transferencia)</a>
-      <a id="btnCard" class="btn" style="background:#0ea5e9" target="_blank" rel="noopener">Tarjeta de crédito/débito</a>
+      <a id="btnPagopar" class="btn" style="background:#1498e3" target="_blank" rel="noopener">Pagopar (QR / Billetera)</a>
+      <a id="btnCard" class="btn" style="background:#0ea5e9" target="_blank" rel="noopener">transferencia</a>
       <a id="btnWA" class="btn" style="background:#25D366" target="_blank" rel="noopener">Pago asistido por WhatsApp</a>
       <button id="btnClosePay" class="btn" style="background:#384060">Cerrar</button>
     </div>
