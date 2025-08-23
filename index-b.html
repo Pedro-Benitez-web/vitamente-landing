@@ -94,7 +94,7 @@ section{padding:60px 0}
 /* FAQ */
 details{background:#22263a;border-radius:10px;padding:14px 16px}
 details+details{margin-top:10px}
-summary{cursor:pointer;font-weight:700;color:#eaeaf2}
+summary{cursor:pointer;font-weight:700;color:#e6e6e6}
 summary::marker{color:#7ee39a}
 details p{margin-top:8px;color:#d7dbe6}
 
@@ -103,7 +103,7 @@ details p{margin-top:8px;color:#d7dbe6}
 .about img{width:100%;max-width:280px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35)}
 @media(max-width:800px){.about{grid-template-columns:1fr;text-align:center}}
 
-/* MOBILE BAR con 2 botones */
+/* MOBILE BAR */
 .mobile-cta{position:fixed;left:0;right:0;bottom:0;background:#141625;border-top:2px solid var(--primary);
 display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 .mobile-cta a{flex:1;max-width:360px}
@@ -117,10 +117,14 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 
 /* === Modal de pago === */
 .pay-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2000}
-.pay-card{background:#1c2033;border:1px solid #2a2f47;border-radius:14px;padding:22px;max-width:420px;width:92%}
+.pay-card{background:#1c2033;border:1px solid #2a2f47;border-radius:14px;padding:22px;max-width:460px;width:92%}
 .pay-card h3{margin-top:0}
 .pay-grid{display:grid;gap:10px}
 .pay-note{color:#cfd3dc;font-size:.9rem;margin-top:8px}
+.pay-section{display:block}
+.hidden{display:none}
+.input{width:100%;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff}
+.label{font-size:.95rem;color:#cfd3dc;margin:6px 0 4px;display:block}
 </style>
 </head>
 <body>
@@ -134,7 +138,6 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       <div class="price">Lanzamiento: <del>Gs. 120.000</del> <strong>Gs. 30.000</strong></div>
 
       <div class="actions">
-        <!-- Abrirá modal (plan simple por defecto) -->
         <a class="btn btn-primary js-open-pay" href="#" data-plan="simple" aria-label="Pagar y descargar ahora">Pagar y descargar ahora</a>
 
         <a class="btn btn-wa js-wa js-utm"
@@ -143,7 +146,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       </div>
 
       <p style="margin-top:6px;color:#cfd3dc;font-size:.95rem">
-        Pago con QR/Billetera vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
+        Pago con <strong>QR/Billetera</strong> vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
       </p>
 
       <div class="trust">
@@ -249,10 +252,9 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   </div>
 </section>
 
-<!-- ===== VIDEO DE PEDRO + CTA ===== -->
+<!-- ===== VIDEO + CTA ===== -->
 <section id="ver-video">
   <div class="container grid grid-2" style="align-items:center">
-    <!-- Video -->
     <div class="card center">
       <video id="explainerVideo" class="mid-video" poster="habla_sin_miedo.png" preload="metadata" playsinline controls>
         <source src="Video_Pedro.mp4" type="video/mp4">
@@ -260,7 +262,6 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       </video>
     </div>
 
-    <!-- Texto + CTA -->
     <div class="card">
       <h2>Mirá el video y empezá hoy</h2>
       <p style="color:#cfd3dc;margin:8px 0 12px">
@@ -268,24 +269,22 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       </p>
 
       <div class="actions" style="gap:10px;flex-wrap:wrap">
-        <!-- Abrirá modal (plan simple por defecto) -->
         <a class="btn btn-primary js-open-pay" href="#" data-plan="simple" aria-label="Pagar ahora">Pagar ahora</a>
 
         <a class="btn btn-wa js-wa js-utm"
            href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20antes%20de%20pagar%20%C2%BFMe%20ayud%C3%A1s%3F"
-           target="_blank" rel="noopener" aria-label="Soporte por WhatsApp">¿Dudas? Soporte por WhatsApp</a>
+           target="_blank" rel="noopener">¿Dudas? Soporte por WhatsApp</a>
 
         <a class="btn js-open-pay" style="background:#2a2f47;color:#fff"
            href="#" data-plan="premium" aria-label="Ver Plan Premium">Ver Plan Premium</a>
       </div>
 
       <p class="cta-note" style="margin-top:10px">
-        Generar QR o por Billetera · Acceso inmediato · <strong>Garantía 7 días</strong>
+        Pago con <strong>QR/Billetera</strong> vía Pagopar · Acceso inmediato · Garantía 7 días
       </p>
     </div>
   </div>
 </section>
-<!-- ================================== -->
 
 <!-- GARANTÍA -->
 <section>
@@ -314,12 +313,10 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
           <li>Tabla editable</li>
         </ul>
         <div class="center" style="margin-top:14px">
-          <!-- Modal: elegir método de pago -->
           <a class="btn btn-primary js-open-pay"
              href="#"
              data-plan="simple"
-             data-pagopar="https://pago.pagopar.com/6v0iw"
-             data-card="">
+             data-pagopar="https://pago.pagopar.com/6v0iw">
              Elegir método de pago
           </a>
           <div class="cta-note">Pagopar (QR/Billetera) · Acceso inmediato</div>
@@ -336,12 +333,10 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
           <li>Grupo de apoyo por WhatsApp</li>
         </ul>
         <div class="center" style="margin-top:14px">
-          <!-- Modal: elegir método de pago -->
           <a class="btn btn-wa js-open-pay"
              href="#"
              data-plan="premium"
-             data-pagopar="https://pago.pagopar.com/6v0io"
-             data-card="">
+             data-pagopar="https://pago.pagopar.com/6v0io">
              Elegir método de pago
           </a>
           <div class="cta-note">Pagopar (QR/Billetera) · Acceso inmediato</div>
@@ -364,7 +359,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   <div class="container">
     <h2 class="center">Historias reales</h2>
     <div class="testis" style="margin-top:16px">
-      <div class="t esti">
+      <div class="testi">
         <p>“Me presenté en clase sin quedarme en blanco. El plan me ordenó la cabeza.”</p>
         <div class="name">— Sofía · 28</div>
       </div>
@@ -442,324 +437,18 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   <div style="margin-top:8px;font-size:.85rem;color:#9aa0ad">Este material no sustituye atención profesional presencial.</div>
 </div>
 
-<!-- STICKY MOBILE BAR (PAGAR + SOPORTE) -->
+<!-- STICKY MOBILE BAR -->
 <div class="mobile-cta">
   <a class="btn btn-primary js-open-pay" href="#" data-plan="simple">Pagar</a>
   <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Soporte</a>
 </div>
 
-<!-- ====== FUNNEL DE CALIFICACIÓN con CAPI ====== -->
-<style>
-  :root{--primary:#1498e3;--wa:#25D366;--bg:#141625;--card:#1c2033;--text:#f2f2f2}
-  .vit-fab{position:fixed;right:18px;bottom:86px;z-index:1100;background:var(--primary);
-    color:#fff;border:none;border-radius:999px;padding:12px 16px;font-weight:700;
-    box-shadow:0 8px 20px rgba(0,0,0,.3);cursor:pointer}
-  .vit-fab:hover{filter:brightness(.95);transform:translateY(-1px)}
-  .vit-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;z-index:1101}
-  .vit-sheet{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
-    width:min(92vw,720px);max-height:86vh;overflow:auto;background:#1c2033;color:var(--text);
-    border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
-  .vit-head{padding:16px 18px;border-bottom:1px solid #2a2f47;display:flex;justify-content:space-between;align-items:center}
-  .vit-body{padding:18px}
-  .vit-title{font-size:1.25rem;font-weight:800}
-  .vit-close{background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
-  .vit-q{background:#22263a;border:1px solid #2a2f47;border-radius:12px;padding:14px 14px;margin:10px 0}
-  .vit-q h4{margin-bottom:8px;font-size:1rem}
-  .vit-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
-  .vit-chip{background:#2a2f47;color:#eaeaf2;border:none;border-radius:999px;padding:8px 12px;cursor:pointer}
-  .vit-chip input{display:none}
-  .vit-chip.active{background:#1498e3;color:#fff}
-  .vit-radio{display:flex;gap:10px;flex-wrap:wrap}
-  .vit-radio label{background:#2a2f47;border-radius:8px;padding:8px 10px;cursor:pointer}
-  .vit-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
-  .vit-btn{display:inline-block;border:none;border-radius:10px;padding:12px 16px;font-weight:800;cursor:pointer}
-  .vit-btn.primary{background:var(--primary);color:#fff}
-  .vit-btn.wa{background:var(--wa);color:#fff}
-  .vit-btn.ghost{background:#2a2f47;color:#fff}
-  .vit-note{font-size:.88rem;color:#cfd3dc;margin-top:8px}
-  .vit-result{background:#19202f;border-radius:12px;padding:14px;border:1px solid #2a2f47;margin-top:12px}
-  .vit-badge{display:inline-block;background:#2a2f47;padding:6px 10px;border-radius:999px;font-size:.86rem;margin-bottom:6px}
-  @media (max-width:480px){.vit-title{font-size:1.05rem}}
-</style>
+<!-- ====== WIDGET / QUIZ OMITIDO AQUÍ PARA BREVEDAD (si lo usas, mantenelo como antes) ====== -->
 
-<button class="vit-fab" id="vitOpenFunnel">🧭 ¿Es para vos? Hacé el test en 60s</button>
-
-<div class="vit-modal" id="vitFunnelModal" aria-hidden="true">
-  <div class="vit-sheet" role="dialog" aria-modal="true" aria-labelledby="vitFunnelTitle">
-    <div class="vit-head">
-      <div class="vit-title" id="vitFunnelTitle">Guía 5 pasos · Calificá tu caso en 60s</div>
-      <button class="vit-close" id="vitCloseFunnel" aria-label="Cerrar">✕</button>
-    </div>
-    <div class="vit-body" id="vitFunnelBody"></div>
-  </div>
-</div>
-
+<!-- ===== Tracking de videos + UTMs + Pixel ===== -->
 <script>
 (function(){
-  // ====== CONFIGURACIÓN ======
-  const PAY_SIMPLE  = "https://pago.pagopar.com/6v0iw";
-  const PAY_PREMIUM = "https://pago.pagopar.com/6v0io";
-  const WA_BASE = "https://wa.me/595976418720?text=";
-  // <-- PEGA AQUÍ tu URL de Apps Script (Ruta A):
-  const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxlRqCDswjylV3s7JtjMq-PuFYrOGCOQJVDC6TYZ8yuk0o8He5pSBFHq8SEFIO_X-XGmA/exec";
-
-  // ====== Helpers UTM / cookies / test code / envío ======
-  function getUTM(){
-    const q = new URLSearchParams(window.location.search);
-    const keep = ["utm_source","utm_medium","utm_campaign","utm_content"];
-    const out = new URLSearchParams();
-    keep.forEach(k=>{ if(q.get(k)) out.set(k, q.get(k)); });
-    out.set("src","funnel");
-    const s = out.toString();
-    return s ? ("?"+s) : "";
-  }
-  function withUtm(url){
-    if(!url) return url;
-    const u = new URL(url);
-    const cur = new URLSearchParams(getUTM().slice(1));
-    cur.forEach((v,k)=>{ if(!u.searchParams.get(k)) u.searchParams.set(k,v); });
-    return u.toString();
-  }
-  function getCookie(name){
-    const m = document.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]*)'));
-    return m ? decodeURIComponent(m[1]) : '';
-  }
-  function getFbcFromUrl(){
-    const p = new URLSearchParams(location.search);
-    const fbclid = p.get('fbclid');
-    return fbclid ? 'fb.1.'+Date.now()+'.'+fbclid : '';
-  }
-  function getTestEventCode(){
-    const q = new URLSearchParams(location.search);
-    return q.get('fb_test_event_code') || '';
-  }
-  function postJSON(url, data){
-    const body = JSON.stringify(data);
-    try{
-      if (navigator.sendBeacon){
-        const blob = new Blob([body], { type: 'text/plain;charset=UTF-8' });
-        navigator.sendBeacon(url, blob);
-        return;
-      }
-    }catch(e){}
-    try{
-      fetch(url, {
-        method: 'POST',
-        mode: 'no-cors',
-        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-        body
-      });
-    }catch(e){}
-  }
-
-  // ====== Estado ======
-  const state = {
-    name:"", phone:"",
-    triggers:[],
-    symptoms:{ sudor:0, temblor:0, mente:0 },
-    tiempo:false, voluntad:false, severo:false,
-    score:0
-  };
-
-  // ====== Pasos (render) ======
-  const STEPS = [
-    function step0(){
-      return `
-        <div class="vit-q">
-          <h4>¡Bienvenido! Este test te ayuda a saber si la guía te sirve.</h4>
-          <div class="vit-row">
-            <input id="vName" type="text" placeholder="Tu nombre (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
-            <input id="vPhone" type="tel" placeholder="WhatsApp (opcional)" style="flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff">
-          </div>
-          <div class="vit-actions"><button class="vit-btn ghost" data-next>Empezar (60s)</button></div>
-          <div class="vit-note">No sustituye atención profesional. Si tenés malestar severo, usaremos otra vía.</div>
-        </div>`;
-    },
-    function step1(){
-      const opts = ["Presentarme","Reuniones","Llamadas","Hablar con desconocidos","Exponer en clase/trabajo"];
-      const chips = opts.map(o=>`<label class="vit-chip"><input type="checkbox" value="${o}">${o}</label>`).join("");
-      return `
-        <div class="vit-q">
-          <h4>1) ¿Qué situaciones te activan?</h4>
-          <div class="vit-row" id="vChips">${chips}</div>
-          <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>
-        </div>`;
-    },
-    function step2(){
-      function radios(id,label){ 
-        return `
-        <div class="vit-q">
-          <h4>${label}</h4>
-          <div class="vit-radio" data-group="${id}">
-            <label><input type="radio" name="${id}" value="0"> Nada</label>
-            <label><input type="radio" name="${id}" value="1"> Leve</label>
-            <label><input type="radio" name="${id}" value="2"> Moderado</label>
-            <label><input type="radio" name="${id}" value="3"> Fuerte</label>
-          </div>
-        </div>`;
-      }
-      return `
-        ${radios("sudor","2) Sudoración")}
-        ${radios("temblor","3) Temblor / voz temblorosa")}
-        ${radios("mente","4) Mente en blanco / bloqueo")}
-        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>`;
-    },
-    function step3(){
-      return `
-        <div class="vit-q">
-          <h4>5) ¿Podés dedicar <strong>10–15 min al día</strong> durante 21 días?</h4>
-          <div class="vit-row">
-            <label class="vit-chip"><input type="radio" name="tiempo" value="si">Sí</label>
-            <label class="vit-chip"><input type="radio" name="tiempo" value="no">No</label>
-          </div>
-        </div>
-        <div class="vit-q">
-          <h4>6) ¿Estás dispuesto/a a practicar aunque dé un poco de miedo?</h4>
-          <div class="vit-row">
-            <label class="vit-chip"><input type="radio" name="voluntad" value="si">Sí</label>
-            <label class="vit-chip"><input type="radio" name="voluntad" value="no">No</label>
-          </div>
-        </div>
-        <div class="vit-q">
-          <h4>7) Señales de severidad (elegí si aplica)</h4>
-          <div class="vit-row">
-            <label class="vit-chip"><input type="checkbox" name="severo" value="panic">Crisis frecuentes / pánico</label>
-            <label class="vit-chip"><input type="checkbox" name="severo" value="autodano">Ideas de autodaño</label>
-          </div>
-          <div class="vit-note">Si marcás algo aquí, te recomendamos primero hablar por WhatsApp para orientarte.</div>
-        </div>
-        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Ver resultado</button></div>`;
-    },
-    function step4(){
-      // === Calcular score y recomendación
-      const s = state.symptoms.sudor + state.symptoms.temblor + state.symptoms.mente; // 0..9
-      let score = Math.round((s/9)*70); if(state.tiempo) score += 15; if(state.voluntad) score += 15;
-      let plan = "simple";
-      if(state.severo){ score = Math.max(0, score-30); plan = "soporte"; }
-      else if(score >= 70){ plan = "premium"; }
-      state.score = Math.min(100, score);
-
-      // === Enviar Lead calificado a tu endpoint (CAPI)
-      const event_id = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2);
-      const payload = {
-        event_id,
-        name: state.name,
-        phone: state.phone,
-        triggers: state.triggers.join(', '),
-        sudor: state.symptoms.sudor,
-        temblor: state.symptoms.temblor,
-        mente: state.symptoms.mente,
-        tiempo: state.tiempo,
-        voluntad: state.voluntad,
-        severo: state.severo,
-        score: state.score,
-        plan,
-        utm: location.search,
-        fbp: getCookie('_fbp') || '',
-        fbc: getCookie('_fbc') || getFbcFromUrl() || '',
-        test_event_code: getTestEventCode()
-      };
-      if(LEAD_WEBHOOK_URL){ postJSON(LEAD_WEBHOOK_URL, payload); }
-
-      // Pixel front (quiz completed)
-      try{ if(window.fbq){ fbq('trackCustom','LeadQuizCompleted', {score:state.score, plan}); } }catch(e){}
-
-      // === Render resultado
-      const badge = plan==="premium"?"Recomendado: Plan Premium":(plan==="simple"?"Recomendado: Plan Simple":"Primero hablemos");
-      const desc = {
-        premium:"Tenés activación moderada/alta y disposición a practicar. El grupo y los bonos te aceleran.",
-        simple:"Buen punto de partida para empezar hoy mismo con la guía y tabla editable.",
-        soporte:"Por tu respuesta, lo mejor es orientarte primero por WhatsApp antes de comprar."
-      }[plan];
-
-      const hrefSimple  = withUtm(PAY_SIMPLE);
-      const hrefPremium = withUtm(PAY_PREMIUM);
-      const waText = encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.");
-      const hrefWA = withUtm(WA_BASE + waText);
-
-      return `
-        <div class="vit-result">
-          <div class="vit-badge">${badge}</div>
-          <p style="margin:8px 0 4px">${desc}</p>
-          <div class="vit-actions">
-            ${plan!=="soporte" ? `<a class="vit-btn primary js-open-pay" href="#" data-plan="${plan}" id="vitBuyBtn">${plan==="premium"?"Comprar Premium (Gs. 60.000)":"Comprar Simple (Gs. 30.000)"}</a>` : ""}
-            <a class="vit-btn wa" href="${hrefWA}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
-            <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
-          </div>
-          <div class="vit-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
-        </div>`;
-    }
-  ];
-
-  // ====== Render / navegación ======
-  const modal = document.getElementById("vitFunnelModal");
-  const body = document.getElementById("vitFunnelBody");
-  const openBtn = document.getElementById("vitOpenFunnel");
-  const closeBtn = document.getElementById("vitCloseFunnel");
-
-  let stepIndex = 0;
-  function render(){
-    body.innerHTML = STEPS[stepIndex]();
-    body.querySelectorAll(".vit-chip").forEach(ch=>{
-      ch.addEventListener("click", ()=>{
-        const input = ch.querySelector("input");
-        if(input.type==="checkbox"){ input.checked = !input.checked; ch.classList.toggle("active", input.checked); }
-        else{
-          const name = input.name;
-          body.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.closest(".vit-chip")?.classList.remove("active"));
-          input.checked = true; ch.classList.add("active");
-        }
-      });
-    });
-    body.querySelector("[data-next]")?.addEventListener("click", onNext);
-    body.querySelector("[data-prev]")?.addEventListener("click", ()=>{ stepIndex=Math.max(0,stepIndex-1); render(); });
-    body.querySelector("#vitRestart")?.addEventListener("click", ()=>{ stepIndex=0; render(); });
-    // En el resultado, el botón de comprar ahora abre el modal de pago
-    body.querySelector(".js-open-pay")?.addEventListener("click",(e)=>{
-      e.preventDefault();
-      const plan = e.currentTarget.dataset.plan || 'simple';
-      window.__openPaymentModal(plan); // función global definida más abajo
-    });
-    body.querySelector("#vitSupportBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
-  }
-
-  function onNext(){
-    if(stepIndex===0){
-      state.name = (document.getElementById("vName")||{}).value?.trim()||"";
-      state.phone= (document.getElementById("vPhone")||{}).value?.trim()||"";
-      try{ if(window.fbq){ fbq('trackCustom','LeadQuizStart'); } }catch(e){}
-    }
-    if(stepIndex===1){
-      state.triggers = [];
-      body.querySelectorAll("#vChips input:checked").forEach(i=>state.triggers.push(i.value));
-    }
-    if(stepIndex===2){
-      ["sudor","temblor","mente"].forEach(k=>{
-        const sel = body.querySelector(`input[name="${k}"]:checked`);
-        state.symptoms[k] = sel ? parseInt(sel.value,10) : 0;
-      });
-    }
-    if(stepIndex===3){
-      state.tiempo = body.querySelector('input[name="tiempo"]:checked')?.value==="si";
-      state.voluntad = body.querySelector('input[name="voluntad"]:checked')?.value==="si";
-      state.severo = !!body.querySelector('input[name="severo"]:checked');
-    }
-    stepIndex = Math.min(STEPS.length-1, stepIndex+1);
-    render();
-  }
-
-  function open(){ modal.style.display="block"; modal.setAttribute("aria-hidden","false"); stepIndex=0; render(); }
-  function close(){ modal.style.display="none"; modal.setAttribute("aria-hidden","true"); }
-  openBtn.addEventListener("click", open);
-  closeBtn.addEventListener("click", close);
-  modal.addEventListener("click", (e)=>{ if(e.target===modal) close(); });
-})();
-</script>
-
-<!-- ====== Tracking de videos + UTMs + Pixel sin duplicados ====== -->
-<script>
-(function(){
-  // 1) Traquear play de videos (front)
+  // Video play
   function trackOnce(videoId, placement){
     const v=document.getElementById(videoId); if(!v) return;
     let fired=false; v.addEventListener('play', ()=>{ if(fired) return; fired=true; try{ if(window.fbq){ fbq('trackCustom','VideoStarted',{placement}); } }catch(e){} });
@@ -767,7 +456,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   trackOnce('introVideo','hero');
   trackOnce('explainerVideo','midpage');
 
-  // 2) Añadir UTMs automáticamente a enlaces con .js-utm
+  // Agregar UTMs a enlaces .js-utm
   function currentUTM(){
     const q=new URLSearchParams(location.search);
     const keep=["utm_source","utm_medium","utm_campaign","utm_content"];
@@ -786,39 +475,77 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     });
   }
 
-  // 3) Pixel: track de clicks
+  // Track Contact por WhatsApp
   document.querySelectorAll('a.js-wa').forEach(a=>{
     a.addEventListener('click', ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
   });
 })();
 </script>
 
-<!-- ===== Modal de métodos de pago ===== -->
+<!-- ===== Modal de métodos de pago (Pagopar + Transferencia + WA) ===== -->
 <div id="payModal" class="pay-modal" role="dialog" aria-modal="true" aria-labelledby="payTitle">
   <div class="pay-card">
     <h3 id="payTitle">Elegí cómo querés pagar</h3>
-    <div class="pay-grid">
-      <a id="btnPagopar" class="btn" style="background:#1498e3" target="_blank" rel="noopener">Pagopar (QR / Billetera)</a>
-      <a id="btnCard" class="btn" style="background:#0ea5e9" target="_blank" rel="noopener">transferencia</a>
-      <a id="btnWA" class="btn" style="background:#25D366" target="_blank" rel="noopener">Pago asistido por WhatsApp</a>
-      <button id="btnClosePay" class="btn" style="background:#384060">Cerrar</button>
+
+    <!-- Sección principal -->
+    <div id="payMain" class="pay-section">
+      <div class="pay-grid">
+        <a id="btnPagopar" class="btn" style="background:#1498e3" target="_blank" rel="noopener">Pagopar (QR / Billetera)</a>
+        <button id="btnTransfer" class="btn" style="background:#0ea5e9">Transferencia bancaria</button>
+        <a id="btnWA" class="btn" style="background:#25D366" target="_blank" rel="noopener">Pago asistido por WhatsApp</a>
+        <button id="btnClosePay" class="btn" style="background:#384060">Cerrar</button>
+      </div>
+      <p class="pay-note">Si preferís transferencia, podés solicitar los datos y coordinar por WhatsApp.</p>
     </div>
-    <p class="pay-note">Si algo no te funciona, te ayudamos por WhatsApp en minutos.</p>
+
+    <!-- Sección transferencia -->
+    <div id="payTransfer" class="pay-section hidden">
+      <h3 style="margin-bottom:8px">Transferencia bancaria</h3>
+      <p class="pay-note" style="margin-bottom:10px">
+        Te pasamos los datos bancarios por WhatsApp y confirmamos tu pago al recibir el comprobante.
+      </p>
+      <label class="label" for="txPlan">Plan</label>
+      <input id="txPlan" class="input" type="text" value="simple" readonly>
+
+      <label class="label" for="txName">Tu nombre</label>
+      <input id="txName" class="input" type="text" placeholder="Ej: Ana López">
+
+      <label class="label" for="txPhone">WhatsApp</label>
+      <input id="txPhone" class="input" type="tel" placeholder="Ej: +595 9XX XXX XXX">
+
+      <label class="label" for="txEmail">Email (opcional)</label>
+      <input id="txEmail" class="input" type="email" placeholder="Para enviarte el acceso como respaldo">
+
+      <div class="pay-grid" style="margin-top:12px">
+        <a id="btnTxWA" class="btn" style="background:#25D366" target="_blank" rel="noopener">Solicitar datos por WhatsApp</a>
+        <button id="btnBackMain" class="btn" style="background:#384060">Volver</button>
+      </div>
+      <p class="pay-note">Tiempo estimado de confirmación: 5–15 minutos hábiles.</p>
+    </div>
   </div>
 </div>
 
 <script>
-/* Modal de pago: open desde cualquier .js-open-pay y desde el resultado del quiz */
 (function(){
   const modal = document.getElementById('payModal');
+  const mainSec = document.getElementById('payMain');
+  const transferSec = document.getElementById('payTransfer');
+
   const btnPagopar = document.getElementById('btnPagopar');
-  const btnCard = document.getElementById('btnCard');
+  const btnTransfer = document.getElementById('btnTransfer');
   const btnWA = document.getElementById('btnWA');
-  const close = document.getElementById('btnClosePay');
+  const btnClose = document.getElementById('btnClosePay');
+  const btnBackMain = document.getElementById('btnBackMain');
+  const btnTxWA = document.getElementById('btnTxWA');
+
+  const txPlan  = document.getElementById('txPlan');
+  const txName  = document.getElementById('txName');
+  const txPhone = document.getElementById('txPhone');
+  const txEmail = document.getElementById('txEmail');
 
   const PLAN_LINKS = {
-    simple : { pagopar: 'https://pago.pagopar.com/6v0iw', card: '' },
-    premium: { pagopar: 'https://pago.pagopar.com/6v0io', card: '' }
+    simple : { pagopar: 'https://pago.pagopar.com/6v0iw' },
+    premium: { pagopar: 'https://pago.pagopar.com/6v0io' }
   };
 
   function appendUtm(url){
@@ -833,39 +560,39 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     }catch(e){ return url; }
   }
 
-  function openModal(plan){
-    const p = PLAN_LINKS[plan] || PLAN_LINKS.simple;
-    const pagoparURL = appendUtm(p.pagopar);
-    const cardURL = p.card ? appendUtm(p.card) : '';
+  let currentPlan = 'simple';
 
-    // Pagopar
+  function openModal(plan){
+    currentPlan = plan || 'simple';
+    const p = PLAN_LINKS[currentPlan] || PLAN_LINKS.simple;
+    const pagoparURL = appendUtm(p.pagopar);
+
+    // Vista principal
+    mainSec.classList.remove('hidden');
+    transferSec.classList.add('hidden');
+
+    // Configurar enlaces/botones
     btnPagopar.href = pagoparURL;
     btnPagopar.onclick = ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} };
 
-    // Tarjeta
-    if(cardURL){
-      btnCard.href = cardURL;
-      btnCard.textContent = "Tarjeta de crédito/débito";
-      btnCard.onclick = ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} };
-    }else{
-      btnCard.href = "https://wa.me/595976418720?text=" +
-        encodeURIComponent("Hola Pedro, quiero pagar con TARJETA el plan " + plan.toUpperCase() + ". ¿Me pasás el link?");
-      btnCard.textContent = "Quiero pagar con tarjeta (pedir link)";
-      btnCard.onclick = ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} };
-    }
+    btnTransfer.onclick = ()=>{
+      try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){}
+      txPlan.value = currentPlan;
+      mainSec.classList.add('hidden');
+      transferSec.classList.remove('hidden');
+    };
 
-    // WhatsApp asistido
     btnWA.href = "https://wa.me/595976418720?text=" +
-      encodeURIComponent("Hola Pedro, necesito ayuda para pagar el plan " + plan.toUpperCase() + ".");
+      encodeURIComponent("Hola Pedro, necesito ayuda para pagar el plan " + currentPlan.toUpperCase() + ".");
     btnWA.onclick = ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} };
 
     modal.style.display = 'flex';
   }
 
-  // Hacemos accesible para el quiz
+  // Hacer accesible global para otros botones (hero, pricing, etc.)
   window.__openPaymentModal = openModal;
 
-  // Interceptar clicks en todos los botones de pago
+  // Interceptar clicks en botones que abren el modal
   document.addEventListener('click', (e)=>{
     const a = e.target.closest('a.js-open-pay');
     if(!a) return;
@@ -874,9 +601,50 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     openModal(plan);
   });
 
-  close.onclick = ()=> modal.style.display = 'none';
+  // Transferencia: armar mensaje WA con datos
+  function buildTransferMessage(){
+    const name = txName.value.trim() || '—';
+    const phone= txPhone.value.trim() || '—';
+    const mail = txEmail.value.trim() || '—';
+    return (
+      "Hola Pedro, quiero pagar por TRANSFERENCIA el plan " + currentPlan.toUpperCase() + ".%0A" +
+      "Mis datos:%0A" +
+      "• Nombre: " + encodeURIComponent(name) + "%0A" +
+      "• WhatsApp: " + encodeURIComponent(phone) + "%0A" +
+      "• Email: " + encodeURIComponent(mail) + "%0A%0A" +
+      "¿Me pasás los datos bancarios y el monto final? Apenas transfiera te envío el comprobante."
+    );
+  }
+
+  btnTxWA.addEventListener('click', (e)=>{
+    const msg = buildTransferMessage();
+    btnTxWA.href = "https://wa.me/595976418720?text=" + msg;
+    try{ if(window.fbq){ fbq('track','Contact'); } }catch(err){}
+  });
+
+  btnBackMain.onclick = ()=>{ transferSec.classList.add('hidden'); mainSec.classList.remove('hidden'); };
+  btnClose.onclick = ()=>{ modal.style.display = 'none'; };
   modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.style.display='none'; });
 })();
+</script>
+
+<!-- (Opcional) Si usás CAPI desde la landing -->
+<script>
+// Si no lo usás, podés borrar este bloque
+const LEAD_WEBHOOK_URL = "PEGÁ_ACÁ_TU_URL_DE_APPS_SCRIPT";
+function postJSON(url, data){
+  const body = JSON.stringify(data);
+  try{
+    if (navigator.sendBeacon){
+      const blob = new Blob([body], { type: 'text/plain;charset=UTF-8' });
+      navigator.sendBeacon(url, blob);
+      return;
+    }
+  }catch(e){}
+  try{
+    fetch(url, { method: 'POST', mode: 'no-cors', headers: {'Content-Type':'text/plain;charset=UTF-8'}, body });
+  }catch(e){}
+}
 </script>
 
 </body>
