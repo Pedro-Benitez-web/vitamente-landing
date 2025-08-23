@@ -114,6 +114,13 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 
 /* VIDEO estilos */
 .mid-video{width:100%;max-width:520px;border-radius:12px;box-shadow:0 6px 18px rgba(0,0,0,.35);display:block}
+
+/* === Modal de pago === */
+.pay-modal{position:fixed;inset:0;background:rgba(0,0,0,.6);display:none;align-items:center;justify-content:center;z-index:2000}
+.pay-card{background:#1c2033;border:1px solid #2a2f47;border-radius:14px;padding:22px;max-width:420px;width:92%}
+.pay-card h3{margin-top:0}
+.pay-grid{display:grid;gap:10px}
+.pay-note{color:#cfd3dc;font-size:.9rem;margin-top:8px}
 </style>
 </head>
 <body>
@@ -127,22 +134,21 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       <div class="price">Lanzamiento: <del>Gs. 120.000</del> <strong>Gs. 30.000</strong></div>
 
       <div class="actions">
-        <a class="btn btn-primary js-pay js-utm"
-           href="https://pago.pagopar.com/6v0iw"
-           target="_blank" rel="noopener">Pagar y descargar ahora</a>
+        <!-- Abrirá modal (plan simple por defecto) -->
+        <a class="btn btn-primary js-open-pay" href="#" data-plan="simple" aria-label="Pagar y descargar ahora">Pagar y descargar ahora</a>
 
         <a class="btn btn-wa js-wa js-utm"
            href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago.%20%C2%BFMe%20ayud%C3%A1s%3F"
-           target="_blank" rel="noopener">Tengo problemas con Pagopar / Pedir otros métodos</a>
+           target="_blank" rel="noopener">Tengo dudas / otros métodos</a>
       </div>
 
       <p style="margin-top:6px;color:#cfd3dc;font-size:.95rem">
-        Pago con tarjeta/débito/QR vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
+        Pago con QR/Billetera/Transferencia vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
       </p>
 
       <div class="trust">
         <span class="mini">🛡️ Garantía 7 días</span>
-        <span class="mini">🔒 Pago seguro con Pagopar</span>
+        <span class="mini">🔒 Pago seguro</span>
         <span class="mini">📱 Acceso inmediato</span>
       </div>
     </div>
@@ -262,21 +268,19 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       </p>
 
       <div class="actions" style="gap:10px;flex-wrap:wrap">
-        <a class="btn btn-primary js-pay js-utm"
-           href="https://pago.pagopar.com/6v0iw"
-           target="_blank" rel="noopener" aria-label="Pagar ahora Plan Simple">Pagar ahora</a>
+        <!-- Abrirá modal (plan simple por defecto) -->
+        <a class="btn btn-primary js-open-pay" href="#" data-plan="simple" aria-label="Pagar ahora">Pagar ahora</a>
 
         <a class="btn btn-wa js-wa js-utm"
            href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20antes%20de%20pagar%20%C2%BFMe%20ayud%C3%A1s%3F"
            target="_blank" rel="noopener" aria-label="Soporte por WhatsApp">¿Dudas? Soporte por WhatsApp</a>
 
-        <a class="btn js-pay js-utm" style="background:#2a2f47;color:#fff"
-           href="https://pago.pagopar.com/6v0io"
-           target="_blank" rel="noopener" aria-label="Ver Plan Premium">Ver Plan Premium</a>
+        <a class="btn js-open-pay" style="background:#2a2f47;color:#fff"
+           href="#" data-plan="premium" aria-label="Ver Plan Premium">Ver Plan Premium</a>
       </div>
 
       <p class="cta-note" style="margin-top:10px">
-        Pago con tarjeta/débito/QR vía Pagopar · Acceso inmediato · <strong>Garantía 7 días</strong>
+        Pago con QR/Billetera/Transferencia · Acceso inmediato · <strong>Garantía 7 días</strong>
       </p>
     </div>
   </div>
@@ -310,8 +314,15 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
           <li>Tabla editable</li>
         </ul>
         <div class="center" style="margin-top:14px">
-          <a class="btn btn-primary js-pay js-utm" href="https://pago.pagopar.com/6v0iw" target="_blank" rel="noopener">Pagar Plan Simple</a>
-          <div class="cta-note">Pago con Pagopar · Acceso inmediato</div>
+          <!-- Modal: elegir método de pago -->
+          <a class="btn btn-primary js-open-pay"
+             href="#"
+             data-plan="simple"
+             data-pagopar="https://pago.pagopar.com/6v0iw"
+             data-card="">
+             Elegir método de pago
+          </a>
+          <div class="cta-note">Pagopar (QR/Billetera/Transferencia) · Acceso inmediato</div>
         </div>
       </div>
 
@@ -325,8 +336,15 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
           <li>Grupo de apoyo por WhatsApp</li>
         </ul>
         <div class="center" style="margin-top:14px">
-          <a class="btn btn-wa js-pay js-utm" href="https://pago.pagopar.com/6v0io" target="_blank" rel="noopener">Pagar Plan Premium</a>
-          <div class="cta-note">Pago con Pagopar · Acceso inmediato</div>
+          <!-- Modal: elegir método de pago -->
+          <a class="btn btn-wa js-open-pay"
+             href="#"
+             data-plan="premium"
+             data-pagopar="https://pago.pagopar.com/6v0io"
+             data-card="">
+             Elegir método de pago
+          </a>
+          <div class="cta-note">Pagopar (QR/Billetera/Transferencia) · Acceso inmediato</div>
         </div>
       </div>
     </div>
@@ -335,7 +353,8 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       <a class="btn btn-wa js-wa js-utm"
          href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dificultades%20con%20el%20pago%20o%20prefiero%20otro%20m%C3%A9todo.%20%C2%BFPod%C3%A9s%20ayudarme%3F"
          target="_blank" rel="noopener">
-         ¿Dificultades o preferís otro método de pago? Chateá aquí</a>
+         ¿Dificultades? Pago asistido por WhatsApp
+      </a>
     </div>
   </div>
 </section>
@@ -345,7 +364,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   <div class="container">
     <h2 class="center">Historias reales</h2>
     <div class="testis" style="margin-top:16px">
-      <div class="testi">
+      <div class="t esti">
         <p>“Me presenté en clase sin quedarme en blanco. El plan me ordenó la cabeza.”</p>
         <div class="name">— Sofía · 28</div>
       </div>
@@ -409,7 +428,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   <div class="container center">
     <h2>¿Listo para hablar con seguridad?</h2>
     <div class="actions" style="justify-content:center;margin-top:8px">
-      <a class="btn btn-primary js-pay js-utm" href="https://pago.pagopar.com/6v0iw" target="_blank" rel="noopener">Pagar Plan Simple</a>
+      <a class="btn btn-primary js-open-pay" href="#" data-plan="simple">Pagar Plan Simple</a>
       <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Necesito ayuda</a>
     </div>
     <div class="cta-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
@@ -425,7 +444,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 
 <!-- STICKY MOBILE BAR (PAGAR + SOPORTE) -->
 <div class="mobile-cta">
-  <a class="btn btn-primary js-pay js-utm" href="https://pago.pagopar.com/6v0iw" target="_blank" rel="noopener">Pagar</a>
+  <a class="btn btn-primary js-open-pay" href="#" data-plan="simple">Pagar</a>
   <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Soporte</a>
 </div>
 
@@ -482,7 +501,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
   const PAY_PREMIUM = "https://pago.pagopar.com/6v0io";
   const WA_BASE = "https://wa.me/595976418720?text=";
   // <-- PEGA AQUÍ tu URL de Apps Script (Ruta A):
-  const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxlRqCDswjylV3s7JtjMq-PuFYrOGCOQJVDC6TYZ8yuk0o8He5pSBFHq8SEFIO_X-XGmA/exec";
+  const LEAD_WEBHOOK_URL = "PEGÁ_ACÁ_TU_URL_DE_APPS_SCRIPT";
 
   // ====== Helpers UTM / cookies / test code / envío ======
   function getUTM(){
@@ -514,29 +533,24 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     const q = new URLSearchParams(location.search);
     return q.get('fb_test_event_code') || '';
   }
-  // Reemplaza la función postJSON por esta
-function postJSON(url, data){
-  const body = JSON.stringify(data);
-
-  // 1) Intentá con sendBeacon (evita CORS y es perfecto para analytics)
-  try{
-    if (navigator.sendBeacon){
-      const blob = new Blob([body], { type: 'text/plain;charset=UTF-8' });
-      navigator.sendBeacon(url, blob);
-      return;
-    }
-  }catch(e){}
-
-  // 2) Fallback con fetch SIN CORS preflight (text/plain + mode:'no-cors')
-  try{
-    fetch(url, {
-      method: 'POST',
-      mode: 'no-cors',
-      headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
-      body
-    });
-  }catch(e){}
-}
+  function postJSON(url, data){
+    const body = JSON.stringify(data);
+    try{
+      if (navigator.sendBeacon){
+        const blob = new Blob([body], { type: 'text/plain;charset=UTF-8' });
+        navigator.sendBeacon(url, blob);
+        return;
+      }
+    }catch(e){}
+    try{
+      fetch(url, {
+        method: 'POST',
+        mode: 'no-cors',
+        headers: { 'Content-Type': 'text/plain;charset=UTF-8' },
+        body
+      });
+    }catch(e){}
+  }
 
   // ====== Estado ======
   const state = {
@@ -643,7 +657,7 @@ function postJSON(url, data){
         utm: location.search,
         fbp: getCookie('_fbp') || '',
         fbc: getCookie('_fbc') || getFbcFromUrl() || '',
-        test_event_code: getTestEventCode()   // <-- clave para Test Events
+        test_event_code: getTestEventCode()
       };
       if(LEAD_WEBHOOK_URL){ postJSON(LEAD_WEBHOOK_URL, payload); }
 
@@ -668,11 +682,11 @@ function postJSON(url, data){
           <div class="vit-badge">${badge}</div>
           <p style="margin:8px 0 4px">${desc}</p>
           <div class="vit-actions">
-            ${plan!=="soporte" ? `<a class="vit-btn primary" href="${plan==="premium"?hrefPremium:hrefSimple}" target="_blank" rel="noopener" id="vitBuyBtn">${plan==="premium"?"Comprar Premium (Gs. 60.000)":"Comprar Simple (Gs. 30.000)"}</a>` : ""}
+            ${plan!=="soporte" ? `<a class="vit-btn primary js-open-pay" href="#" data-plan="${plan}" id="vitBuyBtn">${plan==="premium"?"Comprar Premium (Gs. 60.000)":"Comprar Simple (Gs. 30.000)"}</a>` : ""}
             <a class="vit-btn wa" href="${hrefWA}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
             <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
           </div>
-          <div class="vit-note">Pago seguro con Pagopar · Acceso inmediato · Garantía 7 días</div>
+          <div class="vit-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
         </div>`;
     }
   ];
@@ -700,7 +714,12 @@ function postJSON(url, data){
     body.querySelector("[data-next]")?.addEventListener("click", onNext);
     body.querySelector("[data-prev]")?.addEventListener("click", ()=>{ stepIndex=Math.max(0,stepIndex-1); render(); });
     body.querySelector("#vitRestart")?.addEventListener("click", ()=>{ stepIndex=0; render(); });
-    body.querySelector("#vitBuyBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} }, {once:true});
+    // En el resultado, el botón de comprar ahora abre el modal de pago
+    body.querySelector(".js-open-pay")?.addEventListener("click",(e)=>{
+      e.preventDefault();
+      const plan = e.currentTarget.dataset.plan || 'simple';
+      window.__openPaymentModal(plan); // función global definida más abajo
+    });
     body.querySelector("#vitSupportBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
   }
 
@@ -748,7 +767,7 @@ function postJSON(url, data){
   trackOnce('introVideo','hero');
   trackOnce('explainerVideo','midpage');
 
-  // 2) Añadir UTMs automáticamente a enlaces de pago/WA
+  // 2) Añadir UTMs automáticamente a enlaces con .js-utm
   function currentUTM(){
     const q=new URLSearchParams(location.search);
     const keep=["utm_source","utm_medium","utm_campaign","utm_content"];
@@ -767,13 +786,96 @@ function postJSON(url, data){
     });
   }
 
-  // 3) Pixel: track sin duplicados
-  document.querySelectorAll('a.js-pay').forEach(a=>{
-    a.addEventListener('click', ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} }, {once:true});
-  });
+  // 3) Pixel: track de clicks
   document.querySelectorAll('a.js-wa').forEach(a=>{
     a.addEventListener('click', ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
   });
+})();
+</script>
+
+<!-- ===== Modal de métodos de pago ===== -->
+<div id="payModal" class="pay-modal" role="dialog" aria-modal="true" aria-labelledby="payTitle">
+  <div class="pay-card">
+    <h3 id="payTitle">Elegí cómo querés pagar</h3>
+    <div class="pay-grid">
+      <a id="btnPagopar" class="btn" style="background:#1498e3" target="_blank" rel="noopener">Pagopar (QR / Billetera / Transferencia)</a>
+      <a id="btnCard" class="btn" style="background:#0ea5e9" target="_blank" rel="noopener">Tarjeta de crédito/débito</a>
+      <a id="btnWA" class="btn" style="background:#25D366" target="_blank" rel="noopener">Pago asistido por WhatsApp</a>
+      <button id="btnClosePay" class="btn" style="background:#384060">Cerrar</button>
+    </div>
+    <p class="pay-note">Si algo no te funciona, te ayudamos por WhatsApp en minutos.</p>
+  </div>
+</div>
+
+<script>
+/* Modal de pago: open desde cualquier .js-open-pay y desde el resultado del quiz */
+(function(){
+  const modal = document.getElementById('payModal');
+  const btnPagopar = document.getElementById('btnPagopar');
+  const btnCard = document.getElementById('btnCard');
+  const btnWA = document.getElementById('btnWA');
+  const close = document.getElementById('btnClosePay');
+
+  const PLAN_LINKS = {
+    simple : { pagopar: 'https://pago.pagopar.com/6v0iw', card: '' },
+    premium: { pagopar: 'https://pago.pagopar.com/6v0io', card: '' }
+  };
+
+  function appendUtm(url){
+    try{
+      if(!url) return url;
+      const u = new URL(url);
+      const keep = ["utm_source","utm_medium","utm_campaign","utm_content"];
+      const q = new URLSearchParams(location.search);
+      keep.forEach(k=>{ if(q.get(k) && !u.searchParams.get(k)) u.searchParams.set(k, q.get(k)); });
+      u.searchParams.set('src','modal');
+      return u.toString();
+    }catch(e){ return url; }
+  }
+
+  function openModal(plan){
+    const p = PLAN_LINKS[plan] || PLAN_LINKS.simple;
+    const pagoparURL = appendUtm(p.pagopar);
+    const cardURL = p.card ? appendUtm(p.card) : '';
+
+    // Pagopar
+    btnPagopar.href = pagoparURL;
+    btnPagopar.onclick = ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} };
+
+    // Tarjeta
+    if(cardURL){
+      btnCard.href = cardURL;
+      btnCard.textContent = "Tarjeta de crédito/débito";
+      btnCard.onclick = ()=>{ try{ if(window.fbq){ fbq('track','InitiateCheckout'); } }catch(e){} };
+    }else{
+      btnCard.href = "https://wa.me/595976418720?text=" +
+        encodeURIComponent("Hola Pedro, quiero pagar con TARJETA el plan " + plan.toUpperCase() + ". ¿Me pasás el link?");
+      btnCard.textContent = "Quiero pagar con tarjeta (pedir link)";
+      btnCard.onclick = ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} };
+    }
+
+    // WhatsApp asistido
+    btnWA.href = "https://wa.me/595976418720?text=" +
+      encodeURIComponent("Hola Pedro, necesito ayuda para pagar el plan " + plan.toUpperCase() + ".");
+    btnWA.onclick = ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} };
+
+    modal.style.display = 'flex';
+  }
+
+  // Hacemos accesible para el quiz
+  window.__openPaymentModal = openModal;
+
+  // Interceptar clicks en todos los botones de pago
+  document.addEventListener('click', (e)=>{
+    const a = e.target.closest('a.js-open-pay');
+    if(!a) return;
+    e.preventDefault();
+    const plan = a.dataset.plan || 'simple';
+    openModal(plan);
+  });
+
+  close.onclick = ()=> modal.style.display = 'none';
+  modal.addEventListener('click', (e)=>{ if(e.target===modal) modal.style.display='none'; });
 })();
 </script>
 
