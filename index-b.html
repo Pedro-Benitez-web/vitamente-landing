@@ -646,6 +646,290 @@ function postJSON(url, data){
   }catch(e){}
 }
 </script>
+<!-- ===== Test 60s (FAB + Modal + Lógica) ===== -->
+<style>
+  :root{--primary:#1498e3;--wa:#25D366;--bg:#141625;--card:#1c2033;--text:#f2f2f2}
+  .vit-fab{position:fixed;right:18px;bottom:86px;z-index:1100;background:var(--primary);
+    color:#fff;border:none;border-radius:999px;padding:12px 16px;font-weight:700;
+    box-shadow:0 8px 20px rgba(0,0,0,.3);cursor:pointer}
+  .vit-fab:hover{filter:brightness(.95);transform:translateY(-1px)}
+  .vit-modal{position:fixed;inset:0;background:rgba(0,0,0,.55);display:none;z-index:1101}
+  .vit-sheet{position:absolute;left:50%;top:50%;transform:translate(-50%,-50%);
+    width:min(92vw,720px);max-height:86vh;overflow:auto;background:#1c2033;color:var(--text);
+    border-radius:16px;box-shadow:0 12px 30px rgba(0,0,0,.45)}
+  .vit-head{padding:16px 18px;border-bottom:1px solid #2a2f47;display:flex;justify-content:space-between;align-items:center}
+  .vit-body{padding:18px}
+  .vit-title{font-size:1.25rem;font-weight:800}
+  .vit-close{background:none;border:none;color:#fff;font-size:1.4rem;cursor:pointer}
+  .vit-q{background:#22263a;border:1px solid #2a2f47;border-radius:12px;padding:14px 14px;margin:10px 0}
+  .vit-q h4{margin-bottom:8px;font-size:1rem}
+  .vit-row{display:flex;flex-wrap:wrap;gap:10px;align-items:center}
+  .vit-chip{background:#2a2f47;color:#eaeaf2;border:none;border-radius:999px;padding:8px 12px;cursor:pointer}
+  .vit-chip input{display:none}
+  .vit-chip.active{background:#1498e3;color:#fff}
+  .vit-radio{display:flex;gap:10px;flex-wrap:wrap}
+  .vit-radio label{background:#2a2f47;border-radius:8px;padding:8px 10px;cursor:pointer}
+  .vit-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+  .vit-btn{display:inline-block;border:none;border-radius:10px;padding:12px 16px;font-weight:800;cursor:pointer}
+  .vit-btn.primary{background:var(--primary);color:#fff}
+  .vit-btn.wa{background:var(--wa);color:#fff}
+  .vit-btn.ghost{background:#2a2f47;color:#fff}
+  .vit-note{font-size:.88rem;color:#cfd3dc;margin-top:8px}
+  .vit-result{background:#19202f;border-radius:12px;padding:14px;border:1px solid #2a2f47;margin-top:12px}
+  .vit-badge{display:inline-block;background:#2a2f47;padding:6px 10px;border-radius:999px;font-size:.86rem;margin-bottom:6px}
+  .vit-input{flex:1;min-width:200px;padding:10px;border-radius:8px;border:1px solid #2a2f47;background:#111626;color:#fff}
+</style>
 
+<button class="vit-fab" id="vitOpenFunnel">🧭 ¿Es para vos? Test 60s</button>
+
+<div class="vit-modal" id="vitFunnelModal" aria-hidden="true">
+  <div class="vit-sheet" role="dialog" aria-modal="true" aria-labelledby="vitFunnelTitle">
+    <div class="vit-head">
+      <div class="vit-title" id="vitFunnelTitle">Guía 5 pasos · Calificá tu caso en 60s</div>
+      <button class="vit-close" id="vitCloseFunnel" aria-label="Cerrar">✕</button>
+    </div>
+    <div class="vit-body" id="vitFunnelBody"></div>
+  </div>
+</div>
+
+<script>
+(function(){
+  // ====== Helpers locales (independientes) ======
+  function getCookie(name){
+    const m = document.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]*)'));
+    return m ? decodeURIComponent(m[1]) : '';
+  }
+  function getFbcFromUrl(){
+    const p = new URLSearchParams(location.search);
+    const fbclid = p.get('fbclid');
+    return fbclid ? 'fb.1.'+Date.now()+'.'+fbclid : '';
+  }
+  function getTestEventCode(){
+    const q = new URLSearchParams(location.search);
+    return q.get('fb_test_event_code') || '';
+  }
+  function postJSON(url, data){
+    const body = JSON.stringify(data);
+    try{
+      if (navigator.sendBeacon){
+        const blob = new Blob([body], { type: 'text/plain;charset=UTF-8' });
+        navigator.sendBeacon(url, blob);
+        return;
+      }
+    }catch(e){}
+    try{
+      fetch(url, { method:'POST', mode:'no-cors', headers:{'Content-Type':'text/plain;charset=UTF-8'}, body });
+    }catch(e){}
+  }
+
+  // Si ya definiste LEAD_WEBHOOK_URL en tu HTML, lo usamos. Si no, queda vacío y no envía.
+  const WEBHOOK = (typeof LEAD_WEBHOOK_URL !== 'undefined') ? LEAD_WEBHOOK_URL : "";
+
+  // ====== Estado ======
+  const state = {
+    name:"", phone:"",
+    triggers:[],
+    symptoms:{ sudor:0, temblor:0, mente:0 },
+    tiempo:false, voluntad:false, severo:false,
+    score:0
+  };
+
+  // ====== Pasos ======
+  const STEPS = [
+    function step0(){
+      return `
+        <div class="vit-q">
+          <h4>¡Bienvenido! Este test te ayuda a saber si la guía te sirve.</h4>
+          <div class="vit-row">
+            <input id="vName" class="vit-input" type="text" placeholder="Tu nombre (opcional)">
+            <input id="vPhone" class="vit-input" type="tel" placeholder="WhatsApp (opcional)">
+          </div>
+          <div class="vit-actions"><button class="vit-btn primary" data-next>Empezar (60s)</button></div>
+          <div class="vit-note">No sustituye atención profesional. Si tenés malestar severo, usaremos otra vía.</div>
+        </div>`;
+    },
+    function step1(){
+      const opts = ["Presentarme","Reuniones","Llamadas","Hablar con desconocidos","Exponer en clase/trabajo"];
+      const chips = opts.map(o=>`<label class="vit-chip"><input type="checkbox" value="${o}">${o}</label>`).join("");
+      return `
+        <div class="vit-q">
+          <h4>1) ¿Qué situaciones te activan?</h4>
+          <div class="vit-row" id="vChips">${chips}</div>
+          <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>
+        </div>`;
+    },
+    function step2(){
+      function radios(id,label){ 
+        return `
+        <div class="vit-q">
+          <h4>${label}</h4>
+          <div class="vit-radio" data-group="${id}">
+            <label><input type="radio" name="${id}" value="0"> Nada</label>
+            <label><input type="radio" name="${id}" value="1"> Leve</label>
+            <label><input type="radio" name="${id}" value="2"> Moderado</label>
+            <label><input type="radio" name="${id}" value="3"> Fuerte</label>
+          </div>
+        </div>`;
+      }
+      return `
+        ${radios("sudor","2) Sudoración")}
+        ${radios("temblor","3) Temblor / voz temblorosa")}
+        ${radios("mente","4) Mente en blanco / bloqueo")}
+        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Siguiente</button></div>`;
+    },
+    function step3(){
+      return `
+        <div class="vit-q">
+          <h4>5) ¿Podés dedicar <strong>10–15 min al día</strong> durante 21 días?</h4>
+          <div class="vit-row">
+            <label class="vit-chip"><input type="radio" name="tiempo" value="si">Sí</label>
+            <label class="vit-chip"><input type="radio" name="tiempo" value="no">No</label>
+          </div>
+        </div>
+        <div class="vit-q">
+          <h4>6) ¿Estás dispuesto/a a practicar aunque dé un poco de miedo?</h4>
+          <div class="vit-row">
+            <label class="vit-chip"><input type="radio" name="voluntad" value="si">Sí</label>
+            <label class="vit-chip"><input type="radio" name="voluntad" value="no">No</label>
+          </div>
+        </div>
+        <div class="vit-q">
+          <h4>7) Señales de severidad (elegí si aplica)</h4>
+          <div class="vit-row">
+            <label class="vit-chip"><input type="checkbox" name="severo" value="panic">Crisis frecuentes / pánico</label>
+            <label class="vit-chip"><input type="checkbox" name="severo" value="autodano">Ideas de autodaño</label>
+          </div>
+          <div class="vit-note">Si marcás algo aquí, te recomendamos primero hablar por WhatsApp para orientarte.</div>
+        </div>
+        <div class="vit-actions"><button class="vit-btn ghost" data-prev>Volver</button><button class="vit-btn primary" data-next>Ver resultado</button></div>`;
+    },
+    function step4(){
+      // === Calcular score y recomendación
+      const s = state.symptoms.sudor + state.symptoms.temblor + state.symptoms.mente; // 0..9
+      let score = Math.round((s/9)*70); if(state.tiempo) score += 15; if(state.voluntad) score += 15;
+      let plan = "simple";
+      if(state.severo){ score = Math.max(0, score-30); plan = "soporte"; }
+      else if(score >= 70){ plan = "premium"; }
+      state.score = Math.min(100, score);
+
+      // === Enviar Lead calificado (si hay WEBHOOK)
+      const event_id = 'lead_' + Date.now() + '_' + Math.random().toString(36).slice(2);
+      const payload = {
+        event_id,
+        name: state.name,
+        phone: state.phone,
+        triggers: state.triggers.join(', '),
+        sudor: state.symptoms.sudor,
+        temblor: state.symptoms.temblor,
+        mente: state.symptoms.mente,
+        tiempo: state.tiempo,
+        voluntad: state.voluntad,
+        severo: state.severo,
+        score: state.score,
+        plan,
+        utm: location.search,
+        fbp: getCookie('_fbp') || '',
+        fbc: getCookie('_fbc') || getFbcFromUrl() || '',
+        test_event_code: getTestEventCode()
+      };
+      if(WEBHOOK){ postJSON(WEBHOOK, payload); }
+
+      // Pixel front (quiz events)
+      try{ if(window.fbq){ fbq('trackCustom','LeadQuizCompleted', {score:state.score, plan}); } }catch(e){}
+
+      // === Render resultado
+      const badge = plan==="premium"?"Recomendado: Plan Premium":(plan==="simple"?"Recomendado: Plan Simple":"Primero hablemos");
+      const desc = {
+        premium:"Tenés activación moderada/alta y disposición a practicar. El grupo y los bonos te aceleran.",
+        simple:"Buen punto de partida para empezar hoy mismo con la guía y tabla editable.",
+        soporte:"Por tu respuesta, lo mejor es orientarte primero por WhatsApp antes de comprar."
+      }[plan];
+
+      const buyBtn = (plan!=="soporte")
+        ? `<a class="vit-btn primary" href="#" id="vitBuyBtn">Comprar ${plan==="premium"?"Premium (Gs. 60.000)":"Simple (Gs. 30.000)"}</a>`
+        : "";
+
+      return `
+        <div class="vit-result">
+          <div class="vit-badge">${badge}</div>
+          <p style="margin:8px 0 4px">${desc}</p>
+          <div class="vit-actions">
+            ${buyBtn}
+            <a class="vit-btn wa" href="https://wa.me/595976418720?text=${encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.")}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
+            <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
+          </div>
+          <div class="vit-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
+        </div>`;
+    }
+  ];
+
+  // ====== Render / navegación ======
+  const modal = document.getElementById("vitFunnelModal");
+  const body = document.getElementById("vitFunnelBody");
+  const openBtn = document.getElementById("vitOpenFunnel");
+  const closeBtn = document.getElementById("vitCloseFunnel");
+
+  let stepIndex = 0;
+  function render(){
+    body.innerHTML = STEPS[stepIndex]();
+    // chips/radios
+    body.querySelectorAll(".vit-chip").forEach(ch=>{
+      ch.addEventListener("click", ()=>{
+        const input = ch.querySelector("input");
+        if(input.type==="checkbox"){ input.checked = !input.checked; ch.classList.toggle("active", input.checked); }
+        else{
+          const name = input.name;
+          body.querySelectorAll(`input[name="${name}"]`).forEach(r=>r.closest(".vit-chip")?.classList.remove("active"));
+          input.checked = true; ch.classList.add("active");
+        }
+      });
+    });
+    // navegación
+    body.querySelector("[data-next]")?.addEventListener("click", onNext);
+    body.querySelector("[data-prev]")?.addEventListener("click", ()=>{ stepIndex=Math.max(0,stepIndex-1); render(); });
+    body.querySelector("#vitRestart")?.addEventListener("click", ()=>{ stepIndex=0; render(); });
+    // CTA resultado
+    body.querySelector("#vitBuyBtn")?.addEventListener("click",(e)=>{
+      e.preventDefault();
+      const plan = (state.score>=70 && !state.severo) ? 'premium' : 'simple';
+      if(window.__openPaymentModal){ window.__openPaymentModal(plan); }
+    });
+    body.querySelector("#vitSupportBtn")?.addEventListener("click", ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} }, {once:true});
+  }
+
+  function onNext(){
+    if(stepIndex===0){
+      state.name = (document.getElementById("vName")||{}).value?.trim()||"";
+      state.phone= (document.getElementById("vPhone")||{}).value?.trim()||"";
+      try{ if(window.fbq){ fbq('trackCustom','LeadQuizStart'); } }catch(e){}
+    }
+    if(stepIndex===1){
+      state.triggers = [];
+      body.querySelectorAll("#vChips input:checked").forEach(i=>state.triggers.push(i.value));
+    }
+    if(stepIndex===2){
+      ["sudor","temblor","mente"].forEach(k=>{
+        const sel = body.querySelector(`input[name="${k}"]:checked`);
+        state.symptoms[k] = sel ? parseInt(sel.value,10) : 0;
+      });
+    }
+    if(stepIndex===3){
+      state.tiempo = body.querySelector('input[name="tiempo"]:checked')?.value==="si";
+      state.voluntad = body.querySelector('input[name="voluntad"]:checked')?.value==="si";
+      state.severo = !!body.querySelector('input[name="severo"]:checked');
+    }
+    stepIndex = Math.min(STEPS.length-1, stepIndex+1);
+    render();
+  }
+
+  function open(){ modal.style.display="block"; modal.setAttribute("aria-hidden","false"); stepIndex=0; render(); }
+  function close(){ modal.style.display="none"; modal.setAttribute("aria-hidden","true"); }
+  openBtn.addEventListener("click", open);
+  closeBtn.addEventListener("click", close);
+  modal.addEventListener("click", (e)=>{ if(e.target===modal) close(); });
+})();
+</script>
+<!-- ===== Fin Test 60s ===== -->
+  
 </body>
 </html>
