@@ -141,7 +141,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
         <a class="btn btn-primary js-open-pay" href="#" data-plan="simple" aria-label="Pagar y descargar ahora">Pagar y descargar ahora</a>
 
         <a class="btn btn-wa js-wa js-utm"
-           href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago.%20%C2%BFMe%20ayud%C3%A1s%3F"
+           href="https://wa.me/595993637617?text=Hola%20Pedro%2C%20tengo%20dudas%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago.%20%C2%BFMe%20ayud%C3%A1s%3F"
            target="_blank" rel="noopener">Tengo dudas / otros métodos</a>
       </div>
 
@@ -272,7 +272,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
         <a class="btn btn-primary js-open-pay" href="#" data-plan="simple" aria-label="Pagar ahora">Pagar ahora</a>
 
         <a class="btn btn-wa js-wa js-utm"
-           href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dudas%20antes%20de%20pagar%20%C2%BFMe%20ayud%C3%A1s%3F"
+           href="https://wa.me/595993637617?text=Hola%20Pedro%2C%20tengo%20dudas%20antes%20de%20pagar%20%C2%BFMe%20ayud%C3%A1s%3F"
            target="_blank" rel="noopener">¿Dudas? Soporte por WhatsApp</a>
 
         <a class="btn js-open-pay" style="background:#2a2f47;color:#fff"
@@ -346,7 +346,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 
     <div class="center" style="margin-top:18px">
       <a class="btn btn-wa js-wa js-utm"
-         href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20tengo%20dificultades%20con%20el%20pago%20o%20prefiero%20otro%20m%C3%A9todo.%20%C2%BFPod%C3%A9s%20ayudarme%3F"
+         href="https://wa.me/595993637617?text=Hola%20Pedro%2C%20tengo%20dificultades%20con%20el%20pago%20o%20prefiero%20otro%20m%C3%A9todo.%20%C2%BFPod%C3%A9s%20ayudarme%3F"
          target="_blank" rel="noopener">
          ¿Dificultades? Pago asistido por WhatsApp
       </a>
@@ -424,7 +424,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
     <h2>¿Listo para hablar con seguridad?</h2>
     <div class="actions" style="justify-content:center;margin-top:8px">
       <a class="btn btn-primary js-open-pay" href="#" data-plan="simple">Pagar Plan Simple</a>
-      <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Necesito ayuda</a>
+      <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595993637617?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Necesito ayuda</a>
     </div>
     <div class="cta-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
   </div>
@@ -440,10 +440,8 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 <!-- STICKY MOBILE BAR -->
 <div class="mobile-cta">
   <a class="btn btn-primary js-open-pay" href="#" data-plan="simple">Pagar</a>
-  <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595976418720?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Soporte</a>
+  <a class="btn btn-wa js-wa js-utm" href="https://wa.me/595993637617?text=Hola%20Pedro%2C%20necesito%20ayuda%20o%20prefiero%20otro%20m%C3%A9todo%20de%20pago." target="_blank" rel="noopener">Soporte</a>
 </div>
-
-<!-- ====== WIDGET / QUIZ OMITIDO AQUÍ PARA BREVEDAD (si lo usas, mantenelo como antes) ====== -->
 
 <!-- ===== Tracking de videos + UTMs + Pixel ===== -->
 <script>
@@ -526,6 +524,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 </div>
 
 <script>
+/* Modal de pago: open desde cualquier .js-open-pay y desde el resultado del quiz */
 (function(){
   const modal = document.getElementById('payModal');
   const mainSec = document.getElementById('payMain');
@@ -582,7 +581,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
       transferSec.classList.remove('hidden');
     };
 
-    btnWA.href = "https://wa.me/595976418720?text=" +
+    btnWA.href = "https://wa.me/595993637617?text=" +
       encodeURIComponent("Hola Pedro, necesito ayuda para pagar el plan " + currentPlan.toUpperCase() + ".");
     btnWA.onclick = ()=>{ try{ if(window.fbq){ fbq('track','Contact'); } }catch(e){} };
 
@@ -618,7 +617,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 
   btnTxWA.addEventListener('click', (e)=>{
     const msg = buildTransferMessage();
-    btnTxWA.href = "https://wa.me/595976418720?text=" + msg;
+    btnTxWA.href = "https://wa.me/595993637617?text=" + msg;
     try{ if(window.fbq){ fbq('track','Contact'); } }catch(err){}
   });
 
@@ -631,7 +630,7 @@ display:flex;gap:10px;justify-content:center;padding:10px 14px;z-index:1000}
 <!-- (Opcional) Si usás CAPI desde la landing -->
 <script>
 // Si no lo usás, podés borrar este bloque
-const LEAD_WEBHOOK_URL = "https://script.google.com/macros/s/AKfycbxlRqCDswjylV3s7JtjMq-PuFYrOGCOQJVDC6TYZ8yuk0o8He5pSBFHq8SEFIO_X-XGmA/exec";
+const LEAD_WEBHOOK_URL = "PEGÁ_ACÁ_TU_URL_DE_APPS_SCRIPT";
 function postJSON(url, data){
   const body = JSON.stringify(data);
   try{
@@ -646,6 +645,7 @@ function postJSON(url, data){
   }catch(e){}
 }
 </script>
+
 <!-- ===== Test 60s (FAB + Modal + Lógica) ===== -->
 <style>
   :root{--primary:#1498e3;--wa:#25D366;--bg:#141625;--card:#1c2033;--text:#f2f2f2}
@@ -694,7 +694,7 @@ function postJSON(url, data){
 
 <script>
 (function(){
-  // ====== Helpers locales (independientes) ======
+  // ====== Helpers locales ======
   function getCookie(name){
     const m = document.cookie.match(new RegExp('(?:^|;\\s*)'+name+'=([^;]*)'));
     return m ? decodeURIComponent(m[1]) : '';
@@ -722,7 +722,7 @@ function postJSON(url, data){
     }catch(e){}
   }
 
-  // Si ya definiste LEAD_WEBHOOK_URL en tu HTML, lo usamos. Si no, queda vacío y no envía.
+  // Usa LEAD_WEBHOOK_URL si existe en el HTML
   const WEBHOOK = (typeof LEAD_WEBHOOK_URL !== 'undefined') ? LEAD_WEBHOOK_URL : "";
 
   // ====== Estado ======
@@ -855,7 +855,7 @@ function postJSON(url, data){
           <p style="margin:8px 0 4px">${desc}</p>
           <div class="vit-actions">
             ${buyBtn}
-            <a class="vit-btn wa" href="https://wa.me/595976418720?text=${encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.")}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
+            <a class="vit-btn wa" href="https://wa.me/595993637617?text=${encodeURIComponent("Hola Pedro, hice el test y necesito orientación antes de comprar. Mi puntaje fue "+state.score+" / 100.")}" target="_blank" rel="noopener" id="vitSupportBtn">Hablar por WhatsApp</a>
             <button class="vit-btn ghost" id="vitRestart">Repetir test</button>
           </div>
           <div class="vit-note">Pago seguro · Acceso inmediato · Garantía 7 días</div>
@@ -930,6 +930,6 @@ function postJSON(url, data){
 })();
 </script>
 <!-- ===== Fin Test 60s ===== -->
-  
+
 </body>
 </html>
