@@ -1,97 +1,222 @@
-<!DOCTYPE html><html lang="es"><head>
-<meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1">
-<title>¡Pago confirmado! – VitaMente</title>
-<meta name="robots" content="noindex, nofollow"> <!-- evita indexación -->
-<style>
-  body{font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial;background:#141625;color:#f2f2f2;margin:0}
-  .wrap{max-width:860px;margin:0 auto;padding:28px 16px}
-  .card{background:#1c2033;border:1px solid #2a2f47;border-radius:14px;padding:22px}
-  h1{margin:0 0 8px} .muted{color:#cfd3dc}
-  .grid{display:grid;gap:16px;grid-template-columns:1fr 1fr} @media(max-width:720px){.grid{grid-template-columns:1fr}}
-  .btn{display:inline-block;padding:12px 16px;border-radius:10px;font-weight:800;text-decoration:none}
-  .btn-primary{background:#1498e3;color:#fff} .btn-wa{background:#25D366;color:#fff}
-  .ok{display:inline-flex;gap:8px;align-items:center;background:#20334d;padding:6px 10px;border-radius:999px}
-  .links{font-size:.95rem;background:#19202f;border:1px solid #2a2f47;border-radius:12px;padding:12px;margin-top:10px}
-  .links a{color:#9fd6ff;word-break:break-all}
-  .small{font-size:.9rem;color:#cfd3dc}
-</style>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>¡Gracias por tu compra! – VitaMente</title>
+<meta name="description" content="Descarga tu material de Adiós Ansiedad Social. Acceso inmediato y soporte por WhatsApp.">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Gracias por tu compra – VitaMente">
+<meta property="og:description" content="Descarga inmediata de tu material. Cualquier duda, soporte por WhatsApp.">
+<meta property="og:image" content="https://pedro-benitez-web.github.io/vitamente-landing/portada_Ansiedad.webp">
+<meta property="og:url" content="https://pedro-benitez-web.github.io/vitamente-landing/gracias.html">
 
-<!-- Pixel -->
+<!-- Meta Pixel -->
 <script>
 !function(f,b,e,v,n,t,s){if(f.fbq)return;n=f.fbq=function(){n.callMethod?
 n.callMethod.apply(n,arguments):n.queue.push(arguments)};if(!f._fbq)f._fbq=n;
 n.push=n;n.loaded=!0;n.version='2.0';n.queue=[];t=b.createElement(e);t.async=!0;
-t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}
-(window,document,'script','https://connect.facebook.net/en_US/fbevents.js');
-fbq('init','775880484931341'); fbq('track','PageView');
+t.src=v;s=b.getElementsByTagName(e)[0];s.parentNode.insertBefore(t,s)}(window,document,'script',
+'https://connect.facebook.net/en_US/fbevents.js');
+fbq('init','775880484931341');fbq('track','PageView');
 </script>
 <noscript><img height="1" width="1" style="display:none"
 src="https://www.facebook.com/tr?id=775880484931341&ev=PageView&noscript=1"/></noscript>
+
+<style>
+:root{
+  --primary:#1498e3; --wa:#25D366; --wa-hover:#1ebe5d;
+  --bg:#141625; --card:#1c2033; --text:#f2f2f2; --muted:#cfd3dc; --line:#2a2f47;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+body{font-family:system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;background:var(--bg);color:var(--text);line-height:1.6}
+.container{max-width:960px;margin:auto;padding:24px}
+.header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.logo{width:40px;height:40px;border-radius:8px;background:#22263a;display:flex;align-items:center;justify-content:center;font-weight:800}
+.card{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:20px;margin-top:16px}
+h1{font-size:1.9rem;margin:6px 0 4px}
+.lead{color:var(--muted)}
+.kv{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-top:12px}
+@media(max-width:720px){.kv{grid-template-columns:1fr}}
+.badge{display:inline-block;background:#22263a;border:1px solid var(--line);border-radius:999px;padding:6px 10px;font-size:.92rem;margin-top:8px}
+.btn{display:inline-block;padding:14px 18px;border-radius:10px;font-weight:800;text-align:center;transition:.2s;margin:6px 0}
+.btn-primary{background:var(--primary);color:#fff}.btn-primary:hover{filter:brightness(.95);transform:translateY(-1px)}
+.btn-wa{background:var(--wa);color:#fff}.btn-wa:hover{background:var(--wa-hover);transform:translateY(-1px)}
+.btn-ghost{background:#2a2f47;color:#fff}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.small{font-size:.92rem;color:var(--muted)}
+.code{font-family:ui-monospace,SFMono-Regular,Menlo,Monaco,Consolas,monospace;background:#111626;border:1px solid #2a2f47;padding:8px 10px;border-radius:8px;display:inline-block}
+hr{border:none;border-top:1px solid var(--line);margin:16px 0}
+.center{text-align:center}
+.footer{color:#99a1b3;font-size:.9rem;margin:18px 0 8px;text-align:center}
+.copy{cursor:pointer}
+.hero-check{font-size:40px;line-height:1}
+</style>
 </head>
 <body>
-<div class="wrap">
-  <h1>¡Listo! Pago confirmado ✅</h1>
-  <p class="muted">Gracias por tu compra. Abajo tenés el acceso inmediato a tu material.</p>
+<div class="container">
+
+  <div class="header">
+    <div class="logo">VM</div>
+    <div>
+      <div class="small">VitaMente</div>
+      <div class="small">Compra confirmada</div>
+    </div>
+  </div>
 
   <div class="card">
-    <p class="ok">🔒 Pago verificado · Acceso inmediato</p>
-    <h2>Acceso a tu material</h2>
-
-    <div class="grid" style="margin-top:6px">
+    <div class="row" style="align-items:center;gap:12px;margin-bottom:6px">
+      <div class="hero-check">✅</div>
       <div>
-        <h3>Plan Simple (Gs. 30.000)</h3>
-        <p class="muted">Guía en 5 pasos + plan 21 días + tabla editable.</p>
-        <a class="btn btn-primary" id="btnSimple" href="https://drive.google.com/drive/folders/1JdGitaz_fS8HmpFW-5-_xfu1JHzsHNiF?usp=drive_link" target="_blank" rel="noopener">Abrir material Simple</a>
-        <div class="links small">Enlace directo: <br>
-          <a id="linkSimple" href="https://drive.google.com/drive/folders/1JdGitaz_fS8HmpFW-5-_xfu1JHzsHNiF?usp=drive_link" target="_blank" rel="noopener">https://drive.google.com/drive/folders/1JdGitaz_fS8HmpFW-5-_xfu1JHzsHNiF?usp=drive_link</a>
-        </div>
-      </div>
-      <div>
-        <h3>Plan Premium (Gs. 60.000)</h3>
-        <p class="muted">Todo lo del Simple + bonos + grupo WhatsApp.</p>
-        <a class="btn btn-primary" id="btnPremium" href="https://drive.google.com/drive/folders/1PuAigI_x6xG5d8jwWR0PH3UxQQe00o_q?usp=drive_link" rel="noopener">Abrir material Premium</a>
-        <div class="links small">Enlace directo: <br>
-          <a id="linkPremium" href="https://drive.google.com/drive/folders/1PuAigI_x6xG5d8jwWR0PH3UxQQe00o_q?usp=drive_link" target="_blank" rel="noopener">https://drive.google.com/drive/folders/1PuAigI_x6xG5d8jwWR0PH3UxQQe00o_q?usp=drive_link</a>
-        </div>
+        <h1>¡Gracias por tu compra!</h1>
+        <p class="lead">Tu acceso está listo. Podés descargar el material ahora mismo.</p>
+        <div id="planBadge" class="badge">Procesando plan…</div>
       </div>
     </div>
 
-    <p style="margin-top:14px">
-      ¿Querés recibir los accesos en tu WhatsApp? 
-      <a class="btn btn-wa" id="sendWA" href="#" target="_blank" rel="noopener">Enviarme los links por WhatsApp</a>
-    </p>
+    <div class="kv">
+      <div class="card" style="background:#19202f">
+        <h3>Tu pedido</h3>
+        <p class="small">Plan: <strong id="planName">—</strong></p>
+        <p class="small">Orden (hash): <span id="orderHash" class="code copy" title="Click para copiar"></span></p>
+        <div class="row">
+          <a id="btnDownload" class="btn btn-primary" href="#" target="_blank" rel="noopener">Descargar material</a>
+          <a id="btnDownloadAlt" class="btn btn-ghost" href="#" target="_blank" rel="noopener" style="display:none">Descargar opción 2</a>
+        </div>
+        <p class="small">Si el enlace no abre, probá en otra pestaña o pedinos el acceso por WhatsApp.</p>
+      </div>
 
-    <p class="small">Guardá esta página en favoritos por si necesitás volver a descargar. Si hay algún problema con Drive, escribime y te lo reenvío.</p>
+      <div class="card" style="background:#19202f">
+        <h3>¿Necesitás ayuda?</h3>
+        <p class="small">Escribinos y te enviamos el acceso como respaldo.</p>
+        <div class="row">
+          <a id="btnWA" class="btn btn-wa" target="_blank" rel="noopener">Soporte por WhatsApp</a>
+          <a id="btnEmail" class="btn btn-ghost" target="_blank" rel="noopener">Pedir por Email</a>
+        </div>
+        <p class="small">Responderemos lo antes posible. Guardá este enlace por las dudas.</p>
+      </div>
+    </div>
+
+    <hr>
+    <div class="small">
+      <strong>Importante:</strong> para evitar problemas de acceso en Google Drive, asegurate de que tus carpetas estén compartidas con
+      <em>“Cualquier persona con el enlace”</em> (lector).
+    </div>
+  </div>
+
+  <div class="footer">
+    © 2025 VitaMente · Este material no sustituye atención profesional presencial.
   </div>
 </div>
 
 <script>
-// Detecta plan (?plan=simple|premium) y dispara Purchase (pixel)
-const q = new URLSearchParams(location.search);
-const plan = q.get('plan');
-const value = plan==='premium'?60000:30000;
-if(plan){
-  fbq('track','Purchase',{
-    value:value, currency:'PYG',
-    contents:[{id:plan, quantity:1}], content_type:'product'
+(function(){
+  // === Config ===
+  const PHONE = '595993637617';
+  const LINKS = {
+    simple : 'https://drive.google.com/drive/folders/1JdGitaz_fS8HmpFW-5-_xfu1JHzsHNiF?usp=drive_link',
+    premium: 'https://drive.google.com/drive/folders/1PuAigI_x6xG5d8jwWR0PH3UxQQe00o_q?usp=drive_link'
+  };
+  const PRICES = { simple: 30000, premium: 60000 };
+
+  // === DOM ===
+  const planBadge  = document.getElementById('planBadge');
+  const planNameEl = document.getElementById('planName');
+  const hashEl     = document.getElementById('orderHash');
+  const btnDL      = document.getElementById('btnDownload');
+  const btnDL2     = document.getElementById('btnDownloadAlt');
+  const btnWA      = document.getElementById('btnWA');
+  const btnEmail   = document.getElementById('btnEmail');
+
+  // === Helpers ===
+  const qs = new URLSearchParams(location.search);
+  const plan = (qs.get('plan')||'').toLowerCase();
+  const hash = qs.get('hash') || '';
+  const fbTest = qs.get('fb_test_event_code') || '';
+  const utmStr = (function(){
+    const keep=['utm_source','utm_medium','utm_campaign','utm_content'];
+    const out=new URLSearchParams();
+    keep.forEach(k=>{ if(qs.get(k)) out.set(k, qs.get(k)); });
+    return out.toString();
+  })();
+  function appendUTM(url){
+    try{
+      if(!utmStr) return url;
+      const u = new URL(url);
+      const p = new URLSearchParams(u.search);
+      new URLSearchParams(utmStr).forEach((v,k)=>{ if(!p.get(k)) p.set(k,v); });
+      u.search = p.toString();
+      return u.toString();
+    }catch(e){ return url; }
+  }
+
+  // Mostrar plan/hash
+  planNameEl.textContent = plan ? (plan==='premium'?'Premium':'Simple') : 'No especificado';
+  if(hash){ hashEl.textContent = hash; }
+  else { hashEl.textContent = '(sin hash)'; }
+
+  // Badge
+  planBadge.textContent = plan ? `Plan ${plan==='premium'?'Premium':'Simple'}` : 'Plan no detectado';
+
+  // Enlaces de descarga
+  if (plan && LINKS[plan]){
+    btnDL.href = appendUTM(LINKS[plan]);
+    btnDL2.style.display='none';
+  } else {
+    // Si no llega el plan, mostramos ambos
+    btnDL.href = appendUTM(LINKS.simple);
+    btnDL.textContent = 'Descargar Plan Simple';
+    btnDL2.style.display='inline-block';
+    btnDL2.href = appendUTM(LINKS.premium);
+    btnDL2.textContent = 'Descargar Plan Premium';
+  }
+
+  // WhatsApp soporte
+  const waMsg =
+    `Hola Pedro, acabo de pagar y necesito el acceso.%0A` +
+    `• Plan: ${plan || 'no especificado'}%0A` +
+    `• Hash: ${hash || 'sin hash'}%0A` +
+    `¿Me enviás los links por favor?`;
+  btnWA.href = `https://wa.me/${PHONE}?text=${waMsg}`;
+
+  // Email respaldo (mailto)
+  const subject = encodeURIComponent('Acceso – Adiós Ansiedad Social');
+  const body =
+    `Hola Pedro,%0A%0A` +
+    `Acabo de pagar y necesito el acceso como respaldo.%0A` +
+    `Plan: ${plan || 'no especificado'}%0A` +
+    `Hash: ${hash || 'sin hash'}%0A%0A` +
+    `Gracias.`;
+  btnEmail.href = `mailto:pedro@example.com?subject=${subject}&body=${body}`;
+
+  // Copiar hash
+  hashEl.addEventListener('click', ()=>{
+    if(!hash) return;
+    navigator.clipboard.writeText(hash).then(()=>{
+      hashEl.textContent = hash + ' (copiado)';
+      setTimeout(()=>{ hashEl.textContent = hash; }, 1200);
+    });
   });
-}
 
-// Botón “Enviarme los links por WhatsApp”
-const linkSimple  = document.getElementById('linkSimple').href;
-const linkPremium = document.getElementById('linkPremium').href;
-const waBase = 'https://wa.me/595976418720?text=';
-const msgSimple  = encodeURIComponent('Hola Pedro, ya pagué el Plan SIMPLE. ¿Podés confirmarme acceso? Dejo el enlace: ' + linkSimple);
-const msgPremium = encodeURIComponent('Hola Pedro, ya pagué el Plan PREMIUM. ¿Podés confirmarme acceso? Dejo el enlace: ' + linkPremium);
+  // Disparar Purchase (solo una vez por hash)
+  try{
+    const flag = 'purchase_fired_' + (hash || 'nohash') + '_' + (plan || 'noplan');
+    if(!sessionStorage.getItem(flag)){
+      const value = PRICES[plan] || 0;
+      if(window.fbq && value>0){
+        const params = {value, currency:'PYG', content_name: 'Ebook Ansiedad Social ('+(plan==='premium'?'Premium':'Simple')+')'};
+        if(fbTest) params.test_event_code = fbTest;
+        fbq('track','Purchase', params);
+        sessionStorage.setItem(flag,'1');
+      }
+    }
+  }catch(e){}
 
-// Si vino con ?plan=… preselecciona el mensaje correcto
-const sendBtn = document.getElementById('sendWA');
-if(plan==='premium'){ sendBtn.href = waBase + msgPremium; }
-else if(plan==='simple'){ sendBtn.href = waBase + msgSimple; }
-else{
-  // si no viene con plan, ofrece ambos en el mensaje
-  const msg = encodeURIComponent('Hola Pedro, ya pagué. ¿Me enviás los accesos? Links: SIMPLE ' + linkSimple + ' | PREMIUM ' + linkPremium);
-  sendBtn.href = waBase + msg;
-}
+  // Auto abrir descarga a los 1.5s (si hay plan válido)
+  if (plan && LINKS[plan]){
+    setTimeout(()=>{ window.open(appendUTM(LINKS[plan]), '_blank'); }, 1500);
+  }
+})();
 </script>
-</body></html>
+</body>
+</html>
