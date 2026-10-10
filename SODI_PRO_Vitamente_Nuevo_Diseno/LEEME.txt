@@ -1,0 +1,14 @@
+SODI PRO — NUEVO DISEÑO PARA VITAMENTE.NET
+
+1. Extraé este ZIP en tu computadora.
+2. Abrí index.html para revisar la página. Conservá todos los archivos juntos.
+3. En el repositorio vitamente-landing, seleccioná Add file > Upload files.
+4. Arrastrá el contenido extraído: index.html, styles.css, app.js, robots.txt, sitemap.xml y la carpeta assets.
+5. Pulsá Commit changes.
+
+No subas el ZIP como archivo. Subí su contenido extraído manteniendo la carpeta assets.
+No elimines CNAME ni los demás archivos actuales. GitHub reemplazará los archivos con el mismo nombre.
+Este paquete adapta el diseño del sitio privado para vitamente.net; no modifica ni publica el sitio privado de ChatGPT.
+
+Incluye precio Gs. 149.000, selector por perfil/nivel/necesidad, capturas ampliables, ambos videos y acceso para compradores a la IA.
+Los archivos, imágenes y rutas se verificaron. La revisión visual en navegador sigue pendiente; abrí index.html para revisarla antes de subirla.
